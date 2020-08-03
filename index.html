@@ -226,7 +226,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <blockquote>
-<h1 id="《算法》"><a href="#《算法》" class="headerlink" title="==《算法》=="></a>==《算法》==</h1><h2 id="第-一章"><a href="#第-一章" class="headerlink" title="第 一章"></a>第 一章</h2><h3 id="第一节"><a href="#第一节" class="headerlink" title="第一节"></a>第一节</h3><h4 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h4><h5 id="—笔者"><a href="#—笔者" class="headerlink" title="—笔者"></a>—笔者</h5><p>——==<em>魏静崎</em>==<br>2020年08月03日 </p>
+<h1 id="《算法》"><a href="#《算法》" class="headerlink" title="《算法》"></a>《算法》</h1><h2 id="第-一章"><a href="#第-一章" class="headerlink" title="第 一章"></a>第 一章</h2><h3 id="第一节"><a href="#第一节" class="headerlink" title="第一节"></a>第一节</h3><h4 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h4><h5 id="—笔者"><a href="#—笔者" class="headerlink" title="—笔者"></a>—笔者</h5><p>—— <em>魏静崎</em><br>2020年08月03日 </p>
 </blockquote>
 <h4 id="1-1-5-4-起别名"><a href="#1-1-5-4-起别名" class="headerlink" title="1.1.5.4 起别名"></a>1.1.5.4 起别名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">a[i] = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">int</span>[] b = a; </span><br><span class="line">b[i] = <span class="number">456</span>;	<span class="comment">//a[i]也会变为5678</span></span><br></pre></td></tr></table></figure>
 <p>将一个数组变量赋值给另一个变量，两个变量将会指向同一个数组(即同一个地址)，这种情况叫做起别名，因为新的数组对象需要通过 <strong>new</strong> 的方式创建。<br>想要复制数组只能new一个新的数组将元素逐个复制。</p>
@@ -275,7 +275,71 @@
 <td>场宽14，数据右对齐；场宽14，数据左对齐；场宽14，数据左对齐，只保留左边五位数据</td>
 </tr>
 <tr>
+<td>#### 答疑部分</td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* 除0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  1/0 会发生除以0异常</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  1.0/0.0 表达式的值是无限大(Infinity)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  取余</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  余数的定义: (a/ b)*b + a % b 恒等于a</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  -14/3 = -4 , -14%3 = -2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  14/-3 = -4 , 14%-3 = 2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*  在Java中，一个静态方法不能够将另一个静态方法作为参数</td>
 <td></td>
 <td></td>
 <td></td>
