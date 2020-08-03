@@ -228,68 +228,9 @@
     <blockquote>
 <h1 id="《算法》"><a href="#《算法》" class="headerlink" title="《算法》"></a>《算法》</h1><h2 id="第-一章"><a href="#第-一章" class="headerlink" title="第 一章"></a>第 一章</h2><h3 id="第一节"><a href="#第一节" class="headerlink" title="第一节"></a>第一节</h3><h4 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h4><h5 id="—笔者"><a href="#—笔者" class="headerlink" title="—笔者"></a>—笔者</h5><p>—— <em>魏静崎</em><br>2020年08月03日 </p>
 </blockquote>
-<h4 id="1-1-5-4-起别名"><a href="#1-1-5-4-起别名" class="headerlink" title="1.1.5.4 起别名"></a>1.1.5.4 起别名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">a[i] = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">int</span>[] b = a; </span><br><span class="line">b[i] = <span class="number">456</span>;	<span class="comment">//a[i]也会变为5678</span></span><br></pre></td></tr></table></figure>
-<p>将一个数组变量赋值给另一个变量，两个变量将会指向同一个数组(即同一个地址)，这种情况叫做起别名，因为新的数组对象需要通过 <strong>new</strong> 的方式创建。<br>想要复制数组只能new一个新的数组将元素逐个复制。</p>
-<h4 id="1-1-6-4-递归"><a href="#1-1-6-4-递归" class="headerlink" title="1.1.6.4 递归"></a>1.1.6.4 递归</h4><ul>
-<li>递归代码需要注重的三点<ul>
-<li>递归总有一个最简单的情况，即方法的第一条语句总是一个包含return的条件语句。</li>
-<li>递归调用总是去尝试解决一个规模更小的子问题，减少操纵的数据规模。</li>
-<li>递归调用的父问题和尝试解决的子问题之间不应该有交集。</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-1-9-3-输出的格式化"><a href="#1-1-9-3-输出的格式化" class="headerlink" title="1.1.9.3 输出的格式化"></a>1.1.9.3 输出的格式化</h4><p>在进行输出的时候，我们往往会因为输出格式的问题而变得不知所措，输出的规范化也一直影响着代码的规范。而在这便介绍了常用的输出格式：输出总长度，自动填充占位符；输出的精度</p>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>转换代码</th>
-<th>举例</th>
-<th>格式化字符串举例</th>
-<th>转换后输出的字符串</th>
-<th>解释说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>d</td>
-<td>512</td>
-<td>“%14d”, “%-14d”</td>
-<td>“                 512”, “512                 “</td>
-<td>场宽为14，数据右对齐；长宽为13，数据左对齐</td>
-</tr>
-<tr>
-<td>double</td>
-<td>f,e</td>
-<td>159.1680010754388</td>
-<td>“%14.2f”, “%.7f”, “%14.4e”</td>
-<td>“          1595.17”, “1595.1680011”, “   1.5952e+0.3”</td>
-<td>场宽为14，保留两位小数；保留七位小数；e-计数法，场宽14,4位小数</td>
-</tr>
-<tr>
-<td>String</td>
-<td>s</td>
-<td>“Hello, World”</td>
-<td>“%14s”, “%-14s”, “%-14.5s”</td>
-<td>“    Hello, World”, “Hello, World    “, “Hello                “</td>
-<td>场宽14，数据右对齐；场宽14，数据左对齐；场宽14，数据左对齐，只保留左边五位数据</td>
-</tr>
-</tbody></table>
-<h4 id="答疑部分"><a href="#答疑部分" class="headerlink" title="答疑部分"></a>答疑部分</h4><ul>
-<li>除0<ul>
-<li>1/0 会发生除以0异常</li>
-<li>1.0/0.0 表达式的值是无限大(Infinity)<ul>
-<li>取余</li>
-<li>余数的定义: (a/ b)*b + a % b 恒等于a</li>
-<li>-14/3 = -4 , -14%3 = -2</li>
-<li>14/-3 = -4 , 14%-3 = 2</li>
-<li>在Java中，一个静态方法不能够将另一个静态方法作为参数</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2020/08/03/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-1/#more">more >></a>
+    
     
 
     
