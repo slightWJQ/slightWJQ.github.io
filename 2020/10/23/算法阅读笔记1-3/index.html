@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://weijingqi.gitee.io">
-  <title>Archives: 2020 | MyBlog</title>
+  <title>算法阅读笔记1-3 | MyBlog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://weijingqi.gitee.io/archives/2020/index.html">
+  <meta name="description" content="《算法》第 一章第三节学习记录—笔者—— 魏静崎2020年08月27日">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法阅读笔记1-3">
+<meta property="og:url" content="https://weijingqi.gitee.io/2020/10/23/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-3/index.html">
 <meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="《算法》第 一章第三节学习记录—笔者—— 魏静崎2020年08月27日">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-23T06:42:08.764Z">
+<meta property="article:modified_time" content="2020-10-23T06:42:09.207Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
   
@@ -189,86 +193,291 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-算法阅读笔记1-3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      算法阅读笔记1-3
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2020/10/23/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-3/" class="archive-article-date">
         <time datetime="2020-10-23T06:42:08.764Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote>
+<h1 id="《算法》"><a href="#《算法》" class="headerlink" title="《算法》"></a>《算法》</h1><h2 id="第-一章"><a href="#第-一章" class="headerlink" title="第 一章"></a>第 一章</h2><h3 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h3><h4 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h4><h5 id="—笔者"><a href="#—笔者" class="headerlink" title="—笔者"></a>—笔者</h5><p>—— <em>魏静崎</em><br>2020年08月27日 </p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-3背包、队列和栈"><a href="#1-3背包、队列和栈" class="headerlink" title="1.3背包、队列和栈"></a>1.3背包、队列和栈</h3><h4 id="1-3-1-1-泛型"><a href="#1-3-1-1-泛型" class="headerlink" title="1.3.1.1 泛型"></a>1.3.1.1 泛型</h4><p>集合类的抽象数据类型的一个关键特性是可以存储<strong>任意的数据类型</strong></p>
+<h4 id="1-3-1-2-自动装箱"><a href="#1-3-1-2-自动装箱" class="headerlink" title="1.3.1.2 自动装箱"></a>1.3.1.2 自动装箱</h4><p>自动将一个原始数据类型转化为一个封装类型被称为自动装箱，自动将一个封装类型转化为一个原始数据类型被称为自动拆箱。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">stack.push(<span class="number">17</span>);	<span class="comment">// 自动拆箱 int -&gt; Integer</span></span><br><span class="line"><span class="keyword">int</span> i = stack.pop();	<span class="comment">//自动装箱 Integer -&gt; int</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-1-4-背包"><a href="#1-3-1-4-背包" class="headerlink" title="1.3.1.4 背包"></a>1.3.1.4 背包</h4><p>背包是一种不支持从中删除元素的集合数据类型<br>目的：帮助用例收集元素并迭代遍历所有收集到的元素，且迭代的顺序不确定且与用例无关。</p>
+<h4 id="1-3-2-2-泛型"><a href="#1-3-2-2-泛型" class="headerlink" title="1.3.2.2 泛型"></a>1.3.2.2 泛型</h4><p>我们需要通过泛型来使一个集合类支持不同的数据类型，因此我们希望在初始化的过程中创建一个支持泛型的数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="keyword">new</span> Item[cap];</span><br></pre></td></tr></table></figure>
+<p>但是直接创建泛型数组在java中是不被允许的，我们需要进行强制类型转换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = (Item[]) <span class="keyword">new</span> Object[cap];</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-2-3-调整数组的大小"><a href="#1-3-2-3-调整数组的大小" class="headerlink" title="1.3.2.3 调整数组的大小"></a>1.3.2.3 调整数组的大小</h4><p>集合类的最大容量在初始化是被确定是十分不友好的，因此我们需要动态调整数组的大小，使得它既足以保存所有元素，又不会浪费太多空间。<br>再次之前我们需要首先实现一个方法将数组元素移动到另一个不同大小的元素中。<br>如果没有多余的空间我们将数组的长度加倍。<br>如果数组太大我们则将它的长度减半。而数组太大的正确检测条件是实际元素数量是否小于数组大小的四分之一，这样减半后的容量约为半满，可以支持多次操作。</p>
+<h4 id="1-3-2-4-对象游离"><a href="#1-3-2-4-对象游离" class="headerlink" title="1.3.2.4 对象游离"></a>1.3.2.4 对象游离</h4><p>Java的垃圾回收机制是回收所有无法被访问的对象的内存。<br>避免一个对象游离(有一个不需要的对象的引用)，只需要将被弹出的元素的值设为null即可，这样覆盖无效的引用并使系统可以在元素被弹出后回收内存。</p>
+<h4 id="1-3-2-5-迭代"><a href="#1-3-2-5-迭代" class="headerlink" title="1.3.2.5 迭代"></a>1.3.2.5 迭代</h4><p>迭代遍历并处理集合的每个元素是集合类数据类型的基本操作之一。</p>
+<p> 在集合数据类型中我们需要实现:</p>
+<ul>
+<li>1.集合数据类型必须实现一个==iterator()== 方法并返回一个==Iterator== 对象</li>
+<li>2.Iterator类必须包含两个方法:hasNext()和next()</li>
+</ul>
+<p>迭代器就是一个实现了hasNext()方法和next方法的类的对象。<br>拥有迭代器才能使用forEach方法。</p>
+<p>在这里我们应该知道任意集合数据类型的实现的最佳性能:</p>
+<ul>
+<li>每项操作的用时都与集合大小无关</li>
+<li>空间需求总是不超过集合大小乘以一个常数</li>
+</ul>
+<h3 id="1-3-3-链表"><a href="#1-3-3-链表" class="headerlink" title="1.3.3 链表"></a>1.3.3 链表</h3><p>链表是一个Java非直接支持的数据结构<br>在结构化存储数据集中，链表是数组的一种重要的代替方案。</p>
+<h4 id="1-3-3-1-节点记录"><a href="#1-3-3-1-节点记录" class="headerlink" title="1.3.3.1 节点记录"></a>1.3.3.1 节点记录</h4><p>在面向对象编程中我们可以使用一个嵌套类来定义节点的抽象数据类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line"> Item item;	<span class="comment">//Item只是一占位符，我们将会使用泛型使之表示任意引用类型</span></span><br><span class="line"> Node next;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="答疑部分"><a href="#答疑部分" class="headerlink" title="答疑部分"></a>答疑部分</h3><ol>
+<li>Java不允许使用泛型数组的原因: 共变数组(covariant array)和类型擦除(type erasure)。   — <em>看不懂QAQ</em></li>
+<li>创建一个字符串栈的数组<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;String&gt;[] a = (Stack&lt;String&gt;[]) <span class="keyword">new</span> Stack[N];</span><br></pre></td></tr></table></figure>
+! 警告，Java会在编译时检查类型的安全性，运行时会抛弃这些信息，因此若不强制转换则右侧会变为 <code>Stack&lt;Object&gt;[] 或者只剩下 Stack[]</code>，因此必须强转。</li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/Alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/WeChat.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/10/23/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-3/" target="_blank">算法阅读笔记1-3</a>
-  
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          魏静崎
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://weijingqi.gitee.io/2020/10/23/算法阅读笔记1-3/" title="算法阅读笔记1-3" target="_blank">https://weijingqi.gitee.io/2020/10/23/算法阅读笔记1-3/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          该文章来源及最终解释权归作者所有
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://weijingqi.gitee.io/2020/10/23/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-3/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/08/03/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-1/" class="archive-article-date">
-        <time datetime="2020-08-03T08:52:09.540Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/03/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法阅读笔记1-1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/08/03/%E7%AE%97%E6%B3%95%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B01-1/" target="_blank">算法阅读笔记1-1</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+<div id="SOHUCS" sid="算法阅读笔记1-3" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by
+      Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
 
 
           </div>
@@ -309,8 +518,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
