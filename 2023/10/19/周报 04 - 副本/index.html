@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://weijingqi.gitee">
-  <title>MyBlog</title>
+  <title>周报 04 | MyBlog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="常见分布式框架学习记录author:slightwjq2023年3月10日">
+  <meta name="description" content="author:魏静崎2023年10月16日研究方向：虚假信息检测">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://weijingqi.gitee/2023/10/17/Hadoop%E7%94%9F%E6%80%81/index.html">
+<meta property="og:title" content="周报 04">
+<meta property="og:url" content="https://weijingqi.gitee/2023/10/19/%E5%91%A8%E6%8A%A5%2004%20-%20%E5%89%AF%E6%9C%AC/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="常见分布式框架学习记录author:slightwjq2023年3月10日">
+<meta property="og:description" content="author:魏静崎2023年10月16日研究方向：虚假信息检测">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-17T07:08:16.119Z">
-<meta property="article:modified_time" content="2023-03-19T03:40:06.139Z">
+<meta property="article:published_time" content="2023-10-19T09:05:01.492Z">
+<meta property="article:modified_time" content="2023-10-19T08:59:49.702Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
   
@@ -205,24 +205,71 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hadoop生态" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-周报 04 - 副本" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      周报 04
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2023/10/19/%E5%91%A8%E6%8A%A5%2004%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
+        <time datetime="2023-10-19T09:05:01.492Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-19</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">100字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
     <blockquote>
-<h1 id="常见分布式框架"><a href="#常见分布式框架" class="headerlink" title="常见分布式框架"></a>常见分布式框架</h1><h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><p><em>author:slightwjq</em><br>2023年3月10日</p>
+<p>author:魏静崎<br>2023年10月16日<br>研究方向：虚假信息检测</p>
 </blockquote>
 <span id="more"></span>
 
-<h1 id="Hadoop生态"><a href="#Hadoop生态" class="headerlink" title="Hadoop生态"></a>Hadoop生态</h1><h3 id="Hadoop概述"><a href="#Hadoop概述" class="headerlink" title="Hadoop概述"></a>Hadoop概述</h3><p>Hadoop底层基于Java实现，核心组件是HDFS(存储)、YARN(资源任务调度)、MapReduce(数据计算)。</p>
-<h5 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h5><p>在数据存储中，HDFS是Hadoop分布式文件系统，HDFS会统一管理多台机器的存储空间，提供统一的访问接口，让多台计算机的存储空间合一，延迟较高，更注重大数据量的吞吐速度，文件的设计是write-one-read-many访问模型，一次写入多次读取，无法任意频繁修改。<br>HDFS特性：主从架构、分块存储、副本机制、元数据记录、抽象统一的目录树结构。<br>主从架构：Namenode是主节点，Datanode是从节点，共同协调分布式存储。<br>分块存储：物理上分块存储，默认大小128M。<br>副本机制：所有block都有副本，默认值是3（1是本身+2是副本）。<br>元数据管理：元数据类型有文件自身属性信息和文件块位置映射信息。<br>namespace：给用户提供统一的抽象目录树。<br>数据块存储：具体存储管理由DataNode节点承担。</p>
-<h5 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h5><p>在数据计算中，为解决并行的复杂性，引入了MapReduce，提供了任务并行框架，通过其API抽象，让并行程序分为Map阶段和Reduce阶段。其思想核心是先分再合，分而治之。<br>主要计算静态数据集，无法进行数据动态计算。<br>特点：高容错性、适合海量数据的离线处理。<br>局限性：实时计算性能差、不能进行流式计算。</p>
-<h5 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h5><p>YARN是一个<strong>通用的</strong>资源管理系统和调度平台，管理着集群的CPU、内存。<br>YARN三大组件：<br>ResourceManager(RM)：资源分配的最终权限。<br>NodeManager(NM)：复杂管理本机器上的计算资源。<br>ApplicationMaster(AM)：在应用层面，复杂程序内部各阶段的资源申请。</p>
-<h5 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h5><p>数据仓库：用于存储、分析、报告的数据系统。<br>HIV是在Hadoop上进行结构化处理的解决方案，可以让用户通过写SQL来处理数据。其核心模块是Metastore，用于存储结构化信息。其核心是将HQL(Hive中的SQL)转换为MapReduce程序，然后提交到Hadoop集群执行。</p>
-<h5 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h5><p>Spark是一种基于内存的计算框架，MapReduce是基于磁盘的计算框架，因此Spark更快，在Spark生态中也有类似HIV的SQL模块。</p>
-<pre><code> 总结来源于B站视频。
-</code></pre>
+
+
+<h3 id="本周研究内容："><a href="#本周研究内容：" class="headerlink" title="本周研究内容："></a>本周研究内容：</h3><p>1、阅读论文《Deep contextualized text representation and learning for fake news detection》<br>使用可以基于上下文的单词表示技术，生成词向量。</p>
+
+
+<p>在数据集中加入高斯噪声防止过拟合。</p>
+<h3 id="下周研究内容："><a href="#下周研究内容：" class="headerlink" title="下周研究内容："></a>下周研究内容：</h3><p>1、阅读论文《Prompt-and-Align: Prompt-Based Social Alignment for Few-Shot Fake News Detection》</p>
 
     
 
@@ -269,7 +316,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://weijingqi.gitee/2023/10/17/Hadoop生态/" title="" target="_blank">https://weijingqi.gitee/2023/10/17/Hadoop生态/</a>
+          <a href="https://weijingqi.gitee/2023/10/19/周报 04 - 副本/" title="周报 04" target="_blank">https://weijingqi.gitee/2023/10/19/周报 04 - 副本/</a>
         </li>
         
         <li>
@@ -336,7 +383,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://weijingqi.gitee/2023/10/17/Hadoop%E7%94%9F%E6%80%81/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://weijingqi.gitee/2023/10/19/%E5%91%A8%E6%8A%A5%2004%20-%20%E5%89%AF%E6%9C%AC/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -351,18 +398,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/10/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/10/17/%E5%91%A8%E6%8A%A5%2004/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">周报 04</div>
+    <a href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
