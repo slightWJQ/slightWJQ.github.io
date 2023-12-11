@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://weijingqi.gitee.io">
-  <title>Archives: 2023 | MyBlog</title>
+  <title>周报 11 | MyBlog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://weijingqi.gitee.io/archives/2023/page/4/index.html">
+  <meta name="description" content="author:魏静崎2023年12月4日研究方向：虚假信息检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="周报 11">
+<meta property="og:url" content="https://weijingqi.gitee.io/2023/12/11/%E5%91%A8%E6%8A%A511/index.html">
 <meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="author:魏静崎2023年12月4日研究方向：虚假信息检测">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-11T12:50:12.669Z">
+<meta property="article:modified_time" content="2023-12-04T14:05:03.586Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
   
@@ -201,266 +205,241 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-周报11" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A4%8D%E4%B9%A0-1/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.136Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
+    <h1 class="article-title" itemprop="name">
+      周报 11
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2023/12/11/%E5%91%A8%E6%8A%A511/" class="archive-article-date">
+        <time datetime="2023-12-11T12:50:12.669Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-11</time>
 </a>
 
-        </div>
-    	 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">621字</span>
+    </span>
+  </span>
 
-        <div class="article-info info-on-right">
-          
-          
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
 
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote>
+<p>author:魏静崎<br>2023年12月4日<br>研究方向：虚假信息检测</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="本周工作内容："><a href="#本周工作内容：" class="headerlink" title="本周工作内容："></a>本周工作内容：</h3><p>1、阅读论文Jamshidi B, Hakak S, Lu R. A Self-Attention Mechanism-Based Model for Early Detection of Fake News[J]. IEEE Transactions on Computational Social Systems, 2023.<br>文章针对新闻的早期检测，具体而言是4h。<br>在新闻的传播树中，每个新闻及其转发引用回复视为一个级联。<br>传播特征：<br>    节点级特征：<br>        基于用户：是否已验证（无效用户更容易传播虚假新闻）、粉丝量、关注量。<br>        基于推文：用户内容撰写的差异，对假新闻和真实新闻的反应。<br>        基于时间：用户注册时间，发布推文或转发时间。<br>    累积特征：必须截断传播树分支，会丢失传播信息，为弥补将这些信息以累计特征的形提供给模型。<br>        累计用户特征：包含参与新闻文章传播的所有用户信息。<br>        累计文本特征：推文的语言和书写风格信息。<br>        累计时间特征：代表了新闻的时间传播模式特性。<br>基于内容特征：从新闻内容中提取代表真假新闻的语言差异。</p>
+<p>在截断传播网络过程中：若模型传播网络超过一百个级联，则选择最短的100个认为其更有价值（以往认为越长包含的信息越多）。<br>最终，生成的传播网络序列长为500，每个元素11个值，之后累计特征和基于内容的特征形成两个具有11个值的向量替换序列的最后两个元素，通常为无效元素。</p>
+<p>自注意力分类器：<br>    利用位置编码为每个元素的投影添加一个位置向量。因此，模型可以看到输入序列中存在的时间顺序。Transformer位置编码更改以便添加到每个级联节点的地址向量从头开始。<br>    就其余节点而言，越具有信息性，这个机制（在有位置嵌入的输入序列发到编码层之前，生成一个掩码，使注意力机制不将注意力分配给值为-1的填充节点）分配的注意力越多。</p>
+<p>实验使用了两个数据集，三个混合模型进行对比，效果优于绝大部分，三个基准模型使用了全部的传播网络。<br>![[1701698696427.png]]</p>
+<h3 id="下周研究内容："><a href="#下周研究内容：" class="headerlink" title="下周研究内容："></a>下周研究内容：</h3>
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/Alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/WeChat.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          魏静崎
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://weijingqi.gitee.io/2023/12/11/周报11/" title="周报 11" target="_blank">https://weijingqi.gitee.io/2023/12/11/周报11/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          该文章来源及最终解释权归作者所有
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://weijingqi.gitee.io/2023/12/11/%E5%91%A8%E6%8A%A511/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%9B%9B%E7%AB%A0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.134Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.132Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.131Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.129Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%931.0/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.125Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.124Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.122Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/17/Hadoop%E7%94%9F%E6%80%81/" class="archive-article-date">
-        <time datetime="2023-10-17T07:08:16.119Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-17</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2023/12/11/%E5%91%A8%E6%8A%A510/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          周报 10
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2023/12/11/%E5%91%A8%E6%8A%A512/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">周报 12</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2023/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2023/">1</a><a class="page-number" href="/archives/2023/page/2/">2</a><a class="page-number" href="/archives/2023/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2023/page/5/">5</a><a class="extend next" rel="next" href="/archives/2023/page/5/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -501,8 +480,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
