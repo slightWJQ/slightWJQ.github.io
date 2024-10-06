@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
+  <meta name="description" content="1.deep double descent,where bigger models and more data hurt论文概述本文介绍了深度学习中的二次下降(double descent)现象, 利用实验剖析其可能性. Q1 论文试图解决什么问题？为什么在现代深度学习模型中，增加模型复杂性或数据量有时会导致模型性能的下降？  过参数化模型为何能保持良好的泛化性能？  根据经典理论，过拟合模型应该">
+<meta property="og:type" content="article">
 <meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://slightwjq.github.io/page/4/index.html">
+<meta property="og:url" content="https://slightwjq.github.io/2024/10/06/%E7%B2%BE%E8%AF%BB%E6%96%87%E7%8C%AE/index.html">
 <meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="1.deep double descent,where bigger models and more data hurt论文概述本文介绍了深度学习中的二次下降(double descent)现象, 利用实验剖析其可能性. Q1 论文试图解决什么问题？为什么在现代深度学习模型中，增加模型复杂性或数据量有时会导致模型性能的下降？  过参数化模型为何能保持良好的泛化性能？  根据经典理论，过拟合模型应该">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-06T14:24:24.647Z">
+<meta property="article:modified_time" content="2024-10-06T14:14:34.923Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
   
@@ -205,24 +205,430 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-大数据基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-精读文献" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
-    <blockquote>
-<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><p><em>author:slightwjq</em><br>2023年2月10日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more">more >></a>
-    
-    
+    <h1 id="1-deep-double-descent-where-bigger-models-and-more-data-hurt"><a href="#1-deep-double-descent-where-bigger-models-and-more-data-hurt" class="headerlink" title="1.deep double descent,where bigger models and more data hurt"></a>1.deep double descent,where bigger models and more data hurt</h1><h3 id="论文概述"><a href="#论文概述" class="headerlink" title="论文概述"></a>论文概述</h3><p>本文介绍了深度学习中的二次下降(double descent)现象, 利用实验剖析其可能性.</p>
+<h3 id="Q1-论文试图解决什么问题？"><a href="#Q1-论文试图解决什么问题？" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><p>为什么在现代深度学习模型中，增加模型复杂性或数据量有时会导致模型性能的下降？</p>
+<ul>
+<li><strong>过参数化模型为何能保持良好的泛化性能？</strong><br>  根据经典理论，过拟合模型应该在测试集上表现得更差，但现代深度学习模型在参数远多于训练数据的情况下，泛化能力仍然不错。这与传统偏差-方差权衡理论冲突，论文试图解释背后的原因。</li>
+<li><strong>在不同模型复杂度下，测试误差的非单调行为是如何发生的？</strong><br>  论文发现，在模型复杂性较高的情况下，测试误差不再单调增加，而是会经历一次下降——这是所谓的<strong>双重下降</strong>现象。研究的重点是描述和解释这种现象为何发生，以及它与传统偏差-方差权衡的差异。</li>
+<li><strong>数据规模如何影响模型的泛化性能？</strong><br>  论文还研究了增加训练数据量对模型性能的影响，观察到类似的双重下降现象：随着数据量的增加，模型的测试误差会先上升，然后在数据足够多的情况下再次下降。</li>
+</ul>
+<h3 id="Q2-这是否是一个新的问题？"><a href="#Q2-这是否是一个新的问题？" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><ul>
+<li>在传统机器学习中已有研究，是个经典的老问题。</li>
+<li>但论文发现的<strong>双重下降现象</strong>，尤其是在现代深度学习模型中的表现，则是一个新问题，揭示了过参数化模型和深度学习时代中的非传统泛化行为。</li>
+</ul>
+<h3 id="Q3有哪些相关研究？如何归类？"><a href="#Q3有哪些相关研究？如何归类？" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><ul>
+<li><strong>经典泛化理论</strong>：偏差-方差权衡、传统机器学习模型的泛化问题。</li>
+<li><strong>过参数化与泛化</strong>：深度学习中的过参数化模型如何打破传统理论。</li>
+<li><strong>双重下降现象</strong>：非单调的模型复杂性与数据量影响，主要讨论深度学习中的双重下降现象。</li>
+<li><strong>数据规模与泛化</strong>：大数据对模型性能的非单调影响。</li>
+<li><strong>深度学习中的新泛化理论</strong>：新的数学理论框架来解释深度学习中的泛化现象。</li>
+</ul>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？"><a href="#Q4-论文中提到的解决方案之关键是什么？" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>论文间接提出了一些应对双重下降现象的思路，帮助更好地控制模型的性能表现。</p>
+<ol>
+<li><strong>避免“临界区域”</strong>：要么选择较小的模型避免复杂度临界点，要么选择足够大的模型以跨越第一个误差峰值区域，避免性能下降。</li>
+<li><strong>早期停止（Early Stopping）</strong>：在训练过程中密切监控模型的测试误差曲线，一旦观察到测试误差有显著上升趋势，可以停止训练，防止进入临界区。</li>
+<li><strong>更好的正则化</strong>：在模型复杂性增加时，通过有效的正则化手段，可以抑制误差的第一次上升，改善模型的泛化性能。</li>
+<li><strong>更大规模的数据和模型</strong>：如果有能力，增加数据集规模并使用更大、更复杂的模型，可以帮助跨越误差上升区域，最终实现更好的泛化性能。<br>关键在于如何在训练时<strong>合理选择模型复杂度</strong>、<strong>数据量</strong>和<strong>正则化手段</strong>，从而避免陷入双重下降的第一次误差上升区域，最终获得良好的泛化性能。</li>
+</ol>
+<h3 id="Q5-论文中的实验是如何设计的？"><a href="#Q5-论文中的实验是如何设计的？" class="headerlink" title="_Q5 论文中的实验是如何设计的？"></a>_Q5 <strong>论文中的实验是如何设计的？</strong></h3><p>论文中的实验设计非常系统，涵盖了<strong>模型复杂度</strong>和<strong>数据量</strong>对测试误差的影响，并且通过使用不同的模型架构、数据集以及理论模型，验证了双重下降现象的普遍性。</p>
+<h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>使用了以下几个<strong>公开的图像分类数据集</strong>：CIFAR-10、CIFAR-100<br>论文代码已经开源</p>
+<h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><p>实验及其结果在很大程度上<strong>有效支持了</strong>论文的科学假设，即：<strong>双重下降现象</strong>广泛存在于深度学习模型中，并打破了经典的“偏差-方差权衡”理论。</p>
+<h3 id="Q8-这篇论文到底有什么贡献？"><a href="#Q8-这篇论文到底有什么贡献？" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><h3 id="Q9-下一步呢？有什么工作可以继续深入？"><a href="#Q9-下一步呢？有什么工作可以继续深入？" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><p>未来的研究可以从<strong>理论深化</strong>、<strong>模型架构影响</strong>、<strong>正则化策略</strong>、<strong>数据质量</strong>、<strong>优化算法</strong>和<strong>实际应用</strong>等多个方向入手，继续深入探索双重下降现象的机制及其影响。通过这些方向的探索，研究人员可以进一步拓展该现象的适用性，揭示更多模型泛化性能背后的本质规律。</p>
+<h1 id="2-knowledge-graph-contrastive-learning-for-recommendation"><a href="#2-knowledge-graph-contrastive-learning-for-recommendation" class="headerlink" title="2.knowledge graph contrastive learning for recommendation"></a>2.knowledge graph contrastive learning for recommendation</h1><h3 id="论文概述-1"><a href="#论文概述-1" class="headerlink" title="论文概述"></a>论文概述</h3><h3 id="Q1-论文试图解决什么问题？-1"><a href="#Q1-论文试图解决什么问题？-1" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><ul>
+<li><strong>知识图的稀疏性与噪声问题</strong>：<ul>
+<li>真实世界中的知识图通常具有长尾分布，这意味着大部分实体的出现频率很低，导致推荐系统面临稀疏的监督信号。此外，知识图中往往存在噪声和不相关的连接，这些问题会影响用户偏好的准确表示，进而影响推荐效果</li>
+</ul>
+</li>
+<li><strong>增强推荐质量</strong>：<ul>
+<li>作者旨在通过利用知识图中的丰富信息和内在语义关系，提升推荐系统的质量。现有的推荐方法在面对噪声和稀疏性时表现欠佳，无法充分利用知识图的潜力。因此，论文提出了一种新的框架，通过对比学习来改善知识图增强的推荐质量</li>
+</ul>
+</li>
+<li><strong>自监督学习</strong>：<ul>
+<li>论文设计了一种基于对比学习的自监督学习机制，来从知识图中提取更多有效信息。这种方法不仅能减小噪声影响，还能提供更鲁棒的用户-项目交互表示，提升推荐系统的泛化能力​<br>综上所述，论文试图通过引入对比学习机制来缓解知识图在推荐系统应用中的稀疏性和噪声问题，从而提升推荐效果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q2-这是否是一个新的问题？-1"><a href="#Q2-这是否是一个新的问题？-1" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>这个问题在推荐系统领域是一个相对新的研究方向。尽管知识图（Knowledge Graph, KG）已经被广泛应用于推荐系统中，但关于如何有效地处理知识图中的稀疏性和噪声问题的研究相对较少。<br>本论文通过提出知识图对比学习框架（KGCL），解决了知识图稀疏性和噪声带来的挑战。作者设计了一个新的增强机制，利用对比学习的优势来提取更有意义的用户-项目交互特征。这种方法不仅增强了推荐的效果，还为相关领域的研究提供了新的视角。</p>
+<h3 id="Q3有哪些相关研究？如何归类？-1"><a href="#Q3有哪些相关研究？如何归类？-1" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><h5 id="1-知识图在推荐系统中的应用"><a href="#1-知识图在推荐系统中的应用" class="headerlink" title="1. 知识图在推荐系统中的应用"></a>1. 知识图在推荐系统中的应用</h5><ul>
+<li>许多研究探讨了如何将知识图用于推荐系统，以增强用户体验。例如，Yuan et al. (2021) 提出的 <strong>KGCN</strong>（Knowledge Graph Convolutional Networks）利用知识图中的关系来改善推荐性能。该领域的研究通常归类为 <strong>知识图增强推荐</strong>。</li>
+</ul>
+<h5 id="2-噪声处理与数据稀疏性"><a href="#2-噪声处理与数据稀疏性" class="headerlink" title="2. 噪声处理与数据稀疏性"></a>2. 噪声处理与数据稀疏性</h5><ul>
+<li>有些研究专门关注知识图中的噪声和稀疏性问题。比如，Wang et al. (2019) 提出的 <strong>Graph Neural Networks</strong>（GNNs）技术，旨在处理知识图中的不确定性和噪声数据，增强推荐系统的鲁棒性。这些研究通常可以归为 <strong>噪声处理和数据清洗</strong>。</li>
+</ul>
+<h5 id="3-自监督与对比学习"><a href="#3-自监督与对比学习" class="headerlink" title="3. 自监督与对比学习"></a>3. 自监督与对比学习</h5><ul>
+<li>自监督学习和对比学习在推荐系统中的应用也越来越受到关注。Zhang et al. (2021) 的研究表明，对比学习可以有效地从用户行为中提取特征，改进推荐效果。相关研究主要归类为 <strong>自监督学习</strong> 和 <strong>对比学习</strong>。</li>
+</ul>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？-1"><a href="#Q4-论文中提到的解决方案之关键是什么？-1" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><ul>
+<li><ul>
+<li><strong>关系异质的知识聚合</strong>：<ul>
+<li>基于图注意力网络（GAT）及其变种的启发，我们的 KGCL 模型将实体和关系相关的上下文投射到具有参数化关注矩阵的特定表示中。然后，在知识图谱中的物品和其连接的实体之间建立基于注意力的信息聚合机制，用于生成异质关系图上的知识感知的物品表示。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>知识图增强机制</strong>：<ul>
+<li>提出生成不同的知识图谱结构视图，以进行知识实体自区分式的对比学习。具体地，我们在输入的知识图谱上采用随机丢弃关系的增强方案来生成两个对比视图。这两个视图的一致性反映了单个物品的知识图谱结构的一致性，以反映物品对知识噪声扰动的鲁棒性。</li>
+</ul>
+</li>
+<li><strong>知识感知协同对比学习</strong>：<ul>
+<li>将知识图谱上的图增强与图对比学习范式相结合，以提高知识图谱表示学习和知识聚合生成的物品表示的鲁棒性。同时，为了有效地转移高质量的物品外部知识以帮助用户偏好的学习，我们为用户-物品交互设计了知识指导的对比学习范式。在这样的对比学习中，去噪的物品知识可以被用来指导用户和物品的表示学习，并缓解监督信号的稀疏性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q5-论文中的实验是如何设计的？-1"><a href="#Q5-论文中的实验是如何设计的？-1" class="headerlink" title="_Q5 论文中的实验是如何设计的？"></a>_Q5 <strong>论文中的实验是如何设计的？</strong></h3><h3 id="1-知识图嵌入"><a href="#1-知识图嵌入" class="headerlink" title="1. 知识图嵌入"></a>1. 知识图嵌入</h3><ul>
+<li><strong>嵌入表示</strong>：模型首先通过嵌入层将知识图中的实体和关系转换为向量表示。使用了基于图神经网络（GNN）的技术，以捕捉知识图中实体间的语义关系。这种嵌入能够有效表示用户、项目及其关联的信息。</li>
+</ul>
+<h3 id="2-对比学习机制"><a href="#2-对比学习机制" class="headerlink" title="2. 对比学习机制"></a>2. 对比学习机制</h3><ul>
+<li><strong>生成视图</strong>：模型通过生成不同的知识图视图来增强学习过程。这些视图包括用户-项目交互和知识图中相关实体之间的关系。这种多视图策略使得模型能够更全面地理解用户偏好。</li>
+<li><strong>损失函数</strong>：对比学习的损失函数设计为最大化相似视图之间的相似度，同时最小化不同视图之间的相似度。这一策略有助于模型提取出更具代表性的特征，增强推荐效果。</li>
+</ul>
+<h3 id="3-用户与项目表示"><a href="#3-用户与项目表示" class="headerlink" title="3. 用户与项目表示"></a>3. 用户与项目表示</h3><ul>
+<li><strong>聚合机制</strong>：通过对用户和项目的多层聚合，模型能够更好地捕捉到用户与项目之间的复杂关系。模型设计中还包括了聚合不同来源的信息，以确保推荐系统能够处理稀疏数据和噪声影响。</li>
+</ul>
+<h3 id="4-模型训练"><a href="#4-模型训练" class="headerlink" title="4. 模型训练"></a>4. 模型训练</h3><ul>
+<li><strong>自监督学习</strong>：模型采用自监督学习的方式进行训练，通过对比学习不断更新实体和关系的表示，使得最终的用户和项目嵌入更具信息量和区分度。这一过程利用了知识图中蕴含的丰富结构信息，提升了模型的学习能力。<br><strong>基线模型对比</strong>：</li>
+<li>论文将KGCL与多个现有的推荐方法进行了比较，作为基线模型，包括传统的协同过滤（Collaborative Filtering）和其他知识图增强推荐方法。这些基线模型帮助作者验证KGCL在处理稀疏性和噪声问题上的优势。</li>
+</ul>
+<h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？-1"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？-1" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>作者在多个公共数据集上进行实验，包括 Yelp2018、MIND和 Amazon数据集。这些数据集具有不同的特征和挑战性，例如长尾分布和稀疏用户-项目交互，能够全面评估KGCL的性能<br>论文中提到的代码已经开源，作者将其发布在 GitHub 上</p>
+<h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-1"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-1" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><p>KGCL框架展示了其在知识图增强推荐系统中的有效性，尤其是在解决稀疏性和噪声问题方面。作者通过详细的实验设计和消融实验，进一步验证了模型设计的合理性和有效性。</p>
+<h3 id="Q8-这篇论文到底有什么贡献？-1"><a href="#Q8-这篇论文到底有什么贡献？-1" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a>Q8 <strong>这篇论文到底有什么贡献？</strong></h3><ul>
+<li><strong>创新的对比学习框架</strong>：<ul>
+<li>该论文提出了一种新的知识图对比学习框架（KGCL），通过结合知识图和对比学习来提高推荐系统的性能。这一框架创新性地利用知识图中的结构信息来增强用户和项目的表示，有助于应对数据稀疏性和噪声问题。</li>
+</ul>
+</li>
+<li><strong>处理稀疏性和噪声</strong>：<ul>
+<li>论文验证了使用对比学习来减少知识图中噪声对推荐系统的影响，特别是在处理稀疏用户-项目交互时。实验结果表明，KGCL在长尾推荐场景下表现优越，这为未来的推荐系统设计提供了新的思路和方法​。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q9-下一步呢？有什么工作可以继续深入？-1"><a href="#Q9-下一步呢？有什么工作可以继续深入？-1" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><ul>
+<li><strong>结合其他学习策略</strong>：<ul>
+<li>探索将KGCL与其他学习方法（如强化学习、迁移学习）结合，以提高推荐系统的效果。结合这些方法可能会提供更丰富的上下文信息，从而改善模型的性能。</li>
+</ul>
+</li>
+<li><strong>深入研究噪声处理机制</strong>：<ul>
+<li>进一步研究如何优化知识图中的噪声处理机制，包括开发新的去噪算法。这将有助于提高模型在高噪声环境下的稳定性和准确性，为推荐系统的可靠性提供保障。</li>
+</ul>
+</li>
+<li><strong>用户行为建模</strong>：<ul>
+<li>研究用户在推荐系统中的行为模式，尝试利用用户行为数据（如点击流、购买历史）进一步增强知识图的表示。这可能会提高模型对用户偏好的理解，并改善推荐质量​。</li>
+</ul>
+</li>
+<li><strong>实时推荐系统的实现</strong>：<ul>
+<li>探索如何将KGCL框架应用于实时推荐系统中。这涉及到模型的快速更新与推理能力，能够为用户提供更及时的推荐结果，适应动态变化的用户需求​。</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-Harnessing-the-Power-of-LLMs-in-Practice-A-Survey-on-ChatGPT-and-Beyond"><a href="#3-Harnessing-the-Power-of-LLMs-in-Practice-A-Survey-on-ChatGPT-and-Beyond" class="headerlink" title="3.Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond"></a>3.Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond</h1><h3 id="Q1-论文试图都讲了什么？"><a href="#Q1-论文试图都讲了什么？" class="headerlink" title="Q1 论文试图都讲了什么？"></a>Q1 <strong>论文试图都讲了什么？</strong></h3><p>论文介绍和简要概述当前的GPT-style和BERT-style LLMs，然后论文讨论预训练数据、训练数据和测试数据的影响。最重要的是，论文提供了详细的讨论，探讨了大型语言模型在各种自然语言处理任务中的使用和非使用情况，例如知识密集型任务、传统的自然语言理解任务、自然语言生成任务、新兴能力和对于特定任务的注意事项。论文提供了各种大模型实用案例和非实用案例，以说明LLMs在实际场景中的实际应用和限制。论文还分析了数据的重要性以及每个NLP任务所面临的特定挑战。此外，论文探索了虚假偏见对LLMs的影响，并深入研究了其他重要考虑因素，例如效率、成本和延迟时间，以确保全面了解实践中部署应用LLMs的方法。</p>
+<h3 id="Q2-这是否是一个新的问题？-2"><a href="#Q2-这是否是一个新的问题？-2" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>综上所述，虽然论文所讨论的主题在学术界和行业内已有研究基础，但在实际应用、伦理考量和技术挑战的背景下，确实带来了新的研究机遇和挑战。</p>
+<h3 id="Q3有哪些相关研究？如何归类？-2"><a href="#Q3有哪些相关研究？如何归类？-2" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><h3 id="1-大规模语言模型的基础研究"><a href="#1-大规模语言模型的基础研究" class="headerlink" title="1. 大规模语言模型的基础研究"></a>1. 大规模语言模型的基础研究</h3><ul>
+<li>许多研究专注于大规模语言模型（如 GPT、BERT 等）的架构、训练方法和技术细节。这些研究探讨了模型在不同任务中的性能和表现，包括自然语言理解、文本生成和对话系统等。</li>
+</ul>
+<h3 id="2-应用领域的研究"><a href="#2-应用领域的研究" class="headerlink" title="2. 应用领域的研究"></a>2. 应用领域的研究</h3><ul>
+<li>研究者们在多个领域对 LLMs 的应用进行了探索。例如，在教育、客户服务、医疗和内容创作等领域，许多研究讨论了如何有效利用 LLMs 来提升效率和用户体验。这些应用研究通常关注具体的案例研究和实践经验。</li>
+</ul>
+<h3 id="3-伦理与安全性研究"><a href="#3-伦理与安全性研究" class="headerlink" title="3. 伦理与安全性研究"></a>3. 伦理与安全性研究</h3><ul>
+<li>随着 LLMs 的普及，关于其伦理和安全性的问题变得越来越重要。相关研究探讨了模型偏见、隐私问题和误信息传播等。这类研究强调了在使用 LLMs 时需要采取的道德和法律考虑。</li>
+</ul>
+<h3 id="4-交互与用户体验研究"><a href="#4-交互与用户体验研究" class="headerlink" title="4. 交互与用户体验研究"></a>4. 交互与用户体验研究</h3><ul>
+<li>有关如何设计更好的用户界面和交互机制以利用 LLMs 进行有效沟通的研究。这些研究通常结合人机交互（HCI）领域的理论，探索如何改善用户体验。</li>
+</ul>
+<h3 id="5-未来发展与技术趋势"><a href="#5-未来发展与技术趋势" class="headerlink" title="5. 未来发展与技术趋势"></a>5. 未来发展与技术趋势</h3><ul>
+<li>许多研究还关注未来 LLMs 的发展趋势，包括模型优化、能效提高、实时处理能力等。这些研究探讨了当前技术的局限性及其改进方向。</li>
+</ul>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？-2"><a href="#Q4-论文中提到的解决方案之关键是什么？-2" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>论文详细讨论了LLMs在各种下游NLP任务中的使用情况和不使用情况以及相应的模型能力。论文对所有讨论进行了总结，形成了决策流程。它可以成为面对任务时快速决策的指南。</p>
+<ul>
+<li><strong>传统的NLU任务</strong>：<ul>
+<li>微调模型通常在传统的自然语言理解任务中表现更好，因为这些任务通常要求较高的精确度和特定的上下文适应性。</li>
+<li>当任务需要更强的泛化能力时，大规模语言模型（LLMs）能够更好地应对这些挑战。</li>
+<li>图示中的决策流程帮助用户评估他们的任务需求，并指导他们在LLMs和微调模型之间做出选择。黄色圆圈表示某些情况下没有模型能够有效解决该类问题。</li>
+</ul>
+</li>
+<li><strong>生成任务</strong>：<ul>
+<li>自然语言生成任务分为两类：文本转换（如摘要和机器翻译）和开放式生成（如文章撰写和代码编写）。</li>
+<li>由于LLMs的生成能力和创造力，它们在大多数生成任务中表现出明显优势，尤其是开放式生成任务。</li>
+</ul>
+</li>
+<li><strong>知识密集型任务</strong>：<ul>
+<li>这些任务对背景知识或领域专门知识的依赖较大，超出了一般的语言模式匹配能力。</li>
+<li>LLMs凭借其丰富的预训练知识在这些任务中表现突出。</li>
+<li>但在某些需要特定上下文知识而非广泛常识的任务中，微调模型的表现与LLMs相当。</li>
+</ul>
+</li>
+<li><strong>关于拓展能力</strong>:<ul>
+<li>随着模型规模的指数增加，LLMs在算术推理和常识推理等方面变得尤其擅长。</li>
+<li>随着LLMs扩展的能力不断出现，出现了一些意想不到的用途，例如词汇操纵能力和逻辑能力。</li>
+<li>在许多情况下，由于对大语言模型能力随扩展而改变的理解不足，性能并没有随着扩展稳定提高的趋势。</li>
+</ul>
+</li>
+<li><strong>其他任务</strong><ul>
+<li>1在远离LLMs预训练目标和数据的任务中，微调模型或指定模型仍然有其空间。</li>
+<li>2LLMs擅长模仿人类，进行数据标注和生成。它们还可以用于NLP任务的质量评估，并具有可解释性等附加优势。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q5-论文中的实验是如何设计的？-2"><a href="#Q5-论文中的实验是如何设计的？-2" class="headerlink" title="_Q5 论文中的实验是如何设计的？"></a>_Q5 <strong>论文中的实验是如何设计的？</strong></h3><p>论文中没有代码实验，主要体现在对已有文献和应用案例的系统性分析上，着重于总结和评估 LLMs 在实际应用中的表现。</p>
+<h3 id="Q8-这篇论文到底有什么贡献？-2"><a href="#Q8-这篇论文到底有什么贡献？-2" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>该论文的主要贡献在于系统性地总结和分析了 LLMs 的应用现状、技术细节及其面临的挑战，强调了伦理和安全性的重要性，为未来的研究与实践提供了宝贵的见解和指导。</p>
+<h3 id="Q9-下一步呢？有什么工作可以继续深入？-2"><a href="#Q9-下一步呢？有什么工作可以继续深入？-2" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><ul>
+<li>在真实世界的“数据集”上评估所提出的模型。实际应用数据的评估可以更严格的测试它们在实际应用中的能力和更好地理解它们在实际应用中的有效性。这确保了这些模型能够应对实际世界中的挑战，并提供实用的解决方案。</li>
+<li>模型对齐。确保越来越强大和自主的模型与人类价值和优先事项保持一致是至关重要的。虽然这个任务目前超出了论文的需求，但考虑和准备对齐这样先进的系统可能存在的独特复杂性和道德问题也是重要的。</li>
+<li>安全对齐。这包括可解释性、可扩展性的监督和管理以及模型属性的形式验证等方面。</li>
+<li>随着模型大小和复杂性的大幅增长，预测模型性能的方法。难以预测模型性能会随着模型大小和复杂性的大幅增长而有所改变。开发更好的方法来预测模型的性能，即在模型扩展或开发新的架构后模型的性能如何改变，将有助于更有效地使用资源和加速进展</li>
+</ul>
+<h1 id="4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks"><a href="#4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks" class="headerlink" title="4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks"></a>4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks</h1><h3 id="论文概述-2"><a href="#论文概述-2" class="headerlink" title="论文概述"></a>论文概述</h3><h3 id="Q1-论文试图解决什么问题？-2"><a href="#Q1-论文试图解决什么问题？-2" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><p><strong>解决的问题</strong>是如何在社交网络中有效且解释性地检测虚假信息。随着社交媒体平台上虚假信息的泛滥，依赖人工审核的事实核查变得越来越耗时，难以跟上信息传播的速度。为此，论文提出了一种自动化的虚假信息检测框架，该框架结合了多模态信息（文本、社交特征等），不仅提高了分类的准确性，还通过解释性方法帮助用户理解为什么某条信息被判定为虚假。</p>
+<h3 id="Q2-这是否是一个新的问题？-3"><a href="#Q2-这是否是一个新的问题？-3" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>虚假信息的检测和核查一直是社交媒体平台和事实核查组织所关注的重大问题，特别是在信息传播迅速且大量依赖用户生成内容的环境中。</p>
+<h3 id="Q3有哪些相关研究？如何归类？-3"><a href="#Q3有哪些相关研究？如何归类？-3" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><p>基于文本内容检测、基于多模态的方法、基于社交传播特征的检查</p>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？-3"><a href="#Q4-论文中提到的解决方案之关键是什么？-3" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><ul>
+<li><strong>多模态信息融合</strong>：该框架整合了多种模态的数据来源，不仅分析文本内容，还结合社交网络中的其他特征（如用户互动、传播路径等）。这种多模态融合的方式提升了检测的准确性，能够更全面地捕捉到虚假信息的特征。</li>
+<li><strong>解释性机制</strong>：框架引入了解释性人工智能（XAI）方法，通过生成模态层面的解释，为虚假信息的检测结果提供解释。这一机制有助于用户理解检测过程和结果，提升系统的透明性和信任度，避免简单的“对”或“错”标签引发的用户确认偏见。</li>
+<li><strong>适应社交网络特性</strong>：框架特别针对社交网络中虚假信息传播的特点进行了优化，通过考虑用户关系和信息传播模式，进一步增强了模型的适用性。</li>
+</ul>
+<h3 id="Q5-论文中的模型是如何设计的？"><a href="#Q5-论文中的模型是如何设计的？" class="headerlink" title="_Q5 论文中的模型是如何设计的？"></a>_Q5 <strong>论文中的模型是如何设计的？</strong></h3><p>文本通过Bert进行编码，<strong>社交网络数据则通过</strong>图神经网络（GNN）进行编码。使用一个<strong>多模态分类器</strong>来将提取的特征输入进行整合，并预测输入信息是否为虚假信息。</p>
+<h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？-2"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？-2" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>使用了 <strong>MuMiN</strong> 数据集来进行定量评估，这是一个来自 Twitter 的公开虚假信息数据集，包含多模态信息，包括文本和视觉内容。<br>代码已经开源。</p>
+<h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-2"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-2" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><h3 id="Q8-这篇论文到底有什么贡献？-3"><a href="#Q8-这篇论文到底有什么贡献？-3" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>该论文提出了一个<strong>多模态级别的可解释框架</strong>，用于社交网络中的虚假信息检测。该框架结合了多种数据模态，包括文本内容、用户互动、社交传播模式等，使得检测系统不仅能判断信息真伪，还能提供模态级别的解释。</p>
+<h3 id="Q9-下一步呢？有什么工作可以继续深入？-3"><a href="#Q9-下一步呢？有什么工作可以继续深入？-3" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><p>首先，通过合并其他模态驱动的可解释方法来增强和进一步探索所提出的模态级框架。利用更多的模态可能会增强错误信息分类器，并主要有助于提高这两种解释的解释和完整性。</p>
+<h1 id="5-古德费洛-本吉奥-库维尔-深度学习"><a href="#5-古德费洛-本吉奥-库维尔-深度学习" class="headerlink" title="5. 古德费洛,本吉奥,库维尔.深度学习"></a>5. 古德费洛,本吉奥,库维尔.深度学习</h1><p>这本书系统地介绍了<strong>深度学习的基础理论</strong>，并涵盖了从基础的神经网络模型到现代深度学习技术的各个方面，内容包括：</p>
+<ol>
+<li><strong>基础数学知识</strong>：线性代数、概率论、信息论等基本数学工具。</li>
+<li><strong>机器学习基础</strong>：监督学习、无监督学习、表示学习等基本概念。</li>
+<li><strong>深度学习模型</strong>：如前馈神经网络、卷积神经网络（CNN）、循环神经网络（RNN）等，以及这些模型的训练技巧和应用。</li>
+<li><strong>优化与正则化</strong>：如何优化深度学习模型的性能，以及避免过拟合的常用正则化方法。</li>
+<li><strong>生成模型与对抗性训练</strong>：包括生成对抗网络（GAN）等最新研究成果。</li>
+</ol>
+<h3 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h3><p>这一部分为后续的深度学习内容打下了数学基础，主要包括：</p>
+<ul>
+<li><strong>线性代数</strong>：包括向量、矩阵运算及其在深度学习中的应用。</li>
+<li><strong>概率论</strong>：基本概念、概率分布、期望和方差等，这些是理解模型不确定性和数据分布的基础。</li>
+<li><strong>信息论</strong>：包括信息熵、交叉熵等，这对于理解损失函数和模型评估至关重要。</li>
+</ul>
+<h3 id="2-机器学习基础"><a href="#2-机器学习基础" class="headerlink" title="2. 机器学习基础"></a>2. 机器学习基础</h3><p>本部分介绍了机器学习的基本概念和方法，主要包括：</p>
+<ul>
+<li><strong>监督学习和无监督学习</strong>：监督学习通过标签学习，目标是最小化预测错误；无监督学习用于发现数据中的潜在结构。</li>
+<li><strong>表示学习</strong>：介绍如何通过自动化的方法学习数据的有效表示，这在深度学习中尤为重要。</li>
+</ul>
+<h3 id="3-深度学习模型"><a href="#3-深度学习模型" class="headerlink" title="3. 深度学习模型"></a>3. 深度学习模型</h3><p>这一部分详细介绍了深度学习中的各种模型，包括：</p>
+<ul>
+<li><strong>前馈神经网络</strong>：基本的神经网络结构，介绍了其工作原理、激活函数及其训练过程。</li>
+<li><strong>卷积神经网络（CNN）</strong>：专门用于处理图像数据的模型，强调局部连接和共享权重的优势。</li>
+<li><strong>循环神经网络（RNN）</strong>：适合处理序列数据（如文本）的网络，讨论了长短期记忆（LSTM）和门控循环单元（GRU）等变种。</li>
+<li><strong>自编码器</strong>、<strong>生成对抗网络（GAN）</strong>等：介绍了无监督学习中的一些重要模型，特别是在生成建模中的应用。</li>
+</ul>
+<h3 id="4-优化与训练"><a href="#4-优化与训练" class="headerlink" title="4. 优化与训练"></a>4. 优化与训练</h3><p>本部分探讨了模型训练中的各种技巧和策略，包括：</p>
+<ul>
+<li><strong>优化算法</strong>：讨论了常见的优化方法，如随机梯度下降（SGD）及其变种（如Adam、RMSProp等）。</li>
+<li><strong>正则化</strong>：介绍了防止过拟合的技术，包括L1和L2正则化、dropout等。</li>
+<li><strong>超参数调优</strong>：关于如何选择合适的超参数以优化模型性能的策略。</li>
+</ul>
+<h3 id="5-应用与前沿研究"><a href="#5-应用与前沿研究" class="headerlink" title="5. 应用与前沿研究"></a>5. 应用与前沿研究</h3><p>最后一部分探讨了深度学习的实际应用和前沿研究方向：</p>
+<ul>
+<li><strong>应用领域</strong>：如计算机视觉、自然语言处理、音频处理等，介绍了深度学习在各个领域中的成功案例。</li>
+<li><strong>前沿研究</strong>：讨论了一些当前的研究热点，如迁移学习、少样本学习等。</li>
+</ul>
+<h1 id="6-Deep-Residual-Learning-for-Image-Recognition"><a href="#6-Deep-Residual-Learning-for-Image-Recognition" class="headerlink" title="6. Deep Residual Learning for Image Recognition"></a>6. Deep Residual Learning for Image Recognition</h1><h3 id="论文概述-3"><a href="#论文概述-3" class="headerlink" title="论文概述"></a>论文概述</h3><p>该论文介绍了一种新的网络结构，称为 <strong>残差网络（ResNet）</strong>，并在图像识别任务中取得了显著的进展。ResNet 的提出不仅推动了深度学习的发展，还为后续的网络架构设计提供了新的思路，特别是在如何设计更深层次的网络结构方面。</p>
+<h3 id="Q1-论文试图解决什么问题？-3"><a href="#Q1-论文试图解决什么问题？-3" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><h3 id="1-深度神经网络训练的困难"><a href="#1-深度神经网络训练的困难" class="headerlink" title="1. 深度神经网络训练的困难"></a>1. <strong>深度神经网络训练的困难</strong></h3><p>随着深度神经网络层数的增加，模型的性能并不一定提高，甚至会出现准确率下降的现象，这被称为<strong>退化问题</strong>（degradation problem）。</p>
+<h3 id="2-梯度消失和爆炸"><a href="#2-梯度消失和爆炸" class="headerlink" title="2. 梯度消失和爆炸"></a>2. <strong>梯度消失和爆炸</strong></h3><p>在训练深层网络时，梯度消失或爆炸的问题会导致网络难以有效训练。</p>
+<h3 id="3-信息传递效率"><a href="#3-信息传递效率" class="headerlink" title="3. 信息传递效率"></a>3. <strong>信息传递效率</strong></h3><p>论文提出了如何有效地进行信息传递，使得网络在学习过程中能够保留更丰富的信息。通过引入快捷连接（skip connections），作者希望解决信息在多层网络中的损失问题。</p>
+<h3 id="4-残差学习的必要性"><a href="#4-残差学习的必要性" class="headerlink" title="4. 残差学习的必要性"></a>4. <strong>残差学习的必要性</strong></h3><p>论文强调了学习残差函数（即输入与输出之间的差异）比学习完整的映射函数更为有效。通过这种方式，网络能够更快地收敛，改善性能。</p>
+<h3 id="Q2-这是否是一个新的问题？-4"><a href="#Q2-这是否是一个新的问题？-4" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>深度神经网络训练中的梯度消失、退化问题等确实是一个新的问题，但这并非是完全前所未有的。尽管深度学习在较浅的网络中已经得到了成功应用，但当网络层数大幅增加时，传统的方法开始显露出不足。</p>
+<h3 id="Q3有哪些相关研究？如何归类？-4"><a href="#Q3有哪些相关研究？如何归类？-4" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><h3 id="1-网络架构改进"><a href="#1-网络架构改进" class="headerlink" title="1. 网络架构改进"></a>1. <strong>网络架构改进</strong></h3><ul>
+<li><strong>DenseNet</strong>：这是一种与 ResNet 类似但更进一步的网络结构，其中每一层都与之前的所有层直接连接，改善了特征重用和信息流动。</li>
+<li><strong>ResNeXt</strong>：该模型通过分组卷积的方式进一步优化了 ResNet，增加了网络的表达能力。</li>
+<li><strong>EfficientNet</strong>：通过复合缩放策略，将网络深度、宽度和分辨率同时优化，相比于 ResNet 提供了更高的效率。</li>
+</ul>
+<h3 id="2-应用领域扩展"><a href="#2-应用领域扩展" class="headerlink" title="2. 应用领域扩展"></a>2. <strong>应用领域扩展</strong></h3><ul>
+<li><strong>目标检测</strong>：许多目标检测算法（如 Faster R-CNN 和 YOLO 系列）都采用了 ResNet 作为基础网络，提升了检测精度和速度。</li>
+<li><strong>图像分割</strong>：在语义分割任务中，ResNet 被广泛用于构建 U-Net 等结构，优化了分割结果。</li>
+<li><strong>迁移学习</strong>：ResNet 的预训练模型常用于迁移学习，特别是在数据稀缺的情况下，其迁移效果显著。</li>
+</ul>
+<h3 id="3-自适应和动态网络"><a href="#3-自适应和动态网络" class="headerlink" title="3. 自适应和动态网络"></a>3. <strong>自适应和动态网络</strong></h3><ul>
+<li>研究人员探索了自适应残差网络，根据输入的复杂度自动调整网络结构或计算资源，以提高效率。</li>
+</ul>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？-4"><a href="#Q4-论文中提到的解决方案之关键是什么？-4" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><h3 id="1-残差学习（Residual-Learning）"><a href="#1-残差学习（Residual-Learning）" class="headerlink" title="1. 残差学习（Residual Learning）"></a>1. <strong>残差学习（Residual Learning）</strong></h3><ul>
+<li>ResNet 引入了<strong>残差模块</strong>，其核心思想是学习输入与输出之间的残差（即：$F(x) &#x3D; H(x) - x$），而不是直接学习从输入到输出的映射（$H(x)$）。通过学习残差，网络的优化问题变得更加简单，且梯度在深层网络中能够更好地传递。这帮助网络在增加层数后不会出现退化现象。</li>
+</ul>
+<h3 id="2-快捷连接（Skip-Connections）"><a href="#2-快捷连接（Skip-Connections）" class="headerlink" title="2. 快捷连接（Skip Connections）"></a>2. <strong>快捷连接（Skip Connections）</strong></h3><ul>
+<li>残差模块中的快捷连接（即“跳跃连接”）将输入直接与输出相加，绕过中间的几层非线性变换。这一设计允许梯度在反向传播过程中能够直接通过这些跳跃连接传回前层，从而减轻了梯度消失问题。此外，这种连接保留了前面层的信息，即使深层网络出现了训练难题，模型仍然可以从这些跳跃连接中获益。</li>
+</ul>
+<h3 id="Q5-论文中的模型是如何设计的？-1"><a href="#Q5-论文中的模型是如何设计的？-1" class="headerlink" title="_Q5 论文中的模型是如何设计的？"></a>_Q5 <strong>论文中的模型是如何设计的？</strong></h3><h3 id="1-残差模块（Residual-Block）"><a href="#1-残差模块（Residual-Block）" class="headerlink" title="1. 残差模块（Residual Block）"></a>1. <strong>残差模块（Residual Block）</strong></h3><ul>
+<li><strong>基本构成</strong>：每个残差模块包含两到三个卷积层（通常使用 3×3 的卷积核），同时在输入和输出之间引入一个<strong>快捷连接</strong>（skip connection），直接将输入加到输出上。这一跳跃式连接确保了输入信息能够直接通过网络传播，不受中间层的干扰。</li>
+<li><h3 id="2-快捷连接（Skip-Connections）-1"><a href="#2-快捷连接（Skip-Connections）-1" class="headerlink" title="2. 快捷连接（Skip Connections）"></a>2. <strong>快捷连接（Skip Connections）</strong></h3></li>
+<li><strong>直接添加输入</strong>：快捷连接允许输入 $x$ 不经过卷积和激活函数的非线性处理，直接与输出的残差相加。这样可以确保梯度在深层网络中有效传递，即使某些层学习的残差接近于零，也不会影响网络的训练。</li>
+<li><strong>恒等映射</strong>：快捷连接大多为恒等映射，不改变输入的大小和形状。如果网络中层数变化或输入和输出维度不同，则通过 1×1 的卷积操作调整维度。</li>
+</ul>
+<h3 id="3-深度的网络设计"><a href="#3-深度的网络设计" class="headerlink" title="3. 深度的网络设计"></a>3. <strong>深度的网络设计</strong></h3><ul>
+<li><strong>基础网络结构</strong>：论文提出了多种网络结构，其中 ResNet-50、ResNet-101 和 ResNet-152 分别由 50 层、101 层和 152 层残差模块构成。这些深度网络在层数上远超传统的卷积神经网络，但由于残差学习的存在，这些深层网络在训练中仍然表现出色。</li>
+<li><strong>瓶颈结构</strong>：为了提高计算效率，在较深的网络结构中，作者使用了“瓶颈”设计，即使用 1×1 的卷积层在每个残差模块中减少计算量。这使得网络在不牺牲性能的前提下，显著减少了计算成本。</li>
+</ul>
+<h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？-3"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？-3" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>作者在 ImageNet 数据集上进行了广泛的实验，证明了 ResNet 在图像分类任务中的强大表现。在训练超过 100 层的网络时，ResNet 能够避免传统网络中常见的退化问题，获得更高的准确率。</p>
+<h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-3"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-3" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><p>论文中的实验设计非常严谨，涵盖了深层网络的各个方面，且其结果强有力地支持了作者提出的科学假设。尤其是<strong>残差学习</strong>和<strong>快捷连接</strong>的设计，被证明能够解决深度网络训练中的关键问题，并且在各种任务和数据集上表现出色</p>
+<h3 id="Q8-这篇论文到底有什么贡献？-4"><a href="#Q8-这篇论文到底有什么贡献？-4" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><h3 id="Q9-下一步呢？有什么工作可以继续深入？-4"><a href="#Q9-下一步呢？有什么工作可以继续深入？-4" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><h3 id="自适应残差学习"><a href="#自适应残差学习" class="headerlink" title="自适应残差学习"></a><strong>自适应残差学习</strong></h3><ul>
+<li><strong>挑战</strong>：目前的 ResNet 结构固定了所有层的残差学习模式，但不同任务或不同层的复杂度可能需要不同的残差学习机制。</li>
+<li><strong>研究方向</strong>：可以探索<strong>自适应残差学习</strong>，即根据输入或层次动态调整残差模块，确保最优的梯度流动和计算效率。这类自适应机制可以通过元学习（meta-learning）或强化学习（reinforcement learning）等方式进行实现。</li>
+</ul>
+<h3 id="跨领域应用和迁移学习"><a href="#跨领域应用和迁移学习" class="headerlink" title="跨领域应用和迁移学习"></a><strong>跨领域应用和迁移学习</strong></h3><ul>
+<li><strong>挑战</strong>：虽然 ResNet 在图像识别任务上表现出色，但其在其他领域（如文本处理、语音识别等）的应用还有待探索。</li>
+<li><strong>研究方向</strong>：未来可以研究如何将残差学习的概念迁移到<strong>自然语言处理（NLP）</strong> 或 <strong>语音识别</strong> 中，探索不同模态下残差网络的适应性。此外，<strong>迁移学习</strong> 中如何更好地利用预训练的残差网络模型，也将是一个重要的研究方向。</li>
+</ul>
+<h1 id="7-基于深度学习的时间序列预测方法综述"><a href="#7-基于深度学习的时间序列预测方法综述" class="headerlink" title="7.基于深度学习的时间序列预测方法综述"></a>7.基于深度学习的时间序列预测方法综述</h1><p>文分析了时间序列预测技术的研究现状,论述了时间序列预测所涉及到深度学习方法的相关理论和方法,包括卷积神经网络、循环神经网络、注意力机制和图神经网络等方法在时间预测领域的应用,归纳总结近年来基于深度学习的时间序列研究成果,比较了基于各种深度学习时间序列方法的优缺点,在此基础上对基于深度学习时间序列预测方法的发展进行了展望</p>
+<h3 id="Q3-有哪些相关研究？如何归类？"><a href="#Q3-有哪些相关研究？如何归类？" class="headerlink" title="Q3 有哪些相关研究？如何归类？"></a>Q3 <strong>有哪些相关研究？如何归类？</strong></h3><p>1.2 单步预测和多步预测<br>    使用历史观测值 和协变量 作为输入变量,来预测下一个时间步的观测值，此种预测过程被称为单步预测.<br>    通常使用历史观测值 和 作为输入,来预测未来 n 个时间步的预测值这种时间序列预测被称为多步预测.<br>1.3 多步迭代预测和多步序列预测<br>    于多步预测来说,采用迭代预测方式和一次生成多步的两种方式对于未来一段时间进行预测</p>
+<h3 id="Q4-论文中提到的关键是什么？"><a href="#Q4-论文中提到的关键是什么？" class="headerlink" title="Q4 论文中提到的关键是什么？"></a><em>Q4</em> <strong>论文中提到的关键是什么？</strong></h3><ul>
+<li><h5 id="时间序列序列预测方法"><a href="#时间序列序列预测方法" class="headerlink" title="时间序列序列预测方法"></a>时间序列序列预测方法</h5><ul>
+<li><strong>传统时序建模方法</strong>：主要是在确定时间序列参数模型的基础上,求解出模型参数,并利用求解出的模型完成未来预测工作</li>
+<li><strong>基于时间序列分解的分析法</strong>：此方法认为一个时间序列往往是以下多种变化形式的叠加或耦合，长期趋势、季节变动、循环波动、不规则波动。时间序列分解的方法更重要的是提供了一种对于时间序列的分析思路。</li>
+<li><strong>基于机器学习的方法</strong>：<ul>
+<li>将 SVM 用于时间序列预测函数回归称为支持向量回归,它对非线性时间序列存在稳定的预测能力。</li>
+<li>渐进回归算法实际上是利用多个基函数的累加展开式对该函数进行逼近的方法.GBRT 算法对异常值的鲁棒性较高,也被广泛运用于时间序列预测方面.</li>
+<li>隐马尔科夫模型(HMM)也是一种最简单的动态贝叶斯网络,动态贝叶斯网络框架内的其他模型泛化了基本 HMM,允许更多隐藏状态变量.</li>
+</ul>
+</li>
+<li><strong>基于深度学习的方法</strong>：<ul>
+<li>基于卷积神经网络的方法：它也可以在时间维度提取出局部特征,通过多层隐层逐渐在上一层进行汇总,从而获得过去时间段较长序列的隐藏信息。</li>
+<li>基于循环神经网络的方法：在其核心为 RNN 网络可以学习到预测前所有时间序列内部隐藏状态,作为过去信息的特征表征,并结合当前的输入,给出下一步预测的结果。</li>
+<li>基于自注意力网络的方法：基于注意力机制的模型,可以实现输入时间序列中每个单元之间的两两关联,对于下层特征中通过关联权重加权的表征,提供给上一层进行处理. 自注意力机制可以更好地实现时序的上下文信息交互。</li>
+<li>基于图神经网络的方法：一般先通过图结构学习层定义信息传播的图结构,在其上再进行卷积操作,通过以捕获时间序列内的空间和时间依赖性,对于多变量的时间序列进行预测。</li>
+<li>基于残差的全连接网络方法：Nbeats 的核心思路是通过多个全连接卷积块串联,每个 FC Block 学习输入时间序列的一部分信息,进入下一个 FC Block 的输入会去掉之前 Block 已经学到的信息,后续的 Block 只关注学习于之前 Block 未学到的信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q8-这篇论文到底有什么贡献？-5"><a href="#Q8-这篇论文到底有什么贡献？-5" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>总结近年来基于深度学习的时间序列研究成果,比较了基于各种深度学习时间序列方法的优缺点,在此基础上对基于深度学习时间序列预测方法的发展进行了展望</p>
+<h3 id="Q9-下一步呢？有什么工作可以继续深入？-5"><a href="#Q9-下一步呢？有什么工作可以继续深入？-5" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><ul>
+<li>针对不同的使用领域,在深度学习模型中需要充分整合各自领域知识,从而获得更高的精度和效率；</li>
+<li>目前时间序列的预测主要是通过序列内部的相关性分析实现,在未来应用中需要关注于因果性推断,其预测的可解释性要进一步说明.</li>
+<li>在实际预测的过程中获得的数据通常存在异常点,在预测过程中需要忽略时间序列中的异常点,能够减小预测方法的误差,从而实现更好的鲁棒性；</li>
+<li>目前深度学习方法主要是通过线下收集数据集进行批处理训练,在实际使用过程中需要通过增量学习的方法对时间序列数据进行在线分析预测.</li>
+</ul>
+<h1 id="8-TruFor-Leveraging-all-round-clues-for-trustworthy-image-forgery-detection-and-localization"><a href="#8-TruFor-Leveraging-all-round-clues-for-trustworthy-image-forgery-detection-and-localization" class="headerlink" title="8. TruFor: Leveraging all-round clues for trustworthy image forgery detection and localization"></a>8. TruFor: Leveraging all-round clues for trustworthy image forgery detection and localization</h1><p>该论文介绍了一种名为<strong>TruFor</strong>的模型，用于识别和定位图像伪造。</p>
+<h3 id="Q1-论文试图解决什么问题？-4"><a href="#Q1-论文试图解决什么问题？-4" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><p>论文针对的主要问题包括：</p>
+<ol>
+<li><strong>检测准确性不足</strong>：现有的图像伪造检测模型可能在复杂的场景中表现不佳，特别是在面临高分辨率图像或经过复杂处理的伪造图像时，准确率容易下降。</li>
+<li><strong>伪造区域定位不准确</strong>：即使能够检测出图像被篡改，很多方法仍然无法精确定位篡改的具体区域，无法提供对伪造行为的详细分析。</li>
+<li><strong>多种伪造技术的挑战</strong>：图像篡改可以通过多种手段进行，如图像拼接、复制粘贴、删除对象等，不同的伪造手段可能导致不同的伪造痕迹，如何应对这些多样化的篡改方式是一个难题。<br>通过综合利用多种线索（如视觉特征、几何信息、深度线索等），<strong>TruFor</strong>模型提出了一种更全面的检测和定位方法，从而提升了伪造检测的精度和可靠性。这篇论文不仅关注检测图像是否被篡改，还致力于通过更精细的定位提供伪造的详细痕迹分析。</li>
+</ol>
+<h3 id="Q2-这是否是一个新的问题？-5"><a href="#Q2-这是否是一个新的问题？-5" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>这不是一个全新的问题，但由于伪造技术和检测需求的进化，<strong>如何更加精准和可靠地检测和定位图像篡改</strong>成为了新的挑战。而TruFor模型正是针对这一问题提出了改进方法。</p>
+<h3 id="Q3有哪些相关研究？如何归类？-5"><a href="#Q3有哪些相关研究？如何归类？-5" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><h3 id="1-基于传统图像处理方法的篡改检测"><a href="#1-基于传统图像处理方法的篡改检测" class="headerlink" title="1. 基于传统图像处理方法的篡改检测"></a>1. <strong>基于传统图像处理方法的篡改检测</strong></h3><p>早期的图像篡改检测依赖于图像处理技术，主要利用图像的统计特性和压缩痕迹来检测篡改行为。<br>这些方法在应对低复杂度的篡改时表现较好，但对于深度伪造等复杂伪造技术，它们的能力有限。</p>
+<h3 id="2-基于机器学习的伪造检测"><a href="#2-基于机器学习的伪造检测" class="headerlink" title="2. 基于机器学习的伪造检测"></a>2. <strong>基于机器学习的伪造检测</strong></h3><p>随着机器学习的发展，研究者开始应用分类算法来检测图像是否经过篡改。通常的做法是：</p>
+<ul>
+<li><strong>特征提取 + 分类器</strong>：通过手工设计的特征（如边缘检测、纹理分析等），输入到分类器（如SVM、决策树等）进行图像真实性判断 。</li>
+</ul>
+<h3 id="3-基于深度学习的检测与定位"><a href="#3-基于深度学习的检测与定位" class="headerlink" title="3. 基于深度学习的检测与定位"></a>3. <strong>基于深度学习的检测与定位</strong></h3><p>近年来，深度学习在图像篡改检测中取得了重要进展，特别是卷积神经网络（CNN）等深度学习模型的应用。</p>
+<ul>
+<li><strong>卷积神经网络（CNN）模型</strong>：研究者使用预训练的深度学习模型（如ResNet、VGG等）来自动提取图像特征，并进行篡改检测。CNN可以捕捉细微的像素级别的篡改痕迹 。</li>
+<li><strong>生成对抗网络（GAN）</strong>：除了用于图像生成，GAN也用于检测伪造。通过对抗性训练，生成器生成伪造图像，鉴别器则学习区分真实和伪造图像 。<br><strong>TruFor</strong>的研究属于这一类，它结合了多种深度学习模型，包括视觉、几何和深度信息，使得它在处理复杂伪造场景时具有较强的适应性。</li>
+</ul>
+<h3 id="4-基于注意力机制和Transformer的检测"><a href="#4-基于注意力机制和Transformer的检测" class="headerlink" title="4. 基于注意力机制和Transformer的检测"></a>4. <strong>基于注意力机制和Transformer的检测</strong></h3><p>最近，<strong>Transformer模型</strong>及其变体（如ViT，视觉Transformer）逐渐成为图像篡改检测的热门工具。它们能够在全局和局部层面捕捉图像的特征。</p>
+<ul>
+<li><strong>注意力机制</strong>：Transformer通过自注意力机制，可以在长距离依赖问题上表现出色，在时序和空间结构中捕捉更复杂的特征。研究者使用这一机制提高对复杂篡改的检测能力 。</li>
+</ul>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？-5"><a href="#Q4-论文中提到的解决方案之关键是什么？-5" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><h3 id="1-多维度信息融合："><a href="#1-多维度信息融合：" class="headerlink" title="1. 多维度信息融合："></a>1. <strong>多维度信息融合</strong>：</h3><p>论文中的<strong>TruFor模型</strong>将不同类型的特征线索相结合，这些线索包括：</p>
+<ul>
+<li><strong>视觉特征</strong>：利用卷积神经网络（CNN）提取图像的像素和纹理特征，检测出常见的伪造痕迹。</li>
+<li><strong>几何信息</strong>：捕捉图像中的几何不一致性，比如物体的边缘、透视和结构特征，以检测篡改痕迹。</li>
+<li><strong>深度信息</strong>：通过分析图像的深度特征，区分原始图像和伪造部分的三维特性，伪造区域往往在深度特征上不连贯。<br>这种多维度信息的融合帮助系统能够从多个角度分析图像，有效应对伪造手段多样化和复杂性增加的挑战。</li>
+</ul>
+<h3 id="2-多任务学习架构："><a href="#2-多任务学习架构：" class="headerlink" title="2. 多任务学习架构："></a>2. <strong>多任务学习架构</strong>：</h3><p>TruFor模型采用了<strong>多任务学习</strong>的方法，能够同时完成<strong>图像伪造检测</strong>和<strong>伪造区域的精确定位</strong>。这意味着模型不仅能判断图像是否被篡改，还能标出篡改的具体区域，实现更精细的分析和定位。</p>
+<h3 id="3-深度学习与注意力机制："><a href="#3-深度学习与注意力机制：" class="headerlink" title="3. 深度学习与注意力机制："></a>3. <strong>深度学习与注意力机制</strong>：</h3><p>TruFor还引入了深度学习中的<strong>注意力机制</strong>，通过专注于图像中的特定区域来强化伪造检测能力。注意力机制能够帮助模型更好地捕捉图像中的局部不一致性，这对于检测复杂的篡改手法（如深度伪造或GAN生成的伪造图像）尤为重要。</p>
+<h3 id="Q-5-论文中的模型是如何设计的？"><a href="#Q-5-论文中的模型是如何设计的？" class="headerlink" title="Q**5 论文中的模型是如何设计的？"></a>Q**5 <strong>论文中的模型是如何设计的？</strong></h3><p>首先，从输入的RGB图像x中提取其Noiseprint++（提取器通过对比学习的方式学习补丁级自相似性，采用DnCNN架构），r &#x3D; R(x)，这是一个与x分辨率相同的学习噪声敏感特征。<br>然后，跨模态的CMX架构采用语义分割的方法，在具有共享编码器结构的两个并行分支上提取输入图像和Noiseprint++的特征。x和r分别馈送两个网络，分别提取图像的异常图a和置信图c。依赖于SegFormer，这是一种基于Transformer编码器的分层网络。共享编码器提取合适的密集特征，f &#x3D; E(x, r)，由异常解码器处理以提取异常图，a &#x3D; DA(f)，由置信解码器提取置信图，c &#x3D; DC(f)。<br>通过加权池化块将异常图中收集到的信息汇总为紧凑描述符h &#x3D; P(a, c)，权重取决于置信度信息。<br>最后，由一个分类器处理，分类器计算一个完整性分数y &#x3D; C(h)。</p>
+<h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？-4"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？-4" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>我们使用文献中广泛使用的CASIA v1[16]、Coverage[44]、Columbia[21]、NIST16[20]、DSO-1[14]和VIPP[7]</p>
+<h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-4"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-4" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><h3 id="Q8-这篇论文到底有什么贡献？-6"><a href="#Q8-这篇论文到底有什么贡献？-6" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>TruFor的贡献不仅在于提供了多维度的伪造检测方法，更重要的是它能够应对当今越来越复杂的伪造手段，特别是高质量的GAN生成图像和深度伪造。这为图像取证、新闻验证和网络安全等领域提供了新的技术工具。</p>
+<h3 id="Q9-下一步呢？有什么工作可以继续深入？-6"><a href="#Q9-下一步呢？有什么工作可以继续深入？-6" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><h3 id="1-探索端到端训练，允许仅从图像级标签进行部分监督"><a href="#1-探索端到端训练，允许仅从图像级标签进行部分监督" class="headerlink" title="1. 探索端到端训练，允许仅从图像级标签进行部分监督"></a>1. <strong>探索端到端训练，允许仅从图像级标签进行部分监督</strong></h3><p>作者希望探索<strong>部分监督学习</strong>方法，使用较少的标注数据，甚至仅依赖<strong>图像级别的标签</strong>，即仅知道图像是否被篡改，而无需了解具体篡改区域的位置。</p>
+<ul>
+<li><strong>如何展开</strong>：<ul>
+<li><strong>弱监督学习</strong>：可以通过弱监督学习的方式，利用少量的精确标注数据与大量的图像级标签来训练模型。</li>
+<li><strong>半监督学习</strong>：半监督方法结合少量有标签的数据与大量无标签数据，通过自监督的方式生成伪标签，提升模型性能。</li>
+<li><strong>端到端框架</strong>：端到端的模型训练可以减少特征提取和模型训练的人工干预，利用图像级标签设计一个统一的损失函数，使模型从输入到输出自动优化。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-评估定位编辑的最新生成模型的泛化能力"><a href="#2-评估定位编辑的最新生成模型的泛化能力" class="headerlink" title="2. 评估定位编辑的最新生成模型的泛化能力"></a>2. <strong>评估定位编辑的最新生成模型的泛化能力</strong></h3><ul>
+<li><strong>背景</strong>：生成对抗网络（GAN）等生成模型的快速进步带来了更加逼真的伪造图像和视频，这些生成技术包括<strong>DeepFake</strong>、<strong>StyleGAN</strong>等。未来工作期望探索如何检测并定位通过这些最新生成模型产生的编辑内容，并评估模型对不同生成方法的泛化能力。</li>
+<li><strong>如何展开</strong>：<ul>
+<li><strong>最新生成技术的多样性</strong>：生成模型越来越多样化，特别是GAN、变分自编码器（VAE）、自监督生成模型等，产生的图像越来越逼真且难以区分。因此，模型需要具备应对各种生成手段的能力。</li>
+<li><strong>泛化能力的评估</strong>：为了测试TruFor模型对未知伪造技术的泛化能力，研究可以设计实验，通过使用一些最新生成模型生成的数据集进行评估，测试模型在未见过的生成图像类型上是否仍然能够准确检测和定位篡改区域。</li>
+<li><strong>对抗样本训练</strong>：可以引入<strong>对抗训练</strong>，即在训练模型的过程中不断生成新的对抗样本，让模型学习应对更复杂的伪造模式，以此提高其泛化性能。</li>
+</ul>
+</li>
+</ul>
+<h1 id="9-推荐系统前沿与实践"><a href="#9-推荐系统前沿与实践" class="headerlink" title="9. 推荐系统前沿与实践"></a>9. 推荐系统前沿与实践</h1><p>本书<strong>以一线研发人员的视角和经验，</strong> 从原理与实践两个角度为读者剖析推荐系统。该书首先从原理上介绍了各类经典推荐算法及前沿的深度学习推荐算法，涵盖深度协同过滤、特征交互、基于图神经网络的推荐、序列与会话推荐、结合知识图谱的推荐和基于强化学习的推荐等重要技术，然后探讨了推荐算法研究在对话、因果、常识等方面的前沿话题。书中还分析了推荐系统在数据融合、系统扩展、性能评估等方面的关键挑战，并就如何设计负责任的推荐系统进行了探讨。最后，该书结合微软的开源项目+Microsoft Recommenders 介绍了推荐系统的实践经验。</p>
+<h3 id="GPT生成："><a href="#GPT生成：" class="headerlink" title="GPT生成："></a>GPT生成：</h3><h3 id="第1章-推荐系统概述"><a href="#第1章-推荐系统概述" class="headerlink" title="第1章 推荐系统概述"></a>第1章 推荐系统概述</h3><p>1.1 <strong>推荐系统发展历史</strong>：回顾推荐系统从基于内容的推荐、协同过滤到深度学习推荐算法的发展历程，展示技术的演变和进步。<br>1.2 <strong>推荐系统原理</strong>：讲解推荐系统的基本工作原理，包含机器学习和深度学习在推荐系统中的角色，以及不同架构的推荐系统如何处理用户和物品之间的交互关系。<br>1.3 <strong>推荐系统应用价值</strong>：讨论推荐系统的商业和行业价值，展示其如何通过优化用户体验、提升业务目标（如销售、留存等）来实现其价值。</p>
+<h3 id="第2章-经典推荐算法"><a href="#第2章-经典推荐算法" class="headerlink" title="第2章 经典推荐算法"></a>第2章 经典推荐算法</h3><p>2.1 <strong>基于内容的推荐算法</strong>：介绍基于物品或用户内容信息进行推荐的方法，重点关注如何通过结构化和非结构化内容来提升推荐效果，并讨论其优势和局限性。<br>2.2 <strong>基于协同过滤的推荐算法</strong>：探讨协同过滤技术，包括基于记忆的协同过滤和矩阵分解方法，详细分析这些算法如何通过历史数据进行个性化推荐。</p>
+<h3 id="第3章-深度学习基础"><a href="#第3章-深度学习基础" class="headerlink" title="第3章 深度学习基础"></a>第3章 深度学习基础</h3><p>3.1 <strong>神经网络与前馈计算</strong>：简要介绍深度学习中的神经网络结构和前向传播的计算原理。<br>3.2 <strong>反向传播算法</strong>：详细解释神经网络中的反向传播算法，如何通过梯度下降更新权重，以优化模型性能。<br>3.3 <strong>多种深度神经网络</strong>：讨论常见的深度神经网络类型，包括卷积神经网络（CNN）、循环神经网络（RNN）和注意力机制等，展示它们在推荐系统中的应用潜力。</p>
+<h3 id="第4章-基于深度学习的推荐算法"><a href="#第4章-基于深度学习的推荐算法" class="headerlink" title="第4章 基于深度学习的推荐算法"></a>第4章 基于深度学习的推荐算法</h3><p>4.1 <strong>深度学习与协同过滤</strong>：结合深度学习与传统协同过滤方法，展示如何通过深层神经网络增强推荐性能。<br>4.2 <strong>深度学习与特征交互</strong>：分析如何通过深度学习模型（如Wide &amp; Deep、DeepFM等）进行复杂的特征交互，以提高推荐的精准度。<br>4.3 <strong>图表示学习与推荐系统</strong>：介绍图神经网络和图嵌入技术在推荐系统中的应用，特别是它们在社会化推荐和协同过滤中的角色。<br>4.4 <strong>序列与基于会话的推荐</strong>：探索如何通过用户的行为序列和会话数据进行推荐，讨论RNN和注意力机制在处理时间序列数据时的优势。<br>4.5 <strong>结合知识图谱的推荐系统</strong>：讲解如何通过知识图谱增强推荐系统的可解释性与物品间的关系建模。<br>4.6 <strong>基于强化学习的推荐算法</strong>：介绍强化学习在推荐系统中的应用，尤其是多臂老虎机模型和深度强化学习的优化策略。</p>
+<h3 id="第5章-推荐系统前沿话题"><a href="#第5章-推荐系统前沿话题" class="headerlink" title="第5章 推荐系统前沿话题"></a>第5章 推荐系统前沿话题</h3><p>5.1 <strong>推荐算法研究热点</strong>：涵盖了对话式推荐、因果推断推荐和常识推荐等新兴研究方向。<br>5.2 <strong>推荐系统应用挑战</strong>：探讨推荐系统在实际应用中面临的挑战，如多源数据融合、系统的可扩展性、冷启动问题等。<br>5.3 <strong>负责任的推荐</strong>：深入分析推荐系统中的社会责任问题，如用户隐私、算法偏见和系统可解释性等。</p>
+<h3 id="第6章-推荐系统实践"><a href="#第6章-推荐系统实践" class="headerlink" title="第6章 推荐系统实践"></a>第6章 推荐系统实践</h3><p>6.1 <strong>工业级推荐系统实现与架构</strong>：描述推荐系统在工业环境中的实现过程，包括从架构设计到数据处理的全流程。<br>6.2 <strong>推荐系统典型应用实践</strong>：展示实际操作中的案例，涵盖数据管理、算法选择、模型训练与评估的各个步骤。<br>6.3 <strong>基于云平台的推荐系统开发与运维</strong>：讨论基于云计算平台构建和管理推荐系统的优点与实践经验。</p>
+<h3 id="第7章-总结与展望"><a href="#第7章-总结与展望" class="headerlink" title="第7章 总结与展望"></a>第7章 总结与展望</h3><p>总结推荐系统的关键技术点，并展望未来发展趋势，如更加个性化的推荐、更强大的模型等新方向。</p>
+<h1 id="10-Attention-is-all-you-need"><a href="#10-Attention-is-all-you-need" class="headerlink" title="10. Attention is all you need"></a>10. Attention is all you need</h1><h3 id="Q1-论文试图解决什么问题？-5"><a href="#Q1-论文试图解决什么问题？-5" class="headerlink" title="Q1 论文试图解决什么问题？"></a><strong><em>Q1</em></strong> <strong>论文试图解决什么问题？</strong></h3><p>基于传统的 RNN 的 Seq2Seq model 难以处理长序列的句子、无法实现并行以及存在对齐问题。因为传统的 RNN 是一个自回归的模型，因此下一时刻的状态依赖于上一层的隐状态，这就导致了模型的可并行程度低，内存的开销极大，同时不能很好地解决长序列的问题，距离较远之间的信息的关联性很难被学习到。而对于 Transformer 架构而言，由于其架构完全基于注意力机制（包括自注意力，多头自注意力，多头掩码自注意力等），因此可以彻底解决并行化，将远距离的计算讲到了常数项。</p>
+<h3 id="Q2-这是否是一个新的问题？-6"><a href="#Q2-这是否是一个新的问题？-6" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>这并不是一个新的问题，这是传统 RNN 这个自回归模型天然的缺点。递归模型需要使用隐状态，由于下一时刻的状态依赖于上一层的隐状态，因此传统的 RNN 模型无法并行，运行速度较慢，这也导致了其无法处理长序列的句子，同时由于内存的限制约束了批处理速度。最近的工作通过分解的技巧和条件计算显著提高了计算效率，同时也提高了模型的性能。然而，序列计算的基本约束条件仍然存在。</p>
+<h3 id="Q4-有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？"><a href="#Q4-有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？" class="headerlink" title="Q4 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？"></a><em>Q4</em> <strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></h3><p>使用RNN层来完成Seq2Seq，使用CNN层来完成Seq2Seq，使用attention层来完成Seq2Seq。Extended Neural GPU, ByteNet，ConvS2S都以减少顺序计算为目标，但这些模型中关联两个位置操作次数随着位置之间的距离而增加ConvS2S线性增加，ByteNet是指数增加</p>
+<h3 id="Q5-论文中提到的解决方案之关键是什么？"><a href="#Q5-论文中提到的解决方案之关键是什么？" class="headerlink" title="Q5 论文中提到的解决方案之关键是什么？"></a><em>Q5</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>论文中提出的解决方案的关键在于使用了全新的模型架构——Transformer，这个模型完全舍弃了递归，而是完全依赖于注意力机制来捕捉输入和输出之间的全局依赖关系。Transformer允许更多的并行化，并且在经过在八个P100 GPU上训练十二小时后，可以达到新的翻译质量的最新水平。<br>Transformer模型的一个重要特性是自注意力（Self-Attention），也被称为内部注意力，是一种注意力机制，它将单个序列的不同位置关联起来，以计算序列的表示。自注意力已经在各种任务中成功应用，包括阅读理解、抽象概括、文本蕴含和学习任务无关的句子表示。此外，Transformer模型还使用了位置编码（Positional Encoding）来处理序列数据。</p>
+<h3 id="Q6-论文中的实验是如何设计的？"><a href="#Q6-论文中的实验是如何设计的？" class="headerlink" title="Q6 论文中的实验是如何设计的？"></a><em>Q6</em> <strong>论文中的实验是如何设计的？</strong></h3><p>对比实验：首先，论文将 Transformer 模型与基于循环神经网络（RNN）和卷积神经网络（CNN）的序列模型进行了对比实验，以验证 Transformer 模型的性能优势。在这个实验中，论文使用了不同大小的模型进行对比，并分别使用 BLEU 分数和翻译速度作为评价指标。<br>然后对attention机制的完善，提出了Multi-Head Attention，即是多做几次相同的事情，参数独立使用，然后把结果拼接。接着提出了Self Attention，即寻找序列内部的联系。Google结合了Self和Multi-Head Attention。又因为序列顺序很重要，所以引入了Position Embedding，将位置编号，每个编号对应一个向量，对每个词引入了位置信息。<br>可视化实验：最后，论文进行了一些可视化实验，展示了 Transformer 模型在机器翻译任务中对输入序列的关注程度。这些实验可以帮助研究人员更好地理解模型的内部工作原理和表现。</p>
+<h3 id="Q7-用于定量评估的数据集是什么？代码有没有开源？"><a href="#Q7-用于定量评估的数据集是什么？代码有没有开源？" class="headerlink" title="Q7 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q7</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p> WMT 2014 数据集，包括英语-德语和英语-法语两个方向的翻译任务。这个数据集是机器翻译领域的一个公认的标准数据集，具有广泛的使用和高质量的参考翻译。<br>至于代码，Transformer 模型的官方实现是使用 TensorFlow 框架实现的，并在 GitHub 上开源发布。还有很多其他的开源实现，如 PyTorch 实现的 fairseq 和 Hugging Face 的 transformers 等</p>
+<h3 id="Q8-论文中的实验及结果有没有很好地支持需要验证的科学假设？"><a href="#Q8-论文中的实验及结果有没有很好地支持需要验证的科学假设？" class="headerlink" title="Q8 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a><em>Q8</em> <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><p>Transformer在机器翻译任务上取得了新的最佳结果，超过了当时的基于RNN或CNN的模型；训练速度显著提高；可以更好的捕捉长距离依赖；Multi-head Attention提高泛化能力</p>
+<h3 id="Q9-这篇论文到底有什么贡献？"><a href="#Q9-这篇论文到底有什么贡献？" class="headerlink" title="Q9 这篇论文到底有什么贡献？"></a><em>Q9</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>这篇论文的主要贡献在于提出了一种基于自注意力机制的全新神经网络模型，即 Transformer 模型，该模型在自然语言处理领域中取得了最先进的性能。具体来说，Transformer 模型在机器翻译、语言建模和句子压缩等任务上都取得了优异的性能表现。与传统的循环神经网络和卷积神经网络相比，Transformer 模型具有更好的并行计算性能，能够同时处理输入序列中的所有位置信息，而不需要依次处理序列中的每个位置。此外，Transformer 模型还通过自注意力机制对输入序列中不同位置之间的依赖关系进行建模，能够更好地捕捉序列中的长程依赖关系。<br>除了提出 Transformer 模型之外，论文还探索了一些与 Transformer 相关的研究问题，如在 Transformer 模型中使用不同的编码器和解码器架构、使用不同的注意力机制等等，这些研究也为自然语言处理领域的进一步发展提供了启示。<br>总之，这篇论文提出的 Transformer 模型为自然语言处理领域的研究提供了新的思路和方法，为自然语言处理领域的进一步发展做出了重要贡献。</p>
+<h3 id="Q10-下一步呢？有什么工作可以继续深入？"><a href="#Q10-下一步呢？有什么工作可以继续深入？" class="headerlink" title="Q10 下一步呢？有什么工作可以继续深入？"></a><em>Q10</em> <strong>下一步呢？有什么工作可以继续深入？</strong></h3><p>更好的预训练策略：目前的 Transformer 模型主要采用基于无监督学习的预训练方法，如 BERT 和 GPT 等。但这些方法仍有一些局限性，例如需要大量的标注数据，不适用于低资源语言等。因此，研究者可以探索更好的预训练策略，以提高模型的性能。<br>多模态 Transformer 模型：除了文本数据外，现实中的数据往往包括多种模态，如图像、语音、视频等。因此，研究者可以考虑设计多模态 Transformer 模型，以处理这些多模态数据。<br>跨语言 Transformer 模型：目前的 Transformer 模型主要应用于单一语言的自然语言处理任务。但是，跨语言模型的需求越来越大，因此研究者可以考虑设计跨语言 Transformer 模型，以处理多种语言的任务。<br>解决长文本问题：在处理长文本时，Transformer 模型可能会出现性能下降的问题。因此，研究者可以探索一些方法，如切分、注意力机制、动态计算等，以解决这个问题。<br>实现更高效的 Transformer 模型：尽管 Transformer 模型已经在自然语言处理领域表现出色，但在大规模数据上的计算成本仍然很高。因此，研究者可以考虑实现更高效的 Transformer 模型，以减少计算成本。</p>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/Alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/WeChat.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          魏静崎
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://slightwjq.github.io/2024/10/06/精读文献/" title="" target="_blank">https://slightwjq.github.io/2024/10/06/精读文献/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          该文章来源及最终解释权归作者所有
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -232,16 +638,85 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://slightwjq.github.io/2024/10/06/%E7%B2%BE%E8%AF%BB%E6%96%87%E7%8C%AE/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          免疫算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/06/%E8%A7%82Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%E7%9A%84%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -262,507 +737,14 @@
 
 
 
-  
-    <article id="post-软件工程-面试准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h1><h2 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h2><p><em>author:slightwjq</em><br>2023年3月6日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">展开全文 >></a>
-    </p>
-    
 
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
-
-
-  
-    <article id="post-数据结构-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="第六章-图"><a href="#第六章-图" class="headerlink" title="第六章 图"></a>第六章 图</h2><p><em>author:slightwjq</em><br>2023年1月23日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>##第五章 传输层<br><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第四章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第四章-网络层"><a href="#第四章-网络层" class="headerlink" title="第四章 网络层"></a>第四章 网络层</h2><p><em>author:slightwjq</em><br>2023年1月7日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第三章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第二章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第一章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第一章-计算机网络体系结构"><a href="#第一章-计算机网络体系结构" class="headerlink" title="第一章 计算机网络体系结构"></a>第一章 计算机网络体系结构</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="第五章-I-O管理"><a href="#第五章-I-O管理" class="headerlink" title="第五章 I&#x2F;O管理"></a>第五章 I&#x2F;O管理</h2><p><em>author:slightwjq</em><br>2023年1月2日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -802,8 +784,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

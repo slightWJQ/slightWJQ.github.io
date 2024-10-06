@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://slightwjq.github.io">
-  <title>MyBlog</title>
+  <title>免疫算法 | MyBlog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://slightwjq.github.io/page/4/index.html">
+  <meta name="description" content="author:魏静崎2023年10月21日免疫算法求函数最优解的实际应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免疫算法">
+<meta property="og:url" content="https://slightwjq.github.io/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="author:魏静崎2023年10月21日免疫算法求函数最优解的实际应用">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-06T14:24:24.650Z">
+<meta property="article:modified_time" content="2023-10-26T02:01:50.778Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
   
@@ -205,24 +205,124 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-大数据基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-免疫算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      免疫算法
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/" class="archive-article-date">
+        <time datetime="2024-10-06T14:24:24.650Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-06</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.3k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
     <blockquote>
-<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><p><em>author:slightwjq</em><br>2023年2月10日</p>
+<p>author:魏静崎<br>2023年10月21日<br>免疫算法求函数最优解的实际应用</p>
 </blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more">more >></a>
-    
-    
+<span id="more"></span>
+<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>免疫算法和遗传算法区别不是很大，除了之前的<strong>突变</strong>、<strong>交叉</strong>操作，新增了一个<strong>接种疫苗</strong>的操作——即每次选取一部分较优解（抗原、记忆细胞、浆细胞）复制选优后与随机解混合，从中选取较优解（抗原），再进行重复操作。<br>不过在免疫算法选择的步骤中，对遗传算法中由“适应度”进行选择的方法做了很大改进，引出了“亲和度”（affinity)、”抗体浓度”（density)、”激励度”（simulation)这三个在选择操作中的重要概念。其中的<strong>激励度</strong>是由亲和度与抗体浓度进行计算的。<strong>亲和度</strong>与抗体浓度是由这些解来计算的。亲合度代表了这些解与最优解的接近程度，<strong>抗体浓度</strong>本质上是一个解与集合中其它所有的解当中<strong>距离比较近（或者说比较相似）的解的个数</strong>，再除以集合中解的总数总数就是这个解的浓度。因此需要一种距离度量方法来判定相近的阈值。<br><strong>激励度</strong><em>simulation &#x3D; alpha * affinity - beta * density</em>就说明density值越大，其simulation就越小，就越可能不被选中。因此浓度越低，激励度会越好，越容易被选中。<br>免疫算法在每次对抗体克隆后会对所有克隆进行变异，变异是概率事件。</p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>$$<br>通过免疫算法寻找一个函数 f(x) &#x3D; sin(3x) - (x-1)²  (x∈(0, 4))的最优解：<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;  </span></span><br><span class="line"><span class="string">@project HomeWork  </span></span><br><span class="line"><span class="string">@Package  </span></span><br><span class="line"><span class="string">@author WeiJingqi  </span></span><br><span class="line"><span class="string">@date 2023/10/16 - 17:41  </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IA</span>:  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, circle=<span class="number">30</span>, pm=<span class="number">0.7</span>, alpha=<span class="number">1</span>, beta=<span class="number">1</span>, delta=<span class="number">3</span>, pop_size=<span class="number">40</span>, binary_length=<span class="number">8</span>, area=<span class="number">4</span>, clone_num=<span class="number">10</span></span>):  </span><br><span class="line">	self.circle = circle <span class="comment"># 循环次数  </span></span><br><span class="line">	self.pm = pm <span class="comment"># 突变概率  </span></span><br><span class="line">	self.clone_num = clone_num <span class="comment"># 克隆数  </span></span><br><span class="line">	self.alpha = alpha  </span><br><span class="line">	self.beta = beta  </span><br><span class="line">	self.delta = delta <span class="comment"># 阈值  </span></span><br><span class="line">	self.binary_length = binary_length <span class="comment"># 二进制数组长度  </span></span><br><span class="line">	self.pop = np.random.randint(<span class="number">0</span>, <span class="number">2</span>, size=(pop_size, binary_length)) <span class="comment"># 随机初始pop_size个种群  </span></span><br><span class="line">	self.area = area <span class="comment"># 即domain of definition,定义域，这里简写成area  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bin_to_dec</span>(<span class="params">self, pop</span>):  </span><br><span class="line">	<span class="comment"># 把种群中所有二进制数组转换成0~4之间的十进制数，二进制编码用于表示可能的解空间  </span></span><br><span class="line">	n = pop.shape[<span class="number">0</span>]  </span><br><span class="line">	p = pop.shape[<span class="number">1</span>]  </span><br><span class="line">	s = np.zeros(shape=(n, <span class="number">1</span>))  </span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.binary_length):  </span><br><span class="line">		s += pop[:, i].reshape(n, <span class="number">1</span>) * <span class="number">2</span> ** (p - i - <span class="number">1</span>)  </span><br><span class="line">	<span class="keyword">return</span> self.area * s / <span class="number">2</span> ** p  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mutation</span>(<span class="params">self, pop</span>):  </span><br><span class="line">	<span class="comment"># 进行变异操作  </span></span><br><span class="line">	n, p = pop.shape  </span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):  </span><br><span class="line">		<span class="keyword">if</span> np.random.rand() &lt; self.pm:  </span><br><span class="line">			point = np.random.randint(<span class="number">0</span>, p) <span class="comment"># 随机选位点突变  </span></span><br><span class="line">		<span class="keyword">if</span> pop[i, point] == <span class="number">1</span>:  </span><br><span class="line">			pop[i, point] = <span class="number">0</span>  </span><br><span class="line">		<span class="keyword">else</span>:  </span><br><span class="line">			pop[i, point] = <span class="number">1</span>  </span><br><span class="line">	<span class="keyword">return</span> pop  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simulation</span>(<span class="params">self, affinity, density</span>):  </span><br><span class="line">	<span class="comment"># 计算激励度  </span></span><br><span class="line">	<span class="keyword">return</span> self.alpha * affinity - self.beta * density  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">density</span>(<span class="params">self, pop</span>):  </span><br><span class="line">	<span class="comment"># 计算浓度  </span></span><br><span class="line">	n, p = pop.shape  </span><br><span class="line">	den = [] <span class="comment"># 用来储存每一个解对应浓度  </span></span><br><span class="line">	j = <span class="number">0</span>  </span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):  </span><br><span class="line">		judge = <span class="number">0</span> <span class="comment"># 保存所有与i点距离达到阈值的个数  </span></span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):  </span><br><span class="line">			s = <span class="number">0</span> <span class="comment"># 保存二进制数组中对应位置数字不同的个数  </span></span><br><span class="line">			<span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(p):  </span><br><span class="line">				<span class="keyword">if</span> pop[i, k] == pop[j, k]:  </span><br><span class="line">					s += <span class="number">1</span>  </span><br><span class="line">				<span class="keyword">if</span> s &lt; self.delta: <span class="comment"># 判断是否达到阈值  </span></span><br><span class="line">					judge += <span class="number">1</span>  </span><br><span class="line">					den.append(judge)  </span><br><span class="line">	<span class="keyword">return</span> np.array(den) / n  </span><br><span class="line">	  </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">affinity</span>(<span class="params">self, pop</span>):  </span><br><span class="line">		<span class="comment"># 亲和度计算  </span></span><br><span class="line">		p = self.bin_to_dec(pop=pop)  </span><br><span class="line">		p = p.reshape(<span class="number">1</span>, -<span class="number">1</span>)[<span class="number">0</span>]  </span><br><span class="line">		p = p.astype(<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 转换数据类型，否则np.sin(3*p)会报错  </span></span><br><span class="line">		<span class="keyword">return</span> np.sin(<span class="number">3</span> * p)  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">execute</span>(<span class="params">self</span>):  </span><br><span class="line"><span class="comment"># 主程序  </span></span><br><span class="line">	initpop = self.pop <span class="comment"># 初始化种群  </span></span><br><span class="line">	density = self.density(pop=initpop)  </span><br><span class="line">	affinity = self.affinity(pop=initpop)  </span><br><span class="line">	simulation = self.simulation(affinity, density)  </span><br><span class="line">	index = np.argsort(-simulation) <span class="comment"># 根据激励度从大到小排序  </span></span><br><span class="line">	pop = initpop[index]  </span><br><span class="line">	n, p = pop.shape  </span><br><span class="line">	best_pop = pop[<span class="number">0</span>:<span class="built_in">int</span>(n / <span class="number">2</span>), :] <span class="comment"># 选出前n/2作为抗体  </span></span><br><span class="line">	<span class="comment"># 开始进行circle次循环操作  </span></span><br><span class="line">	<span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(self.circle):  </span><br><span class="line">		<span class="built_in">print</span>(<span class="string">f&#x27;循环次数:<span class="subst">&#123;c+<span class="number">1</span>&#125;</span>&#x27;</span>) <span class="comment"># 显示循环次数  </span></span><br><span class="line">		clone = best_pop  </span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.clone_num - <span class="number">1</span>): <span class="comment"># 开始进行克隆  </span></span><br><span class="line">		clone = np.r_[clone, best_pop]  </span><br><span class="line">		clone = self.mutation(pop=clone) <span class="comment"># 对克隆变异  </span></span><br><span class="line">		clone_density = self.density(pop=clone)  </span><br><span class="line">		clone_affinty = self.affinity(pop=clone)  </span><br><span class="line">		clone_simulation = self.simulation(affinity=clone_affinty, density=clone_density) <span class="comment"># 计算激励度  </span></span><br><span class="line">		index = np.argsort(-clone_simulation) <span class="comment"># 根据激励度排序  </span></span><br><span class="line">		  </span><br><span class="line">		newpop = clone[index][<span class="number">0</span>:<span class="built_in">int</span>(n / <span class="number">2</span>), :] <span class="comment"># 选出抗体  </span></span><br><span class="line">		antigen = np.random.randint(<span class="number">0</span>, <span class="number">2</span>, size=(<span class="built_in">int</span>(n / <span class="number">2</span>), p)) <span class="comment"># 随机初始一些解做抗原  </span></span><br><span class="line">		combin_pop = np.r_[newpop, antigen] <span class="comment"># 把抗原抗体结合  </span></span><br><span class="line">		  </span><br><span class="line">		density = self.density(pop=combin_pop) <span class="comment"># 计算结合后的浓度  </span></span><br><span class="line">		affinity = self.affinity(pop=combin_pop)  </span><br><span class="line">		simulation = self.simulation(affinity, density)  </span><br><span class="line">		index = np.argsort(-simulation)  </span><br><span class="line">		combin_pop = combin_pop[index][<span class="number">0</span>:<span class="built_in">int</span>(n / <span class="number">2</span>), :]  </span><br><span class="line">		best_pop = combin_pop <span class="comment"># 选出抗体，回到初始步骤进行循环  </span></span><br><span class="line">	<span class="keyword">return</span> best_pop  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:  </span><br><span class="line">	ia = IA()  </span><br><span class="line">	best_pop = ia.execute()  </span><br><span class="line">	result = ia.bin_to_dec(pop=best_pop) <span class="comment"># 把结果转换成十进制数  </span></span><br><span class="line">	x = np.arange(<span class="number">0</span>, <span class="number">4</span>, <span class="number">0.1</span>)  </span><br><span class="line">	y = np.sin(<span class="number">3</span> * x)  </span><br><span class="line">	plt.plot(x, y) <span class="comment"># 画函数图像  </span></span><br><span class="line">	plt.scatter(result, np.sin(<span class="number">3</span> * result), color=<span class="string">&#x27;red&#x27;</span>) <span class="comment"># 画解的散点图  </span></span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>可以发现，随着循环的进行，结果逐渐逼近最优解，我们这时应该逐渐减小变异概率pm，当达到最优时，我们并不希望它继续变异，这样不容易稳定在最优解，因此可以设置*pm[i]&#x3D;pm[0]&#x2F;c[i]*，即第i次循环的变异概率为初始的突变概率pm除以循环次数。</p>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/Alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/WeChat.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          魏静崎
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://slightwjq.github.io/2024/10/06/免疫算法/" title="免疫算法" target="_blank">https://slightwjq.github.io/2024/10/06/免疫算法/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          该文章来源及最终解释权归作者所有
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -232,16 +332,76 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://slightwjq.github.io/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/10/06/%E7%B2%BE%E8%AF%BB%E6%96%87%E7%8C%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -262,507 +422,14 @@
 
 
 
-  
-    <article id="post-软件工程-面试准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h1><h2 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h2><p><em>author:slightwjq</em><br>2023年3月6日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">展开全文 >></a>
-    </p>
-    
 
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
-
-
-  
-    <article id="post-数据结构-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="第六章-图"><a href="#第六章-图" class="headerlink" title="第六章 图"></a>第六章 图</h2><p><em>author:slightwjq</em><br>2023年1月23日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>##第五章 传输层<br><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第四章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第四章-网络层"><a href="#第四章-网络层" class="headerlink" title="第四章 网络层"></a>第四章 网络层</h2><p><em>author:slightwjq</em><br>2023年1月7日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第三章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第二章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第一章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第一章-计算机网络体系结构"><a href="#第一章-计算机网络体系结构" class="headerlink" title="第一章 计算机网络体系结构"></a>第一章 计算机网络体系结构</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="第五章-I-O管理"><a href="#第五章-I-O管理" class="headerlink" title="第五章 I&#x2F;O管理"></a>第五章 I&#x2F;O管理</h2><p><em>author:slightwjq</em><br>2023年1月2日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -802,8 +469,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

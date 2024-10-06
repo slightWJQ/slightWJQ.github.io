@@ -10,17 +10,31 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
+  <meta name="description" content="author:魏静崎   2024年9月26日Hadoop权威指南笔记来源：晓之木初该文章由于学校文献考试而整理">
+<meta property="og:type" content="article">
 <meta property="og:title" content="MyBlog">
-<meta property="og:url" content="https://slightwjq.github.io/page/4/index.html">
+<meta property="og:url" content="https://slightwjq.github.io/2024/10/06/%E8%A7%82Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="author:魏静崎   2024年9月26日Hadoop权威指南笔记来源：晓之木初该文章由于学校文献考试而整理">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_45d32714.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_615ea2a6.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_0c0069f4.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_4ef36d52.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_aafafc75.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_2d147072.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_6e94cbae.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_560a9340.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_dcc9b165.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_43f9d3d7.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_a1eaba87.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_630e6f48.png">
+<meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_60094f15.png">
+<meta property="article:published_time" content="2024-10-06T14:24:24.644Z">
+<meta property="article:modified_time" content="2024-09-29T09:05:39.769Z">
 <meta property="article:author" content="魏静崎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mark.cuckooing.cn/pics/pic_45d32714.png">
   
     <link rel="alternative" href="/atom.xml" title="MyBlog" type="application/atom+xml">
   
@@ -205,24 +219,717 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-大数据基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-观Hadoop权威指南笔记的笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
     <blockquote>
-<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><p><em>author:slightwjq</em><br>2023年2月10日</p>
+<p>author:魏静崎<br>   2024年9月26日<br>Hadoop权威指南<br>笔记来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014454538" title="晓之木初">晓之木初</a><br>该文章由于学校文献考试而整理</p>
 </blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more">more >></a>
-    
-    
+<span id="more"></span>
+<h1 id="第一章-Hadoop概述"><a href="#第一章-Hadoop概述" class="headerlink" title="第一章 Hadoop概述"></a>第一章 Hadoop概述</h1><h3 id="Hadoop不仅仅是一个项目"><a href="#Hadoop不仅仅是一个项目" class="headerlink" title="Hadoop不仅仅是一个项目"></a>Hadoop不仅仅是一个项目</h3><ul>
+<li>提到大数据，不可避免的会提到Hadoop，其实Hadoop已经不再是一个分布式存储和计算引擎了。</li>
+<li>它已经超越了批处理本身，成为了一个拥有多个涉及分布式计算和大规模数据处理子项目的大数据生态系统</li>
+</ul>
+<h3 id="为什么需要Hadoop"><a href="#为什么需要Hadoop" class="headerlink" title="为什么需要Hadoop"></a>为什么需要Hadoop</h3><ol>
+<li>从磁盘读数据的瓶颈是磁盘的寻道时间，磁盘寻道时间的提升远低于数据传输速率的提升</li>
+<li>数据库系统，只更新一小部分，B树非常适合；如果大量更新，B树将涉及排序&#x2F;合并，效率明显落后于MR</li>
+<li>RDBMS适合于建立索引后的数据集的点查询和更新，更适合持续更新的数据集；MR适合一次写入、多次读取数据的应用</li>
+<li>MR对数据计算任务是可以线性扩展的，任务扩展为N倍，只需要将集群规模扩展为N倍；这是RDBMS无法达到的</li>
+</ol>
+<h1 id="第二章-MapReduce概述"><a href="#第二章-MapReduce概述" class="headerlink" title="第二章 MapReduce概述"></a>第二章 MapReduce概述</h1><p>Hadoop利用MapReduce（简称MR），实现分布式计算，顾名思义MR包含两个操作：</p>
+<ol>
+<li>Map操作：map在编程语言中有映射含义，即对每条数据执行相同的操作，从而实现将原始的输入数据转化为key-value形式。也就是说，通过map操作可以进行数据准备。</li>
+<li>Reduce操作：对map操作的结果（即中间结果）进行汇总，如求和、求平均等，从而得到最终结果 —— 一个新的key-value集合。</li>
+<li>其中，map操作的结果将存储在本地磁盘，又叫中间结果；reduce操作的结果将存入本地HDFS，然后按照副本放置策略将副本存储到其他节点。</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>MR通过map进行数据预处理，得到中间结果存入本地磁盘；接着，使用shuffle将中间结果按照key进行排序和分组，使到达reduce的数据是有序的数据集合；然后，reduce函数按照指定的方式对数据进行汇总，并汇总后的数据写入HDFS。</li>
+<li>MR更关注的是用户可编程的map和reduce操作，实际上shuffle操作也至关重要。它可以将map的输出进行归纳归纳整理，减少map与reduce间的数据传输量</li>
+</ul>
+<h3 id="MR的数据流"><a href="#MR的数据流" class="headerlink" title="MR的数据流"></a>MR的数据流</h3><h5 id="split和map任务"><a href="#split和map任务" class="headerlink" title="split和map任务"></a>split和map任务</h5><ul>
+<li>对于一个MR作业，输入的数据会被划分成等大的数据块，被称为Split（分片）</li>
+<li>每个split对应一个map任务，map任务通过运行用户自定义的map函数来实现对split的处理</li>
+<li>关于split大小：<br>① split越小，并行处理split的时间会远小于处理整体数据的时间；同时，节点间的负载均衡效果也会更好<br>② split过分细分，管理split和创建map任务时间将会决定整个作业的执行时间<br>③ split默认是hdfs一个数据块的大小，<code>128MB</code>。这样，一个split不会跨越多个节点，能满足数据本地化原理，可以提高map任务的效率 —— 因为，跨节点时难以保证一个节点存在多个数据块，需要在节点间进行网络传输</li>
+<li>split与map任务可能的三种情况：<br>① 存储split的节点有空闲slot，map任务可以在节点上运行<br>② 存储split的所有节点均没有空闲slot，map任务优先在同一机架的空闲节点上运行。这时，split会在同一机架的两个节点间传输<br>② 同一机架也没有空闲节点，map任务只能在不同机架的空闲节点上运行。这时split会跨机架传输<br><img src="https://mark.cuckooing.cn/pics/pic_45d32714.png" alt="pic_45d32714.png"></li>
+</ul>
+<h6 id="不同类型的数据流"><a href="#不同类型的数据流" class="headerlink" title="不同类型的数据流"></a>不同类型的数据流</h6><ul>
+<li>关于任务数： map任务的数据量由split的数量决定，而reduce任务的数量需要独立指定。</li>
+<li>关于分区： 如果存在多个reduce任务，map任务会为每个reduce任务创建分区。一般，按照输出数据的key将数据分配到不同的分区。同时，同一key的所有输出均在同一分区。</li>
+</ul>
+<p>多个map任务，一个reduce任务</p>
+<ol>
+<li>所有map任务的输出，会先存储到本地磁盘。作业完成后，才会删除中间结果。如果在执行map任务的节点在将中间结果传输给reduce任务之前失败，Hadoop会在其他节点重试map任务</li>
+<li>排序过的map输出，通过网络传递给reduce节点，并在reduce端进行合并。</li>
+<li>reduce对合并后的数据进行处理，处理后的结果优先存到本地HDFS，其他副本按照放置策略存储到其他节点。</li>
+</ol>
+<p><img src="https://mark.cuckooing.cn/pics/pic_615ea2a6.png" alt="pic_615ea2a6.png"><br>多个map任务，多个reduce任务</p>
+<ol>
+<li>map任务的输出按照一定的策略分配到不同的分区</li>
+<li>map输出到reduce输入之间的数据处理，就是shuffle</li>
+</ol>
+<p><img src="https://mark.cuckooing.cn/pics/pic_0c0069f4.png" alt="pic_0c0069f4.png"><br>无reduce任务</p>
+<ol>
+<li>有时，map任务处理后的数据，无需进行shuffle，可能也就无需reduce任务</li>
+<li>此时，map任务会将输出优先写入本地hdfs和其他节点的hjdfs<br><img src="https://mark.cuckooing.cn/pics/pic_4ef36d52.png" alt="pic_4ef36d52.png"></li>
+</ol>
+<h1 id="第三章-Hadoop的全方位文件系统"><a href="#第三章-Hadoop的全方位文件系统" class="headerlink" title="第三章 Hadoop的全方位文件系统"></a>第三章 Hadoop的全方位文件系统</h1><h4 id="1-HDFS概述"><a href="#1-HDFS概述" class="headerlink" title="1. HDFS概述"></a>1. HDFS概述</h4><h5 id="1-HDFS的特性、应用场景（适合-不适合什么？why？）"><a href="#1-HDFS的特性、应用场景（适合-不适合什么？why？）" class="headerlink" title="1. HDFS的特性、应用场景（适合&#x2F;不适合什么？why？）"></a>1. HDFS的特性、应用场景（适合&#x2F;不适合什么？why？）</h5><ul>
+<li>HDFS的是Hadoop的分布式文件系统，全称<code>Hadoop Distributed Filesystem</code></li>
+</ul>
+<p>HDFS具有以下特性：</p>
+<ol>
+<li>超大文件：几百MB、几百GB甚至几百TB的大文件，甚至还出现了存储PB级文件的Hadoop集群</li>
+<li>流式数据访问：HDFS基于一次写入、多次读取是高效的文件访问模式构建的。</li>
+<li>商用硬件（普通硬件）：Hadoop将运行在商用硬件集群上，节点故障将会是常态。HDFS在遇到节点故障时，能继续提供服务而不被用户感知。</li>
+</ol>
+<p>HDFS不适用的场景</p>
+<ol>
+<li>大量的小文件：HDFS中，文件的元数据信息存储在namenode的内存中。一般，一个文件的元数据信息为<code>150 Byte</code>。如果，HDFS中存在大量的小文件（如数十亿个小文件），则会超过内存的存储容量。</li>
+<li>低延迟数据访问：HDFS专为大文件实现高吞吐，可能会以提高数据时延为代价。因此，HDFS不适合低延迟数据访问。 —— HBase是更好的选择</li>
+<li>随机写&#x2F;多用户写：因为HDFS只允许顺序写，支持单个用户写入。</li>
+</ol>
+<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h4><ul>
+<li>说先是对HDFS的一个认识吧：HDFS适合什么场景（超大文件、流式文件访问、商用硬件）？不适合什么场景（低延迟访问、多用户写入&#x2F;随机写、小文件存储）？why？</li>
+<li>HDFS的两种节点：<br>① namenode（namespace管理）、datanode（文件存储&#x2F;检索、block信息上报）<br>② namenode的容错机制：NFS、辅助namenode（只是负责编辑日志与namespace镜像文件的合并，减轻namenode压力）；或者NFS + 辅助namenode</li>
+<li>namenode的HA：<br>① namenode存在单点故障，Hadoop 2提供对HDFS的HA支持：提出了<code>active namenode</code>和<code>standby namenode</code><br>② <code>active namenode</code>：任意时刻处于active状态，接受客户端操作；<code>standby namenode</code>：拥有足够多的状态信息，可以提供快速的故障转移<br>③ 通过QJM（群体日志管理器），HDFS专用的日志编辑器，要求至少有3个节点，支持 ( n − 1 ) &#x2F; 2 (n-1)&#x2F;2 (n−1)&#x2F;2的节点故障</li>
+<li>Hadoop的文件系统：<br>① 提供一个抽象的文件系统概念，<code>FileSystem</code>是Hadoop的抽象文件接口<br>② 基于<code>FileSystem</code>实现了多种文件系统：Local、HDFS、webHDFS、S3等<br>③ 文件系统的命令：<code>hadoop fs</code>，以及专门针对HDFS的<code>hdfs dfs</code><br>④ 通过<code>FileSystem</code>进行简单的HDFS文件操作：读写、创建目录、删除文件&#x2F;目录、获取元数据信息<br>⑤ <code>hdfs dfs -ls</code>，查看文件系统的相关信息（文件权限、修改时间、副本数等）</li>
+<li>HDFS文件的读写：<br>① <code>FSDataInputStream</code>实现了<code>Seekable</code>接口和<code>PositionedReadable</code>接口，从而支持随机读<br>② <code>FSDataOutputStream</code>，只有<code>getPos()</code>方法，不支持随机写</li>
+</ul>
+<h1 id="第四章-HDFS的读写流程"><a href="#第四章-HDFS的读写流程" class="headerlink" title="第四章 HDFS的读写流程"></a>第四章 HDFS的读写流程</h1><ul>
+<li><p>HDFS的读流程：</p>
+<ol>
+<li>open()方法 + get block locations，获取block的副本位置，返回<code>FSDataInputStream</code>，内含<code>DFSDataStream</code></li>
+<li>调用<code>FSDataInputStream</code>的<code>read()</code>方法，实际由<code>DFSDataStream</code>与最佳DataNode创建连接，不断调用<code>read()</code>读取数据；</li>
+<li>结束一个block的读取，<code>DFSDataStream</code>与下一个block的最佳DataNode连接连接，继续进行数据读取</li>
+<li>必要时，<code>DFSDataStream</code>从NameNode处获取下一批block的位置</li>
+<li>调用<code>FSDataInputStream</code>的<code>close()</code>方法，关闭输入流</li>
+</ol>
+</li>
+<li><p>HDFS读流程中的故障：</p>
+<ol>
+<li>DataNode故障，记住该DataNode，切换到最邻近的、有相同副本的DataNode</li>
+<li>读数据时进行checksum，发现block损坏，切换到另一副本继续读。同时向NameNode上报损坏的block</li>
+</ol>
+</li>
+<li><p>HDFS的三种数据块：数据存储单位block（<code>128 MB</code>）、数据传输单位packet（<code>64 kb</code>）、数据校验单位chunk（<code>512 byte</code> + <code>4 byte的校验信息</code>）</p>
+</li>
+<li><p>HDFS基于chunk、packet、DataQueue&#x2F;AckQueue的三层缓存</p>
+<ol>
+<li>chunk写满，校验后写入packet</li>
+<li>packet写满，放到DataQueue</li>
+<li><code>DataStreamer</code>将DataQueue中的packet发送给DataNode，并在未确认写入ok时，将packet存入AckQueue</li>
+<li>收到足够的应答，<code>ResponseProcessor</code>将packet从AckQueue移除；否则，移回DataQueue中，重新写入</li>
+</ol>
+</li>
+<li><p>HDFS的写流程</p>
+<ol>
+<li>create() + create， NameNode进行权限、是否已存在等校验；通过校验，向EditLog新增一条记录（WAL）并返回<code>FSDataOutputStream</code>，内含<code>DFSOutputStream</code>；否则，抛出<code>IOException</code>异常</li>
+<li>调用<code>FSDataOutputStream</code>的<code>write()</code>方法，实际由<code>DFSOutputStream</code>将数据分成一个个packet放入DataQueue</li>
+<li><code>DataStreamer</code>负责选取一组DataNode进行数据写入，这些DataNode之间会建立pipeline，packet通过pipeline进行传输</li>
+<li>为确认写入ok的packet放入AckQueue，只有收到足够的ack packet，才会从AckQueue中移除</li>
+<li>调用<code>FSDataOutputStream</code>的<code>close()</code>方法，关闭写入流；NameNode执行complete，等待文件写入完成前，确认成功写入</li>
+</ol>
+</li>
+<li><p>HDFS写流程故障：</p>
+<ol>
+<li>删除pipeline、将AckQueue中的所有packet移动到DataQueue的前端，确保数据不会丢失</li>
+<li>标记当前block，并向NameNode上报信息，等到故障DataNode恢复，删除不完整的block</li>
+<li>在正常的DataNode之间重新建立pipeline，继续进行数据写入</li>
+<li>NameNode发现副本数不足，在其他DataNode创建新的副本（异步副本复制？）</li>
+<li>写入成功：只要满足最小副本数，即可认为写入成功</li>
+</ol>
+</li>
+<li><p>副本的放置策略：随机选择，尽量不在一个机架放置过多的副本</p>
+</li>
+<li><p><code>hflush()</code>和<code>hsync()</code>方法：以适合的频率调用，保证写入数据对新的reader的可见性</p>
+</li>
+<li><p><code>ditscp</code>：实质是只有map任务的MR作业，可以通过<code>-m</code>指定map任务数</p>
+</li>
+</ul>
+<h1 id="第五章-Hadoop-YARN入门"><a href="#第五章-Hadoop-YARN入门" class="headerlink" title="第五章 Hadoop YARN入门"></a>第五章 Hadoop YARN入门</h1><h3 id="YARN概述"><a href="#YARN概述" class="headerlink" title="YARN概述"></a>YARN概述</h3><p> Hadoop 1.x，MR既要负责分布式计算，还需要负责计算过程中的资管管理和任务调度</p>
+<ul>
+<li>Hadoop2.x，更新了Hadoop的架构，使用YARN（<code>Yet Another Resource Negotiator</code>，另一种资源判决者&#x2F;调度者）进行专门的资源组管理和任务调度，而MR通过调用YRN的API实现分布式计算，减轻了MR的压力</li>
+<li>同时，YARN还具备足够的通用性，除了能支持MR之外，它还能支持其他的分布式计算模式，如Spark、Tez等</li>
+<li>可以说，YARN是一种通用的资源管理和任务调度框架。</li>
+<li>大部分时候，用户并不是直接使用YARN请求和使用集群资源的API，而是调用构建在YARN之上的分布式计算框架的API实现分布式计算。</li>
+<li>YARN很好地向用户隐藏了资源管理的细节，书中将HDF、HBase称为集群中的存储层，YARN称为是集群中的计算层。而像MR、Spark这样的分布式计算框架，是集群中的应用层。<br><img src="https://mark.cuckooing.cn/pics/pic_aafafc75.png" alt="pic_aafafc75.png"></li>
+</ul>
+<h3 id="YARN的两种守护进程及application-master"><a href="#YARN的两种守护进程及application-master" class="headerlink" title="YARN的两种守护进程及application master"></a>YARN的两种守护进程及application master</h3><p>守护进程1：</p>
+<ul>
+<li><code>Resource Manager</code>，一个全局的资源管理器，负责管理和分配整个集群中的计算资源</li>
+</ul>
+<p>守护进程2：</p>
+<ul>
+<li><code>Node Manager</code>，运行在所有的节点上，是YARN在每个节点上的代理，管理集群中的单个计算节点，负责启动和监控container</li>
+<li>container是有资源限制的（如内存和CPU）、用于执行特定应用程序的进程</li>
+</ul>
+<p>应用程序中Application master</p>
+<ul>
+<li>应用程序级别（<code>application-specified</code>）的进程，负责管理运行在YARN上的应用程序</li>
+</ul>
+<h3 id="YARN应用的运行机制"><a href="#YARN应用的运行机制" class="headerlink" title="YARN应用的运行机制"></a>YARN应用的运行机制</h3><ul>
+<li>书中给出了一幅很简单的图，用于描述YARN应用的运行机制<br><img src="https://mark.cuckooing.cn/pics/pic_2d147072.png" alt="pic_2d147072.png"></li>
+<li>相对详细的图，如果需要了解更多的内部机制可以参考：[yarn详解][yarn]<br><img src="https://mark.cuckooing.cn/pics/pic_6e94cbae.png" alt="pic_6e94cbae.png"></li>
+</ul>
+<p>YARN应用的运行流程如下：</p>
+<ol>
+<li><p>client向YARN的<code>Resource Manager</code>提交应用程序，包括启动<code>Application master</code>的必需信息，如Application master程序、启动命令和用户程序等。</p>
+</li>
+<li><p><code>Resource manager</code>为该应用程序分配第一个container，并与container所在的<code>Node manager</code>通信，要求<code>Node manager</code>启动container并在container中运行<code>Application master</code>。</p>
+</li>
+<li><p><code>Application master</code>首先向<code>Resource manager</code>注册自己，并与<code>Resource maneger</code>保持心跳。 —— 用户可以通过<code>Resource maneger</code>获取应用程序的运行状态。</p>
+</li>
+<li><p><code>Application master</code>采用轮询的方式、通过RPC向<code>Resource manager</code>申请更多的container</p>
+</li>
+<li><p>申请到container后，<code>Application master</code>会与container所在的<code>Node manager</code>建立通信，要求Node manager启动container，从而运行具体的应用程序任务</p>
+</li>
+<li><p>各个任务会通过RPC向<code>Application master</code>上报自己的进度和运行状态，这样<code>Application master</code>便可以对任务进行监控和管理</p>
+<ul>
+<li>当任务运行失败时，<code>Application master</code>可以向<code>Resource manager</code>申请新的container，以重新运行该任务</li>
+<li>client也可以通过RPC直接访问 <code>Application master</code>，获取任务的运行状态</li>
+</ul>
+</li>
+<li><p>应用程序运行完成后，<code>Application master</code>向<code>Resource manager</code>注销并关闭自己。这时，<code>Application master</code>分配到的container，可以被<code>Resource manager</code>回收</p>
+</li>
+</ol>
+<h3 id="通过运行机制，总结三种角色的作用"><a href="#通过运行机制，总结三种角色的作用" class="headerlink" title="通过运行机制，总结三种角色的作用"></a>通过运行机制，总结三种角色的作用</h3><p>Resource maneger</p>
+<ul>
+<li>与client交互，处理来自client的请求（提交作业、查询应用程序状态等）</li>
+<li>启动并管理<code>Application master</code>：<code>Application master</code>运行失败，会重启<code>Application master</code>。</li>
+<li>资源管理与调度： 接收<code>Application master</code>的资源请求，并为之分配资源 （ 其实就是分配container）</li>
+<li>管理<code>Node Manager</code> ： 接收来自<code>Node Manager</code> 的资源汇报信息，并向<code>Node Manager</code>下达管理指令 —— 这条我没有啥体会 😂</li>
+</ul>
+<p>Node manager</p>
+<ul>
+<li>接收并处理来自<code>Application master</code>启动&#x2F;停止container的各种请求</li>
+<li>启动和监控container</li>
+<li>以心跳的形式向<code>Resource manager</code>汇报本节点上的资源使用情况和各个Container的运行状态 —— 这条我没有啥体会 😂</li>
+</ul>
+<p>Application master</p>
+<ul>
+<li>向<code>Resource maneger</code>申请container</li>
+<li>将申请到的contianer进一步分配给应用程序中的任务 （资源的二次分配）</li>
+<li>与<code>Node manager</code>通信，从而启动&#x2F;停止container</li>
+<li>监控任务的运行状态，在任务运行失败时，重新申请资源以重试任务。</li>
+<li></li>
+</ul>
+<h5 id="YARN的优势："><a href="#YARN的优势：" class="headerlink" title="YARN的优势："></a>YARN的优势：</h5><pre><code>1.  可扩展性（分离架构克服了jobtracker的扩展性瓶颈，Application master与Google的MapReduce论文更接近）
+2.  可用性：jobtracker难以提供HA，YARN中分而治之的HA
+3.  利用率（slot方式的利用率低，基于Node manager的资源池实现资源的灵活分配）
+4.  多租户：YARN是一种通用的资源管理和任务调度框架，并非仅支持MR
+</code></pre>
+<h1 id="第六章-YARN调度队列"><a href="#第六章-YARN调度队列" class="headerlink" title="第六章 YARN调度队列"></a>第六章 YARN调度队列</h1><ul>
+<li>三种调度器各自的优缺点：</li>
+</ul>
+<ol>
+<li>FIFO调度器： 简单易懂，先进先出，容易使小作业阻塞，不适合共享集群</li>
+<li>capacity调度器和fair调度器：适合共享集群，既能允许长时间运行的作业及时完成，又能保证小作业在合适的时间内完成</li>
+<li>capacity调度器： 为特定应用分配具有特定资源的队列，保证小作业立即执行，牺牲了集群的利用率，大作业执行时间变长</li>
+<li>fair调度器： 为正在运行的应用动态平衡资源，提高了集群利用率，有保证小作业能及时完成</li>
+</ol>
+<ul>
+<li><p>capacity调度器：</p>
+<ol>
+<li>队列内，采用FIFO调度策略</li>
+<li>支持弹性队列： 允许将其他队列的空闲资源分配给资源不足的队里，即使操作队列声明的容量；为避免过度占用其他队列的资源，需要设置最大容量</li>
+<li>capacity调度器的配置：不设置最大容量，则可以使用所在层级的所有资源</li>
+<li>队列放置：应用应该放置到哪个队列，先按specified，不存在则报错；不指定，按default</li>
+</ol>
+</li>
+<li><p>fair调度器：</p>
+<ol>
+<li>fair调度器中，队列的资源配置并非<code>1: 1</code>，而是由分配文件中比例决定</li>
+<li>开源Hadoop默认使用capacity调度器，使用fair调度器需要进行配置才能开启</li>
+<li>fair调度器的配置：队列内的调度策略可以是fair、FIFO和DRF</li>
+<li>放置策略：默认放置策略是先specified，再user</li>
+<li>支持抢占：终止超过资源份额的队列中的container，将释放后的资源资源分配非低于份额的队列中的container；最小共享抢占和公平共享抢占</li>
+</ol>
+</li>
+<li><p>延迟调度：</p>
+<ol>
+<li>等待一定次数的调度机会，才放松本地限制，以金最大可能地利用本地化，提高集群效率</li>
+<li>调度机会：<code>Node manager</code>向<code>Resource manager</code>发送心跳，是一次潜在的调度机会</li>
+<li>capacity调度器的配置：设置转去匹配同一机架其他节点的最大等待的调度机会次数</li>
+<li>fair调度器的配置：转去匹配同一机架其他节点的调度机会比例，转去匹配其他机架节点的等待时间阈值。</li>
+</ol>
+</li>
+</ul>
+<h1 id="第七章-校验和压缩"><a href="#第七章-校验和压缩" class="headerlink" title="第七章 校验和压缩"></a>第七章 校验和压缩</h1><h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h4><h5 id="3-1-checksum"><a href="#3-1-checksum" class="headerlink" title="3.1 checksum"></a>3.1 checksum</h5><ul>
+<li><p>checksum的常见措施：第一次写入前计算checksum，存储数据和checksum；后续读取时，计算数据的checksum，并与原始的checksum做对比</p>
+</li>
+<li><p>Hadoop中的checksum：</p>
+<ol>
+<li>HDFS使用<code>CRC-32</code>的变体<code>CRC-32C</code>，该变体会更高效</li>
+<li>Hadoop中，<code>ChecksumFileSystem</code>类使用CRC-32，可以对不支持checksum的文件系统进行装饰，使其支持checksum</li>
+</ol>
+</li>
+</ul>
+<h6 id="3-1-1-HDFS的checksum"><a href="#3-1-1-HDFS的checksum" class="headerlink" title="3.1.1 HDFS的checksum"></a>3.1.1 HDFS的checksum</h6><ul>
+<li><p>基于packet计算checksum，将packet和checksum一起写入HDFS</p>
+</li>
+<li><p>通过<code>dfs.bytes-per-checksum</code>设置计算checksum的数据大小</p>
+</li>
+<li><p>三种校验checksum的场景：</p>
+<ol>
+<li>client将数据写入DataNode：client负责划分packet并计算checksum，pipeline中的最后一个DataNode负责校验，校验出错返回<code>IOException</code>的子类；或DataNode从其他DataNode复制block</li>
+<li>client从DataNode读取数据：DataNode永久存储checksum日志文件，记录block最近一次的校验时间；client完成checksum校验后，会报告给DataNode，从而更新checksum日志文件；可以检查磁盘损坏</li>
+<li>DataNode的后台线程DataBlockScanner，定期扫描DataNode上的所有block，是预防物理存储介质<code>bit rot</code>的有力措施</li>
+</ol>
+</li>
+<li><p>HDFS对数据块损坏的操作：</p>
+<ol>
+<li>报告给NameNode，再返回<code>ChecksumException</code>异常；</li>
+<li>NameNode会标记block，并不在将client的读请求发送到该block对应的DataNode；</li>
+<li>NameNode发现副本数不够，在其他DataNode新建block的副本；</li>
+<li>删除DataNode中已损坏的block</li>
+</ol>
+</li>
+</ul>
+<h6 id="3-1-2-LocalFileSystem"><a href="#3-1-2-LocalFileSystem" class="headerlink" title="3.1.2 LocalFileSystem"></a>3.1.2 LocalFileSystem</h6><ul>
+<li>文件名为 <code>file</code>，对应的checksum元数据：同一目录的<code>.file.crc</code></li>
+<li>当文件系统本身就支持checksum是，可以使用<code>RawLocalFileSystem</code>代替<code>LocalFileSystem</code></li>
+</ul>
+<h4 id="3-2-压缩"><a href="#3-2-压缩" class="headerlink" title="3.2 压缩"></a>3.2 压缩</h4><ul>
+<li><p>常见的压缩格式，及对应的压缩算法、文件扩展名、是否支持split、是否有java实现、是否有native实现等</p>
+</li>
+<li><p>特殊的：</p>
+<ol>
+<li>gzip使用DEFALTE算法，文件在DEFLATE文件基础上增加了文件头和文件尾</li>
+<li>bzip2唯一支持split的压缩算法，且无native实现</li>
+<li>LZO代码库使用GPL，使用时需要单独配置</li>
+<li>Hadoop安装包，64为linux创建了native类库： <code>libhadoop.so</code></li>
+</ol>
+</li>
+<li><p>压缩算法的实现：<code>CompressionCodec</code>接口及具体的codec实现、<code>creteOutputStream(OutputStream out)</code>和<code>createInputStream(InputStream in)</code></p>
+</li>
+<li><p><code>CompressionCodecFactory</code>，根据压缩文件的扩展名，获取对应的Codec实例</p>
+</li>
+<li><p><code>CodecPool</code>：避免频繁创建Codec，实现codec的重复使用</p>
+</li>
+<li><p>HDFS中压缩格式的选择：</p>
+<ol>
+<li>使用容器文件：avro、ORC、parquet等，它们同时支持压缩和split</li>
+<li>使用支持split的算法：bzip2；通过为split点创建索引，从而支持split的LZO</li>
+<li>文件先分块，为每个分块创建压缩文件</li>
+<li>存储未经压缩的文件</li>
+</ol>
+</li>
+<li><p>MR中压缩的配置：</p>
+<ol>
+<li>为reduce的输出设置压缩：<code>mapreduce.output.fileoutputformat.compress</code>及<code>mapreduce.output.fileoutputformat.compress.codec</code>、<code>mapreduce.output.fileoutputformat.compress.type</code></li>
+<li>为map任务的输出设置压缩：<code>mapreduce.map.output..compress</code>及<code>mapreduce.map.output.compress.codec</code></li>
+</ol>
+</li>
+</ul>
+<h1 id="第八章-Hadoop的序列化"><a href="#第八章-Hadoop的序列化" class="headerlink" title="第八章 Hadoop的序列化"></a>第八章 Hadoop的序列化</h1><h4 id="3-总结-1"><a href="#3-总结-1" class="headerlink" title="3. 总结"></a>3. 总结</h4><h5 id="3-1-关于序列化"><a href="#3-1-关于序列化" class="headerlink" title="3.1 关于序列化"></a>3.1 关于序列化</h5><ul>
+<li><p>序列化：结构化对象转为字节流</p>
+</li>
+<li><p>RPC中的序列化：消息转为二进制流</p>
+</li>
+<li><p>RPC中序列化应该具备的四大理想属性</p>
+<ol>
+<li>紧凑：减少size</li>
+<li>快速：序列化或反序列化的性能开销要小</li>
+<li>可扩展：支持新协议的引入（服务器接口对client的向前兼容）</li>
+<li>支持互操作：支持多种语言的client，提供一种统一的接口</li>
+</ol>
+</li>
+<li><p>数据的持久化存储也应该满足以上四大理想属性：</p>
+<ol>
+<li>紧凑：减少size</li>
+<li>快速：降低读写时的性能开销</li>
+<li>可扩展：支持读老格式的数据</li>
+<li>支持互操作：支持多种语言读写数据</li>
+</ol>
+</li>
+</ul>
+<h5 id="3-2-Hadoop中的序列化"><a href="#3-2-Hadoop中的序列化" class="headerlink" title="3.2 Hadoop中的序列化"></a>3.2 Hadoop中的序列化</h5><ul>
+<li><p>基于<code>Writable</code>接口，Hadoop实现了很多序列化类，整体类图如下<br><img src="https://mark.cuckooing.cn/pics/pic_560a9340.png" alt="pic_560a9340.png"></p>
+</li>
+<li><p>序列化的统一接口<code>Writable</code></p>
+</li>
+<li><p>以<code>IntWritable</code>为例，体会其是如何实现直接比较二进制流，无需反序列化的：</p>
+<ol>
+<li><code>IntWritable</code>实现<code>WritableComparable</code>接口</li>
+<li><code>RawComparator</code>接口定义了直接比较二进制流的方法，<code>WritableComparator</code>类实现了<code>RawComparator</code>接口</li>
+<li><code>WritableComparator</code>类：<br>① 实现了原始的compare方法，以及<code>RawComparator</code>中compare方法；<br>② 提供工厂方法：支持根据<code>WritableComparable</code>接口的实现类，获取对应的<code>WritableComparator</code>对象</li>
+</ol>
+</li>
+<li><p>Java基本数据类型对应的Writable类</p>
+</li>
+<li><p>Text与String的比较：</p>
+<ol>
+<li>内部实现：String为<code>private final char[]</code>， Text为<code>private byte[] bytes</code></li>
+<li>编码方式：String的编码方式取决于char的编码方式，Text固定使用<code>UTF-8</code>编码</li>
+<li>内容是否可变：String内容不可变，Text内容可变</li>
+<li>API：String有丰富的API，Text没有，但<code>toString()</code>后可以使用String的API</li>
+</ol>
+</li>
+<li><p><code>BytesWritable</code>类:</p>
+<ol>
+<li>两大核心数据结构：<code>int size</code>和<code>byte[] bytes</code></li>
+<li><code>getLength()</code>获取实际的数据长度，<code>getBytes().length</code>或<code>getCapacity()</code>有时并不能反映数据的的真实长度</li>
+</ol>
+</li>
+</ul>
+<h1 id="第九章-Hadoop的顺序文件"><a href="#第九章-Hadoop的顺序文件" class="headerlink" title="第九章 Hadoop的顺序文件"></a>第九章 Hadoop的顺序文件</h1><p>关于顺序文件：</p>
+<ol>
+<li>二进制key-value的持久存储格式，适合日志文件存储、大量小文件的合并</li>
+<li>顺序文件的写：通过<code>createWriter()</code>获取<code>SequenceFile.Writer</code>对象，通过<code>append()</code>实现顺序写，通过<code>getLength()</code>获取写入指针的当前位置</li>
+<li>顺序文件的读：通过构造方法获取<code>SequenceFile.Reader</code>对象，通过<code>next()</code>按记录读取顺序文件（文件末尾返回<code>false</code>），通过<code>getPosition()</code>获取文件的读指针的位置</li>
+<li>关于同步点：<code>reader.syncSeen()</code>获取当前位置是否为同步点，<code>reader.sync()</code>跳到指定position的之后的第一个同步点，<code>writer.sync()</code>插入同步点</li>
+<li>顺序文件的格式：文件头 + records + record中穿插的同步点；基于<code>RECORD</code>和<code>BLOCK</code>压缩的顺序文件，结构差异</li>
+</ol>
+<p>关于MapFile</p>
+<ol>
+<li>带索引的、按key排序后的顺序文件</li>
+<li>索引是一个顺序文件，包含主数据文件中的一小部分key（默认128个key），可以加载到内存中，提供对主数据文件的快速查找</li>
+</ol>
+<p>Hadoop中常见的文件格式：</p>
+<ol>
+<li>顺序文件、MapFile和Avro都是行式存储</li>
+<li>ORC和parquet都是列式存储</li>
+</ol>
+<p>行式存储与列式存储</p>
+<ol>
+<li>行式存储与列式存储的概念</li>
+<li>行式存储：适合随机的增删该查、适合访问一行中的大部分数据、适合频繁的增加和删除操作</li>
+<li>列式存储：适合访问一行中的少部分数据、适合按行压缩以减少存储空间、适合并发计算以提交查询效率</li>
+</ol>
+<h1 id="第十章-MR应用开发"><a href="#第十章-MR应用开发" class="headerlink" title="第十章 MR应用开发"></a>第十章 MR应用开发</h1><p>关于Configuration：</p>
+<ol>
+<li>配置Hadoop的API</li>
+<li>通过<code>addResource()</code>添加xml配置文件，通过<code>get()</code>获取属性值（可以为不存在的属性设置默认值）、属性的覆盖（final属性无法被覆盖）</li>
+</ol>
+<p>关于开发环境的配置</p>
+<ol>
+<li>Hadoop中HDFS、yarn、MapReduce等的配置，可用配置及描述的查看方式：① 安装包的<code>share/doc</code>，② 网站的ConfigurationLA栏中查看</li>
+<li>通过<code>-conf</code>指定运行时连接的Hadoop集群</li>
+<li>开发MR程序常用的maven依赖：hadoop-client、用于测试的：junit、mrunit、miniCluster</li>
+</ol>
+<p><code>junit</code> + <code>mrunit</code>对mapper函数和reducer函数进行单元测试  </p>
+<p>任务调试的基础知识</p>
+<ol>
+<li>application ID、job ID、task ID（从0开始计数）、task attempt ID（从0开始计数）的构建方式</li>
+<li>如何在mapper中添加调试：context的<code>setStatus()</code>和<code>getCounter()</code></li>
+<li>远程调试：本地重现错误、JVM堆转储、任务分析</li>
+<li>如果通过Resource Manager的web UI，查看&#x2F;分析作业、任务的运行情况</li>
+</ol>
+<h1 id="第十一章-MR的工作机制"><a href="#第十一章-MR的工作机制" class="headerlink" title="第十一章 MR的工作机制"></a>第十一章 MR的工作机制</h1><h3 id="各实体的责任"><a href="#各实体的责任" class="headerlink" title="各实体的责任"></a>各实体的责任</h3><p>client：负责提交MR作业  </p>
+<p>Resource Manager</p>
+<ol>
+<li>负责接收clinet请求（提交Application、查询Application的运行状态）</li>
+<li>管理Node Manager：接收Node Manager的资源报告信息，向Node Manager下达管理指令</li>
+<li>启动并管理Application master，在Application master失败时，重启Application master</li>
+<li>资源管理与分配：响应Application master的资源请求，为其分配Node Maneger上的container以运行任务</li>
+</ol>
+<p>Node Manager</p>
+<ol>
+<li>接收并处理来自Manager和Application master的启动或停止container的请求</li>
+<li>启动并监管container（会在任务JVM失败时，告知Application master）</li>
+<li>向Resource Manager上报自身的资源信息和所有运行中的container状态</li>
+</ol>
+<p>Application master</p>
+<ol>
+<li>向Resource Manager申请container，并将container进一步分配给Application中的具体任务</li>
+<li>与Node manager通信，从而启动或停止container</li>
+<li>监控task：可以在task失败时，重新申请container以重试task</li>
+</ol>
+<p>分布式文件系统（一般为HDFS）：在其他实体间共享作业文件</p>
+<h3 id="MR的运行流程"><a href="#MR的运行流程" class="headerlink" title="MR的运行流程"></a>MR的运行流程</h3><p><img src="https://mark.cuckooing.cn/pics/pic_dcc9b165.png" alt="pic_dcc9b165.png"></p>
+<ol>
+<li><p>调用Job的<code>submit()</code>方法，提交一个MR作业。实质上，<code>submit()</code>方法会创建一个<code>Submitter</code>实例，并其<code>submitJobInternal()</code>提交作业。</p>
+</li>
+<li><p>作业提交后，<code>waitForComletion()</code>方法每隔一秒会轮询作业的状态，当作业失败或成功时，会退出该方法</p>
+<blockquote>
+<p>对应图中的步骤1</p>
+</blockquote>
+</li>
+<li><p><code>Submitter</code>实例向Resource Manager申请一个新的Application ID</p>
+<blockquote>
+<p>对应图中的步骤2</p>
+</blockquote>
+</li>
+<li><p>Submitter会检查输出说明： 如果没有指定输出目录或输出目录已经存在，则不提交作业</p>
+</li>
+<li><p>Submitter计算作业的输入split： 如果输入split无法计算，如输入目录不存在，则不提交作业</p>
+</li>
+<li><p>submitter负责将作业运行所需的资源拷贝到以<code>job ID</code>命名的共享目录下，包括jar文件、配置文件、计算所得的输入split</p>
+<blockquote>
+<p>对应图中的步骤3</p>
+</blockquote>
+</li>
+<li><p>Submitter调用Resource Manager的<code>submitApplication()</code>方法，向yarn提交一个Application</p>
+<blockquote>
+<p>对应图中的步骤4</p>
+</blockquote>
+</li>
+<li><p>Resource Manager中的scheduler为Application master分配一个容器</p>
+</li>
+<li><p>在Resource Manger的指令下，Node Manager启动该容器并运行Application master，其主类是<code>MRAppMaster</code></p>
+<blockquote>
+<p>对应图中的步骤5</p>
+</blockquote>
+</li>
+<li><p>Application master初始化作业：创建多个簿记对象以保持对作业进度的跟踪</p>
+<blockquote>
+<p>对应图中的步骤6</p>
+</blockquote>
+</li>
+<li><p>Application master接收共享目录中的、计算出的输入split，创建对应数量的map任务。同时，也根据设置创建确定数量的reduce任务</p>
+<blockquote>
+<p>对应图中的步骤7</p>
+</blockquote>
+</li>
+<li><p>接下来，Application master需要根据作业的大小决定是否需要向Resource Manager申请container以运行map或reducer任务<br>（1）如果任务可以与Application master在同一个JVM中运行：其开销小于为这些任务单独申请container并运行的开销 —— 这样的作业称为<code>uberized</code><br>（2）任务无法与Application master在同一个JVM中运行，则向Resource Manager为所有的map任务和reduce任务申请container<br>（3）container的请求顺序：首先为map任务请求container，且其优先级高于reduce任务的优先级。<br>（4） 实际上，直到有5%的map任务运行完成，reduce任务的资源请求才会发出</p>
+<blockquote>
+<p>对应图中的步骤8</p>
+</blockquote>
+</li>
+<li><p>一旦scheduler分配好了container，则Application master会与container所在的Node Manager建立通信，以启动container，从而运行任务</p>
+<blockquote>
+<p>对应图中的步骤9</p>
+</blockquote>
+</li>
+<li><p>任务的运行是由名为<code>YarnChild</code>的主类来执行的，<code>YarnChild</code>首先会将任务所需资源本地化（jar包、作业配置、输入数据等），然后再运行具体的map任务或reduce任务</p>
+<blockquote>
+<p>对应图中的步骤10和11</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Shuffle"><a href="#Shuffle" class="headerlink" title="Shuffle"></a>Shuffle</h3><ul>
+<li>在同事的技术分享中，我发现无论是MR的shuffle还是spark的shuffle都是其<code>灵魂</code></li>
+<li>所谓shuffle，英文意思是洗牌。这不是发牌者的那种混洗，而是持牌人的合并、排序</li>
+<li>针对MR，从map任务的输出到reduce任务的输入，这一中间过程就是shuffle</li>
+<li>具体来说，包括map端的shuffle和reduce端的shuffle<br><img src="https://mark.cuckooing.cn/pics/pic_43f9d3d7.png" alt="pic_43f9d3d7.png"></li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>结合yarn，描述MR任务的具体工作流程</p>
+<ol>
+<li>client提交作业，获取到一个submitter实例；执行<code>waitForCompletion()</code>轮询作业状态，作业失败或成功，退出该方法</li>
+<li>submitter向Resource Manager申请Application ID</li>
+<li>submitter负责检查作业的输出说明；计算split；将运行作业所需的各种资源组copy到一个共享目录下</li>
+<li>submitter调用<code>submitApplication()</code>方法，向yarn提交一个application</li>
+<li>Resource Manager分配一个容器，用于运行Application master，其主类为<code>MRAppMaster</code></li>
+<li>Application master进行作业的初始化：创建簿籍对象以跟踪作业进度</li>
+<li>Application master从共享目录获取资源，从而计算出map任务和reduce任务数</li>
+<li>Application master向Resource Manager申请container：可能是uber任务，与Application master运行在同一个JVM；先申请map任务的container，再申请reduce任务的container</li>
+<li>Application master与Node Manager通信，使其启动container以运行任务</li>
+<li>任务放到<code>YarnChild</code>中运行，<code>YarnChild</code>会先从共享目录获取资源，然后再执行任务</li>
+</ol>
+</li>
+<li><p>MR任务再运行过程中，可能出现的各种失败情况</p>
+<ol>
+<li><p>任务失败：</p>
+<ul>
+<li>三种情况会被视为任务失败：① 用户代码抛出异常，导致任务失败；② JVM突然退出；③ task在规定时间未向Application master上报信息</li>
+<li>失败的任务会记入重试次数，如果超过重试次数，则整个作业失败</li>
+<li>任务被kill不会记入重试次数</li>
+</ul>
+</li>
+<li><p>Application master失败</p>
+<ul>
+<li>由Resource Manager负责检测Application master的运行情况</li>
+</ul>
+</li>
+<li><p>Node Manager的失败</p>
+<ul>
+<li>Node Manager崩溃或运行缓慢导致心跳超时，则被Resource Manager认为失败</li>
+<li>重新运行Node Manager上未完成的任务、已完成的map任务</li>
+</ul>
+</li>
+<li><p>Resource Manager失败</p>
+<ul>
+<li>需要提供高可用的Resource Manager，避免单点故障</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>关于shuffle</p>
+<ol>
+<li>map端的shuffle：环形缓冲区、分区、排序（可能存在combiner）、溢写、溢写文件的合并（可能存在combiner）</li>
+<li>reduce端的shuffle：map输出中对应分区的copy、分区的合并</li>
+</ol>
+</li>
+</ul>
+<h1 id="第十二章-MR的其他知识"><a href="#第十二章-MR的其他知识" class="headerlink" title="第十二章 MR的其他知识"></a>第十二章 MR的其他知识</h1><p>任务推测执行</p>
+<ol>
+<li>为了避免运行缓慢的任务拖后腿，调度器会跟踪任务运行速度，为明显低于平均水平的任务创建推测副本</li>
+<li>任务推测执行的目的：以牺牲集群的整体吞吐量为代价，通过冗余任务来提高作业的运行效率</li>
+<li>不适合推测执行的三种情况：软件缺陷、非幂等任务、reduce任务</li>
+</ol>
+<p>MR的提交协议<br>4. 自己的理解：作业或任务在执行的不同阶段，系统所需完成的操作<br>5. 书上的介绍：提交协议可以保证作业或任务，完全失败或成功<br>6. 作业的提交协议：<br>- <code>setupJob()</code>，创建临时工作目录；<br>- <code>commitJob()</code>，作业成功，删除临时工作空间、创建<code>_SUCCESS</code>标志文件；<br>- <code>abortJob()</code>，作业执行失败或被终止，删除临时工作空间（默认实现）<br>7. 任务的提交协议：<br>- <code>setupTask()</code>，不做任何操作（默认实现）；<br>- <code>needsTask()</code>, 如果将其设置为<code>false</code>，关闭提交阶段，不会执行<code>commitTask()</code>或<code>abortTask()</code>；<br>- <code>commitTask()</code>，任务执行成功，将临时输出目录中的内容移动到输出目录<br>- <code>abortTask()</code>，任务执行不成功，删除临时输出目录<br>- 如果存在推测执行，先执行成功的任务调用<code>commitTask()</code>，否则调用<code>abortTask()</code>；如果失败重试，重试成功的任务调用<code>commitTask()</code>，之前失败的任务调用 <code>abortTask()</code></p>
+<p>MR的默认设置</p>
+<ol>
+<li>输入、输出格式的默认设置：<code>TextInputFormat</code>、<code>TextOutputFormat</code></li>
+<li>map和reduce类的设置：<code>Mapper</code>、<code>Reducer</code>，partition类的设置：<code>HashPartitioner</code></li>
+<li>map的输出key-value类型设置：使用默认mapper，将与输入的key-value类型一致</li>
+<li>reduce的输出key-value类型设置：使用默认reducer，将与输入的key-value类型一致</li>
+<li>设置reduce任务数：<code>setNumReduceTasks(1)</code></li>
+</ol>
+<p>streaming作业的默认设置</p>
+<ol>
+<li>map和reduce任务，输入输出的默认分隔符为<code>\t</code>，可以通过属性自定义分隔符</li>
+<li>可以将字段组合，作为key</li>
+</ol>
+<h1 id="第十三章-MR的分片、输入输出格式"><a href="#第十三章-MR的分片、输入输出格式" class="headerlink" title="第十三章 MR的分片、输入输出格式"></a>第十三章 MR的分片、输入输出格式</h1><p>略</p>
+<h1 id="第十四章-MR的组成"><a href="#第十四章-MR的组成" class="headerlink" title="第十四章 MR的组成"></a>第十四章 MR的组成</h1><p>各种计数器</p>
+<h1 id="第十五章-构建Hadoop集群"><a href="#第十五章-构建Hadoop集群" class="headerlink" title="第十五章 构建Hadoop集群"></a>第十五章 构建Hadoop集群</h1><h3 id="为何不使用RAID？"><a href="#为何不使用RAID？" class="headerlink" title="为何不使用RAID？"></a>为何不使用RAID？</h3><ul>
+<li><p>NameNode需要永久性储存文件元数据，可以使用RAID（磁盘阵列）做存储器</p>
+</li>
+<li><p>但是DataNode不建议使用RAID做存储器，主要原因有三个：</p>
+<ul>
+<li>原因一： HDFS的多副本已经能满足冗余需求，无需再使用RAID</li>
+<li>原因二： Hadoop的<code>JBOD</code>（just bound of disk）技术，通过实验表明会比RAID的读写更快。因为，JBOD再所有磁盘间循环调度数据块，取决于磁盘的平均读写速度。然而，RAID却取决于读写速度最慢的磁盘。</li>
+<li>原因三： JBOD的某一磁盘故障，HDFS可以忽略该故障，而RAID中某一磁盘故障则整体瘫痪</li>
+</ul>
+</li>
+</ul>
+<h3 id="守护进程的RPC和HTTP端口"><a href="#守护进程的RPC和HTTP端口" class="headerlink" title="守护进程的RPC和HTTP端口"></a>守护进程的RPC和HTTP端口</h3><ul>
+<li>RPC端口，用于守护进程间相互通信</li>
+<li>HTTP端口，用于提供守护进程与用户交互的web页面</li>
+<li>端口号，一方面决定了守护进程绑定的网络接口；另一方面决定了用户或其他守护进程与之交互的网络接口。</li>
+</ul>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><ul>
+<li>Hadoop文件系统也支持垃圾回收，对应的属性为<code>fs.trash.interval</code></li>
+<li>默认值为0，表示不开启垃圾回收机制</li>
+<li>垃圾回收是用户级特性，只有通过shell命令删除文件，才能被回收</li>
+<li>如果通过编写应用程序，实现文件删除，则无法被回收</li>
+<li>例外： 通过<code>moveToTrash()</code>方法将指定文件放入垃圾回收站，成功返回<code>true</code>；垃圾回收特性未开启，或文件已经在垃圾回收站中，返回<code>false</code></li>
+<li>题外话： 运维清理过期数据，输入<code>rm -rf</code>命令立马enter后，发现命令使用错误，用户的最新数据没了。然后从故障复盘文档中，发现运维又通过垃圾回收恢复了文件。</li>
+<li>因此，自己也才对垃圾回收特性有所关注的 😂</li>
+</ul>
+<h3 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h3><ul>
+<li>一个普通的MR作业，包含map任务和reduce任务，map任务在reduce任务之前。</li>
+<li>等所有的map任务都运行完成，再调度reduce任务？或者，一开始就让为map和reduce任务都调度？</li>
+<li>为了不让reduce任务存在浪费容器不做事的情况，默认当map任务完成<code>5%</code>后，才调度reduce任务</li>
+<li>实际使用时，为了提高集群额吞吐率，可以提高到<code>80%</code></li>
+</ul>
+<h3 id="Hadoop的验证机制"><a href="#Hadoop的验证机制" class="headerlink" title="Hadoop的验证机制"></a>Hadoop的验证机制</h3><ul>
+<li><p>为了避免Hadoop文件系统的数据，被伪装的恶意用户删除，需要进行安全认证</p>
+</li>
+<li><p>雅虎工程师，基于<code>kerberos</code>（一种成熟的开源网络认证协议）实现了基于kerberos的安全认证</p>
+</li>
+<li><p>kerberos认证只负责鉴定登陆账号是否为声称的用户，而用户的访问权限则是由Hadoop自己负责管理</p>
+</li>
+<li><p>kerberos的认证过程</p>
+<ul>
+<li>用户向认证服务器发送一条请求报文，认证服务器返回一个带时间戳的票据授予票据（TGT）</li>
+<li>用户使用TGT向票据授予服务器（TGS）请求一个服务票据</li>
+<li>用户向真实的服务器出示服务票据，以证实自己的合法性。</li>
+<li>注意： TGT具有一定的有效期，无需每次访问服务器都需要进行kerberos认证<br><img src="https://mark.cuckooing.cn/pics/pic_a1eaba87.png" alt="pic_a1eaba87.png"></li>
+</ul>
+</li>
+</ul>
+<h1 id="第十六章-管理Hadoop集群"><a href="#第十六章-管理Hadoop集群" class="headerlink" title="第十六章 管理Hadoop集群"></a>第十六章 管理Hadoop集群</h1><p>NameNode的内存和磁盘会存储了哪些信息？</p>
+<ol>
+<li>内存：文件系统元数据、block的位置映射</li>
+<li>磁盘：永久存储edits和fsimage</li>
+</ol>
+<p>辅助NameNode如何创建fsimage（永久性检查点）？</p>
+<ol>
+<li>主NameNode的roll操作</li>
+<li>辅助NameNode从主NameNode获取最近的edits和fsimage文件，更新seen_txid</li>
+<li>辅助NameNode基于fsimage逐条执行edits中的事务，创建fsimage.ckpt文件</li>
+<li>辅助NameNode将fsimage.ckpt被发送给主NameNode</li>
+<li>主NameNode将fsimage.ckpt更名为fsimage</li>
+</ol>
+<p>NameNode的安全模式</p>
+<ol>
+<li>启动NameNode，直到<code>99.99%</code>的block满足最小级别副本的过程</li>
+<li>期间，对DataNode的写操作都会失败</li>
+<li>例外：启动一个刚刚格式化的HDFS集群，NameNode不会进入安全模式</li>
+</ol>
+<p>fsck工具：</p>
+<ol>
+<li>能检查：过多副本的块、仍需复制的块、错误复制的块（实质：错误放置的块）、损坏的块（所有副本已损坏）、缺失的副本</li>
+<li>需要关注：损坏的块、缺失的副本</li>
+</ol>
+<p>节点的添加和移除</p>
+<ol>
+<li>include文件和exclude文件，针对DataNode和NodeManager的配置属性</li>
+<li>include文件和slaves文件的却别：前者针对特定守护进程，后者针对集群层面的所有守护进程</li>
+<li>基于exclude和include文件，如何进行移除DataNode或NodeManager的判断</li>
+<li>添加或移除文件的过程</li>
+</ol>
+<h1 id="第十七章-Flume"><a href="#第十七章-Flume" class="headerlink" title="第十七章 Flume"></a>第十七章 Flume</h1><h3 id="Flume概述"><a href="#Flume概述" class="headerlink" title="Flume概述"></a>Flume概述</h3><p>简单的Flume代理<br><img src="https://mark.cuckooing.cn/pics/pic_630e6f48.png" alt="pic_630e6f48.png"></p>
+<ol>
+<li>Flume的作用：向HDFS批量导入基于事件的海量数据</li>
+<li>Flume代理的三大基本组件：soure —&gt; channel —&gt; sink</li>
+<li>Flume代理中两个独立的事务，保证了source收集的事件，最终都会到达sink，保证at least once语义</li>
+<li>channel两种类型：file channel 和 memory channel，是否支持久化存储？是否具有较高吞吐等</li>
+<li>Flume的配置</li>
+</ol>
+<p>一些典型的Flume配置：</p>
+<ol>
+<li><p>基于HDFS sink的配置：通过timestamp拦截器，实现数据分区</p>
+</li>
+<li><p>扇出：一个source硬连接多个sink，分流写入或不分流写入，可设置optional channel</p>
+</li>
+<li><p>分层代理：利用多层代理，实现事件汇总；基于Avro sink - soure对的多层代理；多层代理的交付保证：Avro sink —&gt; Avro source —&gt; channel 2整个流程ok，返回确认 ；才能认为：channel 1 —&gt; Avro sink的事务可以提交<br>基于Avro sink-source对连接的两层代理<br><img src="https://mark.cuckooing.cn/pics/pic_60094f15.png" alt="pic_60094f15.png"></p>
+</li>
+<li><p>sink组：一个source 软连接多个sink，有利于负载均衡或故障转移</p>
+</li>
+</ol>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/Alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/assets/img/WeChat.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          魏静崎
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://slightwjq.github.io/2024/10/06/观Hadoop权威指南笔记的笔记/" title="" target="_blank">https://slightwjq.github.io/2024/10/06/观Hadoop权威指南笔记的笔记/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          该文章来源及最终解释权归作者所有
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -232,16 +939,85 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://slightwjq.github.io/2024/10/06/%E8%A7%82Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%E7%9A%84%E7%AC%94%E8%AE%B0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2024/10/06/%E7%B2%BE%E8%AF%BB%E6%96%87%E7%8C%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/06/%E8%99%9A%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">虚假新闻检测介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -262,507 +1038,14 @@
 
 
 
-  
-    <article id="post-软件工程-面试准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h1><h2 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h2><p><em>author:slightwjq</em><br>2023年3月6日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/#more">more >></a>
-    
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">展开全文 >></a>
-    </p>
-    
 
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
-
-
-  
-    <article id="post-数据结构-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="第六章-图"><a href="#第六章-图" class="headerlink" title="第六章 图"></a>第六章 图</h2><p><em>author:slightwjq</em><br>2023年1月23日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第六章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>##第五章 传输层<br><em>author:slightwjq</em><br>2023年1月9日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第四章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第四章-网络层"><a href="#第四章-网络层" class="headerlink" title="第四章 网络层"></a>第四章 网络层</h2><p><em>author:slightwjq</em><br>2023年1月7日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第三章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%89%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第二章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络-第一章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="第一章-计算机网络体系结构"><a href="#第一章-计算机网络体系结构" class="headerlink" title="第一章 计算机网络体系结构"></a>第一章 计算机网络体系结构</h2><p><em>author:slightwjq</em><br>2023年1月3日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统-第五章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="第五章-I-O管理"><a href="#第五章-I-O管理" class="headerlink" title="第五章 I&#x2F;O管理"></a>第五章 I&#x2F;O管理</h2><p><em>author:slightwjq</em><br>2023年1月2日</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -802,8 +1085,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
