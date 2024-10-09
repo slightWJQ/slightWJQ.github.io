@@ -18,7 +18,7 @@
 <meta property="og:description" content="author:魏静崎   2024年10月7日文献考试-精读文献部分">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-06T14:24:24.647Z">
-<meta property="article:modified_time" content="2024-10-07T11:45:41.897Z">
+<meta property="article:modified_time" content="2024-10-09T06:53:54.264Z">
 <meta property="article:author" content="魏静崎">
 <meta property="article:tag" content="research">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">16.4k字</span>
+      <span class="post-count">16.6k字</span>
     </span>
   </span>
 
@@ -282,7 +282,7 @@
 <li><strong>数据规模与泛化</strong>：大数据对模型性能的非单调影响。</li>
 <li><strong>深度学习中的新泛化理论</strong>：新的数学理论框架来解释深度学习中的泛化现象。</li>
 </ul>
-<h3 id="Q4-论文中提到的解决方案之关键是什么？"><a href="#Q4-论文中提到的解决方案之关键是什么？" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>论文间接提出了一些应对双重下降现象的思路，帮助更好地控制模型的性能表现。</p>
+<h3 id="Q4-论文中提到的解决方案之关键是什么？"><a href="#Q4-论文中提到的解决方案之关键是什么？" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>当模型和训练程序的有效模型复杂性与训练样本的数量相当时，训练结果更有可能出现二次下降的现象，因为在这种情况下模型和数据出现了近似一对一的映射，如果数据发生变动模型也会因此发生波动。所以应该改变模型或者数据的大小以避免这种情况的发生。<br>论文间接提出了一些应对双重下降现象的思路，帮助更好地控制模型的性能表现。</p>
 <ol>
 <li><strong>避免“临界区域”</strong>：要么选择较小的模型避免复杂度临界点，要么选择足够大的模型以跨越第一个误差峰值区域，避免性能下降。</li>
 <li><strong>早期停止（Early Stopping）</strong>：在训练过程中密切监控模型的测试误差曲线，一旦观察到测试误差有显著上升趋势，可以停止训练，防止进入临界区。</li>
@@ -293,7 +293,7 @@
 <h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>使用了以下几个<strong>公开的图像分类数据集</strong>：CIFAR-10、CIFAR-100<br>论文代码已经开源</p>
 <h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><p>实验及其结果在很大程度上<strong>有效支持了</strong>论文的科学假设，即：<strong>双重下降现象</strong>广泛存在于深度学习模型中，并打破了经典的“偏差-方差权衡”理论。</p>
 <h3 id="Q8-这篇论文到底有什么贡献？"><a href="#Q8-这篇论文到底有什么贡献？" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><h3 id="Q9-下一步呢？有什么工作可以继续深入？"><a href="#Q9-下一步呢？有什么工作可以继续深入？" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><p>未来的研究可以从<strong>理论深化</strong>、<strong>模型架构影响</strong>、<strong>正则化策略</strong>、<strong>数据质量</strong>、<strong>优化算法</strong>和<strong>实际应用</strong>等多个方向入手，继续深入探索双重下降现象的机制及其影响。通过这些方向的探索，研究人员可以进一步拓展该现象的适用性，揭示更多模型泛化性能背后的本质规律。</p>
-<h1 id="2-knowledge-graph-contrastive-learning-for-recommendation"><a href="#2-knowledge-graph-contrastive-learning-for-recommendation" class="headerlink" title="2.knowledge graph contrastive learning for recommendation"></a>2.knowledge graph contrastive learning for recommendation</h1><h3 id="论文概述-1"><a href="#论文概述-1" class="headerlink" title="论文概述"></a>论文概述</h3><h3 id="Q1-论文试图解决什么问题？-1"><a href="#Q1-论文试图解决什么问题？-1" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><ul>
+<h1 id="2-knowledge-graph-contrastive-learning-for-recommendation"><a href="#2-knowledge-graph-contrastive-learning-for-recommendation" class="headerlink" title="2.knowledge graph contrastive learning for recommendation"></a>2.knowledge graph contrastive learning for recommendation</h1><h3 id="Q1-论文试图解决什么问题？-1"><a href="#Q1-论文试图解决什么问题？-1" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><ul>
 <li><strong>知识图的稀疏性与噪声问题</strong>：<ul>
 <li>真实世界中的知识图通常具有长尾分布，这意味着大部分实体的出现频率很低，导致推荐系统面临稀疏的监督信号。此外，知识图中往往存在噪声和不相关的连接，这些问题会影响用户偏好的准确表示，进而影响推荐效果</li>
 </ul>
@@ -434,7 +434,7 @@
 <li>安全对齐。这包括可解释性、可扩展性的监督和管理以及模型属性的形式验证等方面。</li>
 <li>随着模型大小和复杂性的大幅增长，预测模型性能的方法。难以预测模型性能会随着模型大小和复杂性的大幅增长而有所改变。开发更好的方法来预测模型的性能，即在模型扩展或开发新的架构后模型的性能如何改变，将有助于更有效地使用资源和加速进展</li>
 </ul>
-<h1 id="4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks"><a href="#4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks" class="headerlink" title="4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks"></a>4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks</h1><h3 id="论文概述-2"><a href="#论文概述-2" class="headerlink" title="论文概述"></a>论文概述</h3><h3 id="Q1-论文试图解决什么问题？-2"><a href="#Q1-论文试图解决什么问题？-2" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><p><strong>解决的问题</strong>是如何在社交网络中有效且解释性地检测虚假信息。随着社交媒体平台上虚假信息的泛滥，依赖人工审核的事实核查变得越来越耗时，难以跟上信息传播的速度。为此，论文提出了一种自动化的虚假信息检测框架，该框架结合了多模态信息（文本、社交特征等），不仅提高了分类的准确性，还通过解释性方法帮助用户理解为什么某条信息被判定为虚假。</p>
+<h1 id="4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks"><a href="#4-A-Modality-level-Explainable-Framework-for-Misinformation-Checking-in-Social-Networks" class="headerlink" title="4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks"></a>4. A Modality-level Explainable Framework for Misinformation Checking in Social Networks</h1><h3 id="Q1-论文试图解决什么问题？-2"><a href="#Q1-论文试图解决什么问题？-2" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><p><strong>解决的问题</strong>是如何在社交网络中有效且解释性地检测虚假信息。随着社交媒体平台上虚假信息的泛滥，依赖人工审核的事实核查变得越来越耗时，难以跟上信息传播的速度。为此，论文提出了一种自动化的虚假信息检测框架，该框架结合了多模态信息（文本、社交特征等），不仅提高了分类的准确性，还通过解释性方法帮助用户理解为什么某条信息被判定为虚假。</p>
 <h3 id="Q2-这是否是一个新的问题？-3"><a href="#Q2-这是否是一个新的问题？-3" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>虚假信息的检测和核查一直是社交媒体平台和事实核查组织所关注的重大问题，特别是在信息传播迅速且大量依赖用户生成内容的环境中。</p>
 <h3 id="Q3有哪些相关研究？如何归类？-3"><a href="#Q3有哪些相关研究？如何归类？-3" class="headerlink" title="_Q3有哪些相关研究？如何归类？"></a>_Q3<strong>有哪些相关研究？如何归类？</strong></h3><p>基于文本内容检测、基于多模态的方法、基于社交传播特征的检查</p>
 <h3 id="Q4-论文中提到的解决方案之关键是什么？-3"><a href="#Q4-论文中提到的解决方案之关键是什么？-3" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><ul>
@@ -470,7 +470,6 @@
 <li><strong>前馈神经网络</strong>：基本的神经网络结构，介绍了其工作原理、激活函数及其训练过程。</li>
 <li><strong>卷积神经网络（CNN）</strong>：专门用于处理图像数据的模型，强调局部连接和共享权重的优势。</li>
 <li><strong>循环神经网络（RNN）</strong>：适合处理序列数据（如文本）的网络，讨论了长短期记忆（LSTM）和门控循环单元（GRU）等变种。</li>
-<li><strong>自编码器</strong>、<strong>生成对抗网络（GAN）</strong>等：介绍了无监督学习中的一些重要模型，特别是在生成建模中的应用。</li>
 </ul>
 <h3 id="4-优化与训练"><a href="#4-优化与训练" class="headerlink" title="4. 优化与训练"></a>4. 优化与训练</h3><p>本部分探讨了模型训练中的各种技巧和策略，包括：</p>
 <ul>
@@ -478,12 +477,8 @@
 <li><strong>正则化</strong>：介绍了防止过拟合的技术，包括L1和L2正则化、dropout等。</li>
 <li><strong>超参数调优</strong>：关于如何选择合适的超参数以优化模型性能的策略。</li>
 </ul>
-<h3 id="5-应用与前沿研究"><a href="#5-应用与前沿研究" class="headerlink" title="5. 应用与前沿研究"></a>5. 应用与前沿研究</h3><p>最后一部分探讨了深度学习的实际应用和前沿研究方向：</p>
-<ul>
-<li><strong>应用领域</strong>：如计算机视觉、自然语言处理、音频处理等，介绍了深度学习在各个领域中的成功案例。</li>
-<li><strong>前沿研究</strong>：讨论了一些当前的研究热点，如迁移学习、少样本学习等。</li>
-</ul>
-<h1 id="6-Deep-Residual-Learning-for-Image-Recognition"><a href="#6-Deep-Residual-Learning-for-Image-Recognition" class="headerlink" title="6. Deep Residual Learning for Image Recognition"></a>6. Deep Residual Learning for Image Recognition</h1><h3 id="论文概述-3"><a href="#论文概述-3" class="headerlink" title="论文概述"></a>论文概述</h3><p>该论文介绍了一种新的网络结构，称为 <strong>残差网络（ResNet）</strong>，并在图像识别任务中取得了显著的进展。ResNet 的提出不仅推动了深度学习的发展，还为后续的网络架构设计提供了新的思路，特别是在如何设计更深层次的网络结构方面。</p>
+<h3 id="5-深度学习研究"><a href="#5-深度学习研究" class="headerlink" title="5. 深度学习研究"></a>5. 深度学习研究</h3><p>介绍了线性因子模型，自编码器，表示学习，迁移学习，还介绍了蒙特卡洛采样已经波尔茨曼机，以及对抗生成式网络GAN。</p>
+<h1 id="6-Deep-Residual-Learning-for-Image-Recognition"><a href="#6-Deep-Residual-Learning-for-Image-Recognition" class="headerlink" title="6. Deep Residual Learning for Image Recognition"></a>6. Deep Residual Learning for Image Recognition</h1><h3 id="论文概述-1"><a href="#论文概述-1" class="headerlink" title="论文概述"></a>论文概述</h3><p>该论文介绍了一种新的网络结构，称为 <strong>残差网络（ResNet）</strong>，并在图像识别任务中取得了显著的进展。ResNet 的提出不仅推动了深度学习的发展，还为后续的网络架构设计提供了新的思路，特别是在如何设计更深层次的网络结构方面。</p>
 <h3 id="Q1-论文试图解决什么问题？-3"><a href="#Q1-论文试图解决什么问题？-3" class="headerlink" title="Q1 论文试图解决什么问题？"></a>Q1 <strong>论文试图解决什么问题？</strong></h3><h3 id="1-深度神经网络训练的困难"><a href="#1-深度神经网络训练的困难" class="headerlink" title="1. 深度神经网络训练的困难"></a>1. <strong>深度神经网络训练的困难</strong></h3><p>随着深度神经网络层数的增加，模型的性能并不一定提高，甚至会出现准确率下降的现象，这被称为<strong>退化问题</strong>（degradation problem）。</p>
 <h3 id="2-梯度消失和爆炸"><a href="#2-梯度消失和爆炸" class="headerlink" title="2. 梯度消失和爆炸"></a>2. <strong>梯度消失和爆炸</strong></h3><p>在训练深层网络时，梯度消失或爆炸的问题会导致网络难以有效训练。</p>
 <h3 id="3-信息传递效率"><a href="#3-信息传递效率" class="headerlink" title="3. 信息传递效率"></a>3. <strong>信息传递效率</strong></h3><p>论文提出了如何有效地进行信息传递，使得网络在学习过程中能够保留更丰富的信息。通过引入快捷连接（skip connections），作者希望解决信息在多层网络中的损失问题。</p>
@@ -503,7 +498,7 @@
 <li>研究人员探索了自适应残差网络，根据输入的复杂度自动调整网络结构或计算资源，以提高效率。</li>
 </ul>
 <h3 id="Q4-论文中提到的解决方案之关键是什么？-4"><a href="#Q4-论文中提到的解决方案之关键是什么？-4" class="headerlink" title="Q4 论文中提到的解决方案之关键是什么？"></a><em>Q4</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><h3 id="1-残差学习（Residual-Learning）"><a href="#1-残差学习（Residual-Learning）" class="headerlink" title="1. 残差学习（Residual Learning）"></a>1. <strong>残差学习（Residual Learning）</strong></h3><ul>
-<li>ResNet 引入了<strong>残差模块</strong>，其核心思想是学习输入与输出之间的残差（即：$F(x) &#x3D; H(x) - x$），而不是直接学习从输入到输出的映射（$H(x)$）。通过学习残差，网络的优化问题变得更加简单，且梯度在深层网络中能够更好地传递。这帮助网络在增加层数后不会出现退化现象。</li>
+<li>ResNet 引入了<strong>残差模块</strong>，其核心思想是学习输入与输出之间的残差（即：$F(x) &#x3D; H(x) - x$），而不是直接学习从输入到输出的映射（$H(x)$），1*1的卷积负责用来调整通道数，以极少的计算代价实现残差操作。通过学习残差，网络的优化问题变得更加简单，且梯度在深层网络中能够更好地传递。这帮助网络在增加层数后不会出现退化现象。</li>
 </ul>
 <h3 id="2-快捷连接（Skip-Connections）"><a href="#2-快捷连接（Skip-Connections）" class="headerlink" title="2. 快捷连接（Skip Connections）"></a>2. <strong>快捷连接（Skip Connections）</strong></h3><ul>
 <li>残差模块中的快捷连接（即“跳跃连接”）将输入直接与输出相加，绕过中间的几层非线性变换。这一设计允许梯度在反向传播过程中能够直接通过这些跳跃连接传回前层，从而减轻了梯度消失问题。此外，这种连接保留了前面层的信息，即使深层网络出现了训练难题，模型仍然可以从这些跳跃连接中获益。</li>
@@ -588,7 +583,7 @@
 </ul>
 <h3 id="2-多任务学习架构："><a href="#2-多任务学习架构：" class="headerlink" title="2. 多任务学习架构："></a>2. <strong>多任务学习架构</strong>：</h3><p>TruFor模型采用了<strong>多任务学习</strong>的方法，能够同时完成<strong>图像伪造检测</strong>和<strong>伪造区域的精确定位</strong>。这意味着模型不仅能判断图像是否被篡改，还能标出篡改的具体区域，实现更精细的分析和定位。</p>
 <h3 id="3-深度学习与注意力机制："><a href="#3-深度学习与注意力机制：" class="headerlink" title="3. 深度学习与注意力机制："></a>3. <strong>深度学习与注意力机制</strong>：</h3><p>TruFor还引入了深度学习中的<strong>注意力机制</strong>，通过专注于图像中的特定区域来强化伪造检测能力。注意力机制能够帮助模型更好地捕捉图像中的局部不一致性，这对于检测复杂的篡改手法（如深度伪造或GAN生成的伪造图像）尤为重要。</p>
-<h3 id="Q-5-论文中的模型是如何设计的？"><a href="#Q-5-论文中的模型是如何设计的？" class="headerlink" title="Q**5 论文中的模型是如何设计的？"></a>Q**5 <strong>论文中的模型是如何设计的？</strong></h3><p>首先，从输入的RGB图像x中提取其Noiseprint++（提取器通过对比学习的方式学习补丁级自相似性，采用DnCNN架构），r &#x3D; R(x)，这是一个与x分辨率相同的学习噪声敏感特征。<br>然后，跨模态的CMX架构采用语义分割的方法，在具有共享编码器结构的两个并行分支上提取输入图像和Noiseprint++的特征。x和r分别馈送两个网络，分别提取图像的异常图a和置信图c。依赖于SegFormer，这是一种基于Transformer编码器的分层网络。共享编码器提取合适的密集特征，f &#x3D; E(x, r)，由异常解码器处理以提取异常图，a &#x3D; DA(f)，由置信解码器提取置信图，c &#x3D; DC(f)。<br>通过加权池化块将异常图中收集到的信息汇总为紧凑描述符h &#x3D; P(a, c)，权重取决于置信度信息。<br>最后，由一个分类器处理，分类器计算一个完整性分数y &#x3D; C(h)。</p>
+<h3 id="Q5-论文中的模型是如何设计的？-2"><a href="#Q5-论文中的模型是如何设计的？-2" class="headerlink" title="Q5 论文中的模型是如何设计的？"></a>Q5 <strong>论文中的模型是如何设计的？</strong></h3><p>首先，从输入的RGB图像x中提取其Noiseprint++（提取器通过对比学习的方式学习补丁级自相似性，采用DnCNN架构），r &#x3D; R(x)，这是一个与x分辨率相同的学习噪声敏感特征。<br>然后，跨模态的CMX架构采用语义分割的方法，在具有共享编码器结构的两个并行分支上提取输入图像和Noiseprint++的特征。x和r分别馈送两个网络，分别提取图像的异常图a和置信图c。<br>然后通过SegFormer，这是一种基于Transformer编码器的分层网络。共享编码器提取合适的密集特征，由异常解码器处理以提取异常图，由置信解码器提取置信图。<br>通过加权池化块将异常图中收集到的信息汇总为紧凑描述符h &#x3D; P(a, c)，权重取决于置信度信息。<br>最后，由一个分类器处理，分类器计算一个完整性分数y &#x3D; C(h)。</p>
 <h3 id="Q6-用于定量评估的数据集是什么？代码有没有开源？-4"><a href="#Q6-用于定量评估的数据集是什么？代码有没有开源？-4" class="headerlink" title="Q6 用于定量评估的数据集是什么？代码有没有开源？"></a><em>Q6</em> <strong>用于定量评估的数据集是什么？代码有没有开源？</strong></h3><p>我们使用文献中广泛使用的CASIA v1[16]、Coverage[44]、Columbia[21]、NIST16[20]、DSO-1[14]和VIPP[7]</p>
 <h3 id="Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-4"><a href="#Q7-论文中的实验及结果有没有很好地支持需要验证的科学假设？-4" class="headerlink" title="_Q7 论文中的实验及结果有没有很好地支持需要验证的科学假设？"></a>_Q7 <strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></h3><h3 id="Q8-这篇论文到底有什么贡献？-6"><a href="#Q8-这篇论文到底有什么贡献？-6" class="headerlink" title="Q8 这篇论文到底有什么贡献？"></a><em>Q8</em> <strong>这篇论文到底有什么贡献？</strong></h3><p>TruFor的贡献不仅在于提供了多维度的伪造检测方法，更重要的是它能够应对当今越来越复杂的伪造手段，特别是高质量的GAN生成图像和深度伪造。这为图像取证、新闻验证和网络安全等领域提供了新的技术工具。</p>
 <h3 id="Q9-下一步呢？有什么工作可以继续深入？-6"><a href="#Q9-下一步呢？有什么工作可以继续深入？-6" class="headerlink" title="_Q9 下一步呢？有什么工作可以继续深入？"></a>_Q9 <strong>下一步呢？有什么工作可以继续深入？</strong></h3><h3 id="1-探索端到端训练，允许仅从图像级标签进行部分监督"><a href="#1-探索端到端训练，允许仅从图像级标签进行部分监督" class="headerlink" title="1. 探索端到端训练，允许仅从图像级标签进行部分监督"></a>1. <strong>探索端到端训练，允许仅从图像级标签进行部分监督</strong></h3><p>作者希望探索<strong>部分监督学习</strong>方法，使用较少的标注数据，甚至仅依赖<strong>图像级别的标签</strong>，即仅知道图像是否被篡改，而无需了解具体篡改区域的位置。</p>
@@ -611,13 +606,13 @@
 </ul>
 <h1 id="9-推荐系统前沿与实践"><a href="#9-推荐系统前沿与实践" class="headerlink" title="9. 推荐系统前沿与实践"></a>9. 推荐系统前沿与实践</h1><p>本书<strong>以一线研发人员的视角和经验，</strong> 从原理与实践两个角度为读者剖析推荐系统。该书首先从原理上介绍了各类经典推荐算法及前沿的深度学习推荐算法，涵盖深度协同过滤、特征交互、基于图神经网络的推荐、序列与会话推荐、结合知识图谱的推荐和基于强化学习的推荐等重要技术，然后探讨了推荐算法研究在对话、因果、常识等方面的前沿话题。书中还分析了推荐系统在数据融合、系统扩展、性能评估等方面的关键挑战，并就如何设计负责任的推荐系统进行了探讨。最后，该书结合微软的开源项目+Microsoft Recommenders 介绍了推荐系统的实践经验。</p>
 <h3 id="GPT生成："><a href="#GPT生成：" class="headerlink" title="GPT生成："></a>GPT生成：</h3><h3 id="第1章-推荐系统概述"><a href="#第1章-推荐系统概述" class="headerlink" title="第1章 推荐系统概述"></a>第1章 推荐系统概述</h3><p>1.1 <strong>推荐系统发展历史</strong>：回顾推荐系统从基于内容的推荐、协同过滤到深度学习推荐算法的发展历程，展示技术的演变和进步。<br>1.2 <strong>推荐系统原理</strong>：讲解推荐系统的基本工作原理，包含机器学习和深度学习在推荐系统中的角色，以及不同架构的推荐系统如何处理用户和物品之间的交互关系。<br>1.3 <strong>推荐系统应用价值</strong>：讨论推荐系统的商业和行业价值，展示其如何通过优化用户体验、提升业务目标（如销售、留存等）来实现其价值。</p>
-<h3 id="第2章-经典推荐算法"><a href="#第2章-经典推荐算法" class="headerlink" title="第2章 经典推荐算法"></a>第2章 经典推荐算法</h3><p>2.1 <strong>基于内容的推荐算法</strong>：介绍基于物品或用户内容信息进行推荐的方法，重点关注如何通过结构化和非结构化内容来提升推荐效果，并讨论其优势和局限性。<br>2.2 <strong>基于协同过滤的推荐算法</strong>：探讨协同过滤技术，包括基于记忆的协同过滤和矩阵分解方法，详细分析这些算法如何通过历史数据进行个性化推荐。</p>
+<h3 id="第2章-经典推荐算法"><a href="#第2章-经典推荐算法" class="headerlink" title="第2章 经典推荐算法"></a>第2章 经典推荐算法</h3><p>2.1 <strong>基于内容的推荐算法</strong>：介绍基于物品或用户内容信息进行推荐的方法，重点关注如何通过结构化和非结构化内容来提升推荐效果，并讨论其优势和局限性。<br>    优点： 不需要其他用户的数据，因此不存在冷启动问题，且推荐结果易于解释。<br>    缺点： 可能会导致推荐结果过于同质化，无法发现用户潜在的兴趣点。<br>2.2 <strong>基于协同过滤的推荐算法</strong>：探讨协同过滤技术，包括基于记忆的协同过滤和矩阵分解方法，详细分析这些算法如何通过历史数据进行个性化推荐。<br>    优点： 能够发现用户的潜在兴趣，不需要项目内容的详细信息。<br>    缺点： 存在冷启动问题，且对于稀疏数据集效果不佳。</p>
 <h3 id="第3章-深度学习基础"><a href="#第3章-深度学习基础" class="headerlink" title="第3章 深度学习基础"></a>第3章 深度学习基础</h3><p>3.1 <strong>神经网络与前馈计算</strong>：简要介绍深度学习中的神经网络结构和前向传播的计算原理。<br>3.2 <strong>反向传播算法</strong>：详细解释神经网络中的反向传播算法，如何通过梯度下降更新权重，以优化模型性能。<br>3.3 <strong>多种深度神经网络</strong>：讨论常见的深度神经网络类型，包括卷积神经网络（CNN）、循环神经网络（RNN）和注意力机制等，展示它们在推荐系统中的应用潜力。</p>
 <h3 id="第4章-基于深度学习的推荐算法"><a href="#第4章-基于深度学习的推荐算法" class="headerlink" title="第4章 基于深度学习的推荐算法"></a>第4章 基于深度学习的推荐算法</h3><p>4.1 <strong>深度学习与协同过滤</strong>：结合深度学习与传统协同过滤方法，展示如何通过深层神经网络增强推荐性能。<br>4.2 <strong>深度学习与特征交互</strong>：分析如何通过深度学习模型（如Wide &amp; Deep、DeepFM等）进行复杂的特征交互，以提高推荐的精准度。<br>4.3 <strong>图表示学习与推荐系统</strong>：介绍图神经网络和图嵌入技术在推荐系统中的应用，特别是它们在社会化推荐和协同过滤中的角色。<br>4.4 <strong>序列与基于会话的推荐</strong>：探索如何通过用户的行为序列和会话数据进行推荐，讨论RNN和注意力机制在处理时间序列数据时的优势。<br>4.5 <strong>结合知识图谱的推荐系统</strong>：讲解如何通过知识图谱增强推荐系统的可解释性与物品间的关系建模。<br>4.6 <strong>基于强化学习的推荐算法</strong>：介绍强化学习在推荐系统中的应用，尤其是多臂老虎机模型和深度强化学习的优化策略。</p>
 <h3 id="第5章-推荐系统前沿话题"><a href="#第5章-推荐系统前沿话题" class="headerlink" title="第5章 推荐系统前沿话题"></a>第5章 推荐系统前沿话题</h3><p>5.1 <strong>推荐算法研究热点</strong>：涵盖了对话式推荐、因果推断推荐和常识推荐等新兴研究方向。<br>5.2 <strong>推荐系统应用挑战</strong>：探讨推荐系统在实际应用中面临的挑战，如多源数据融合、系统的可扩展性、冷启动问题等。<br>5.3 <strong>负责任的推荐</strong>：深入分析推荐系统中的社会责任问题，如用户隐私、算法偏见和系统可解释性等。</p>
 <h3 id="第6章-推荐系统实践"><a href="#第6章-推荐系统实践" class="headerlink" title="第6章 推荐系统实践"></a>第6章 推荐系统实践</h3><p>6.1 <strong>工业级推荐系统实现与架构</strong>：描述推荐系统在工业环境中的实现过程，包括从架构设计到数据处理的全流程。<br>6.2 <strong>推荐系统典型应用实践</strong>：展示实际操作中的案例，涵盖数据管理、算法选择、模型训练与评估的各个步骤。<br>6.3 <strong>基于云平台的推荐系统开发与运维</strong>：讨论基于云计算平台构建和管理推荐系统的优点与实践经验。</p>
 <h3 id="第7章-总结与展望"><a href="#第7章-总结与展望" class="headerlink" title="第7章 总结与展望"></a>第7章 总结与展望</h3><p>总结推荐系统的关键技术点，并展望未来发展趋势，如更加个性化的推荐、更强大的模型等新方向。</p>
-<h1 id="10-Attention-is-all-you-need"><a href="#10-Attention-is-all-you-need" class="headerlink" title="10. Attention is all you need"></a>10. Attention is all you need</h1><h3 id="Q1-论文试图解决什么问题？-5"><a href="#Q1-论文试图解决什么问题？-5" class="headerlink" title="Q1 论文试图解决什么问题？"></a><strong><em>Q1</em></strong> <strong>论文试图解决什么问题？</strong></h3><p>基于传统的 RNN 的 Seq2Seq model 难以处理长序列的句子、无法实现并行以及存在对齐问题。因为传统的 RNN 是一个自回归的模型，因此下一时刻的状态依赖于上一层的隐状态，这就导致了模型的可并行程度低，内存的开销极大，同时不能很好地解决长序列的问题，距离较远之间的信息的关联性很难被学习到。而对于 Transformer 架构而言，由于其架构完全基于注意力机制（包括自注意力，多头自注意力，多头掩码自注意力等），因此可以彻底解决并行化，将远距离的计算讲到了常数项。</p>
+<h1 id="10-Attention-is-all-you-need"><a href="#10-Attention-is-all-you-need" class="headerlink" title="10. Attention is all you need"></a>10. Attention is all you need</h1><h3 id="Q1-论文试图解决什么问题？-5"><a href="#Q1-论文试图解决什么问题？-5" class="headerlink" title="Q1 论文试图解决什么问题？"></a><strong><em>Q1</em></strong> <strong>论文试图解决什么问题？</strong></h3><p>循环神经网络的计算效率低（不能并行），且序列太长会导致信息丢失。基于传统的 RNN 的 Seq2Seq model 难以处理长序列的句子、无法实现并行以及存在对齐问题。因为传统的 RNN 是一个迭代预测模型，因此下一时刻的状态依赖于上一层的隐状态，这就导致了模型的可并行程度低，内存的开销极大，同时不能很好地解决长序列的问题，距离较远之间的信息的关联性很难被学习到。而对于 Transformer 架构而言，由于其架构完全基于注意力机制（包括自注意力，多头自注意力，多头掩码自注意力等），因此可以彻底解决并行化，将远距离的计算讲到了常数项。</p>
 <h3 id="Q2-这是否是一个新的问题？-6"><a href="#Q2-这是否是一个新的问题？-6" class="headerlink" title="Q2 这是否是一个新的问题？"></a><em>Q2</em> <strong>这是否是一个新的问题？</strong></h3><p>这并不是一个新的问题，这是传统 RNN 这个自回归模型天然的缺点。递归模型需要使用隐状态，由于下一时刻的状态依赖于上一层的隐状态，因此传统的 RNN 模型无法并行，运行速度较慢，这也导致了其无法处理长序列的句子，同时由于内存的限制约束了批处理速度。最近的工作通过分解的技巧和条件计算显著提高了计算效率，同时也提高了模型的性能。然而，序列计算的基本约束条件仍然存在。</p>
 <h3 id="Q4-有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？"><a href="#Q4-有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？" class="headerlink" title="Q4 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？"></a><em>Q4</em> <strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></h3><p>使用RNN层来完成Seq2Seq，使用CNN层来完成Seq2Seq，使用attention层来完成Seq2Seq。Extended Neural GPU, ByteNet，ConvS2S都以减少顺序计算为目标，但这些模型中关联两个位置操作次数随着位置之间的距离而增加ConvS2S线性增加，ByteNet是指数增加</p>
 <h3 id="Q5-论文中提到的解决方案之关键是什么？"><a href="#Q5-论文中提到的解决方案之关键是什么？" class="headerlink" title="Q5 论文中提到的解决方案之关键是什么？"></a><em>Q5</em> <strong>论文中提到的解决方案之关键是什么？</strong></h3><p>论文中提出的解决方案的关键在于使用了全新的模型架构——Transformer，这个模型完全舍弃了递归，而是完全依赖于注意力机制来捕捉输入和输出之间的全局依赖关系。Transformer允许更多的并行化，并且在经过在八个P100 GPU上训练十二小时后，可以达到新的翻译质量的最新水平。<br>Transformer模型的一个重要特性是自注意力（Self-Attention），也被称为内部注意力，是一种注意力机制，它将单个序列的不同位置关联起来，以计算序列的表示。自注意力已经在各种任务中成功应用，包括阅读理解、抽象概括、文本蕴含和学习任务无关的句子表示。此外，Transformer模型还使用了位置编码（Positional Encoding）来处理序列数据。</p>
