@@ -6,22 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://slightwjq.github.io">
-  <title>MyBlog</title>
+  <title>Mysql基础2 | MyBlog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="MySQL面试篇 优化  1. 如何定位慢查询？ 2. SQL执行计划(分析SQL语句的执行快慢) 3. 索引（3.1 了解过索引吗？）  3.2 存储索引及数据结构 (索引底层数据结构了解过吗？) 3.3 B树与B+树的区别 3.4 聚簇和非聚簇索引  聚簇索引 非聚簇索引（二级索引） 回表查询   3.5 覆盖索引和超大分页优化问题  覆盖索引 利用覆盖索引解决超大分页查询问题  原因 思路">
+  <meta name="description" content="author:魏静崎2025年2月24日Mysql基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBlog">
+<meta property="og:title" content="Mysql基础2">
 <meta property="og:url" content="https://slightwjq.github.io/2025/02/24/Mysql%202/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="MySQL面试篇 优化  1. 如何定位慢查询？ 2. SQL执行计划(分析SQL语句的执行快慢) 3. 索引（3.1 了解过索引吗？）  3.2 存储索引及数据结构 (索引底层数据结构了解过吗？) 3.3 B树与B+树的区别 3.4 聚簇和非聚簇索引  聚簇索引 非聚簇索引（二级索引） 回表查询   3.5 覆盖索引和超大分页优化问题  覆盖索引 利用覆盖索引解决超大分页查询问题  原因 思路">
+<meta property="og:description" content="author:魏静崎2025年2月24日Mysql基础知识">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_22d043f0.png">
 <meta property="og:image" content="https://mark.cuckooing.cn/pics/pic_ffffda7b.png">
-<meta property="article:published_time" content="2025-02-24T14:07:48.273Z">
-<meta property="article:modified_time" content="2024-09-19T11:50:32.176Z">
+<meta property="article:published_time" content="2025-02-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-24T14:14:37.708Z">
 <meta property="article:author" content="魏静崎">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mark.cuckooing.cn/pics/pic_22d043f0.png">
   
@@ -211,9 +212,62 @@
             <article id="post-Mysql 2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      Mysql基础2
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2025/02/24/Mysql%202/" class="archive-article-date">
+        <time datetime="2025-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-24</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.6k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">16分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="MySQL面试篇"><a href="#MySQL面试篇" class="headerlink" title="MySQL面试篇"></a>MySQL面试篇</h4><ul>
+    <blockquote>
+<p>author:魏静崎<br>2025年2月24日<br>Mysql基础知识</p>
+</blockquote>
+<span id="more"></span>
+
+<h4 id="MySQL面试篇"><a href="#MySQL面试篇" class="headerlink" title="MySQL面试篇"></a>MySQL面试篇</h4><ul>
 <li><a href="#_1">优化</a></li>
 <li><ul>
 <li><a href="#1__2">1. 如何定位慢查询？</a></li>
@@ -440,7 +494,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://slightwjq.github.io/2025/02/24/Mysql 2/" title="" target="_blank">https://slightwjq.github.io/2025/02/24/Mysql 2/</a>
+          <a href="https://slightwjq.github.io/2025/02/24/Mysql 2/" title="Mysql基础2" target="_blank">https://slightwjq.github.io/2025/02/24/Mysql 2/</a>
         </li>
         
         <li>
@@ -457,6 +511,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -522,18 +587,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2025/02/24/Mysql/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/10/17/Go%E9%9D%A2%E8%AF%95%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Go零散面试题</div>
+    <a href="/2025/02/24/Mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql基础</div>
       <i class="icon-circle-right"></i>
     </a>
   

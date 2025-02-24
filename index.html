@@ -208,847 +208,41 @@
             
 
   
-    <article id="post-Linux基础操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Mysql 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-  <div class="article-entry" itemprop="articleBody">
-    
-    <ol>
-<li><p>问题：在Linux中，如何查找一个文件？<br>答案：可以使用<code>find</code>命令或者<code>locate</code>命令来查找文件。例如，<code>find / -name filename</code> 会在根目录下查找名为filename的文件。</p>
-</li>
-<li><p>问题：解释一下什么是Linux中的权限，并举例说明。<br>答案：Linux权限是操作系统用来控制特定用户或用户组可以对文件或目录执行的操作的一种机制。例如，<code>chmod 755 filename</code> 命令会设置filename文件的权限，使得拥有者可以读&#x2F;写&#x2F;执行，而组用户和其他用户只能读&#x2F;执行。</p>
-</li>
-<li><p>问题：如何在Linux中创建一个新用户，并设置其主目录？<br>答案：可以使用 <code>useradd</code> 命令来创建新用户。例如，<code>useradd -m -d /home/newuser newuser</code> 会创建一个名为newuser的新用户，并把&#x2F;home&#x2F;newuser设置为其主目录。</p>
-</li>
-<li><p>问题：如何在不重新启动服务的情况下，使Linux系统上的服务立即生效？<br>答案：可以使用 <code>systemctl reload servicename</code> 命令来重新加载服务，使更改立即生效。</p>
-</li>
-<li><p>问题：解释一下什么是Samba，它的作用是什么？<br>答案：Samba是一种开源软件套件，它提供了文件和打印服务给SMB&#x2F;CIFS客户端。它的作用是在Linux和Windows系统之间共享文件和打印机。</p>
-</li>
-<li><p>问题：如何在Linux中查看正在运行的进程？<br>答案：可以使用 <code>ps aux</code> 或 <code>top</code> 命令来查看正在运行的进程。</p>
-</li>
-<li><p>问题：解释一下什么是Shell，并举例说明。<br>答案：Shell是一个命令行解释器，它接受用户输入的命令，并将其转换为系统可以理解的指令。例如，Bash就是Linux中最常用的一种Shell。</p>
-</li>
-<li><p>问题：如何在Linux中安装软件包？<br>答案：可以使用包管理器来安装软件包。例如，在基于Debian的系统中（如Ubuntu），可以使用 <code>apt-get install packagename</code> 命令来安装软件包；在基于Red Hat的系统中（如CentOS），可以使用 <code>yum install packagename</code> 命令来安装软件包。</p>
-</li>
-<li><p>问题：解释一下什么是SSH，如何使用它？<br>答案：SSH（安全外壳协议）是一种加密的网络传输协议，用于在不安全的网络中安全地执行远程命令。可以使用 <code>ssh username@hostname</code> 命令来通过SSH连接到远程服务器。</p>
-</li>
-<li><p>问题：如何在Linux中创建一个新的数据库并设置权限？<br>答案：可以使用 <code>mysql</code> 命令来创建新的数据库并设置权限。例如，<code>mysql -u root -p -e &quot;CREATE DATABASE dbname; GRANT ALL PRIVILEGES ON dbname.* TO &#39;username&#39;@&#39;localhost&#39;; FLUSH PRIVILEGES;&quot;</code> 命令会创建一个名为dbname的新数据库，并设置username用户在本地主机上对该数据库的所有权限。</p>
-</li>
-<li><p>问题：解释一下什么是Linux中的shell脚本，以及如何编写和执行一个shell脚本？<br>答案：Shell脚本是一种使用shell语言编写的脚本程序，可以自动执行一系列命令和任务。要编写一个shell脚本，可以使用文本编辑器（如vi或nano）创建一个以.sh为后缀的文件，然后在其中编写脚本命令。要执行一个shell脚本，可以使用<code>bash filename.sh</code>命令。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程和线程的区别是什么？<br>答案：进程是计算机中的程序关于某个数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位。线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。一个进程可以包含多个线程。</p>
-</li>
-<li><p>问题：在Linux中如何使用ping命令测试网络连接？<br>答案：可以使用<code>ping</code>命令测试网络连接。例如，<code>ping www.google.com</code>会向Google服务器发送ICMP回显请求，并等待响应。</p>
-</li>
-<li><p>问题：解释一下Linux中的目录结构和文件路径的含义。<br>答案：Linux中的目录结构是一个树形结构，根目录为&#x2F;，每个目录都有一个唯一的路径名。文件路径是用来指定文件位置的字符串，它由目录和文件名组成，中间用斜杠分隔。</p>
-</li>
-<li><p>问题：解释一下Linux中的apt-get命令和yum命令的区别是什么？<br>答案：apt-get是Debian系列Linux发行版的包管理工具，而yum是Red Hat系列Linux发行版的包管理工具。apt-get基于Debian的包管理机制，具有较为严格的权限控制，适合于服务器使用。yum则基于RPM包管理机制，具有较为宽松的权限控制，适合于个人用户使用。</p>
-</li>
-<li><p>问题：解释一下Linux中的硬链接和软链接的区别是什么？<br>答案：硬链接是指对文件或目录的引用计数，它与文件或目录在同一个文件系统中。软链接（也称为符号链接）是一个指向文件或目录的路径的文本文件，它与文件或目录不在同一个文件系统中也可以创建。</p>
-</li>
-<li><p>问题：解释一下Linux中的超级用户和普通用户的区别是什么？<br>答案：超级用户（root）拥有对系统的完全控制权，可以更改系统设置、安装软件、修改文件等。普通用户则受到一定的权限限制，不能进行一些超级用户才能进行的操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件权限位和执行位的作用是什么？<br>答案：文件权限位用于指定文件所有者、组和其他用户的读、写和执行权限。执行位表示可执行文件是否可以被执行。</p>
-</li>
-<li><p>问题：解释一下Linux中的日志文件的作用和常见的日志文件有哪些？<br>答案：日志文件记录了系统运行过程中发生的事件和数据，用于监控系统状态、排查问题等。常见的日志文件包括&#x2F;var&#x2F;log&#x2F;messages、&#x2F;var&#x2F;log&#x2F;auth、&#x2F;var&#x2F;log&#x2F;syslog等。</p>
-</li>
-<li><p>问题：解释一下Linux中的防火墙的作用和使用方法。<br>答案：防火墙用于保护网络边界和内部网络的安全，它可以根据预设的规则允许或拒绝数据包的传输。常见的防火墙工具有iptables、firewalld等。</p>
-</li>
-<li><p>问题：解释一下Linux中的软限制和硬限制的区别是什么？<br>答案：在Linux中，软限制是系统为了保护文件系统而设置的一个限制，当达到软限制时，系统会发出警告，但仍然允许操作。而硬限制则是系统为了保护文件系统而设置的一个绝对限制，当达到硬限制时，系统将禁止操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的apt-get和apt命令的区别是什么？<br>答案：apt-get是Debian系列Linux发行版的包管理工具，它用于安装、升级、删除软件包。而apt是apt-get的简化版，它提供了更加易用的命令行界面。</p>
-</li>
-<li><p>问题：解释一下Linux中的交换空间（swap space）的作用和使用方法。<br>答案：交换空间是用于扩展内存资源的一种方法，它可以将一部分硬盘空间用作虚拟内存。交换空间可以用于在物理内存不足时，将不常用的数据暂时存储到硬盘上，以便释放物理内存。</p>
-</li>
-<li><p>问题：解释一下Linux中的systemd服务管理器的作用和特点。<br>答案：systemd是Linux系统中最新的一款服务管理器，用于启动、停止、重启系统服务。它具有事件驱动、日志记录、依赖关系解析等特点。</p>
-</li>
-<li><p>问题：解释一下Linux中的链接文件和符号链接的区别是什么？<br>答案：链接文件是指向另一个文件或目录的引用，它可以是硬链接和软链接。硬链接是指对文件或目录的引用计数，而软链接（也称为符号链接）是一个指向文件或目录的路径的文本文件。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统类型和它们的特点。<br>答案：Linux支持多种文件系统类型，如ext4、xfs、ntfs等。每种文件系统都有自己的特点和优势，如ext4是Linux中最常用的文件系统，具有良好的性能和可靠性。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程间通信（IPC）的几种方式。<br>答案：Linux中的进程间通信方式包括管道、命名管道、消息队列、共享内存、信号等。这些方式可以用于不同进程之间的数据交换和协作。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘分区和文件系统的创建过程。<br>答案：在Linux中，磁盘分区是通过fdisk或parted等工具进行的，然后可以选择不同的文件系统类型进行格式化。创建文件系统后，可以使用mount命令将其挂载到系统中使用。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件权限和所有权的概念。<br>答案：文件权限是用于指定用户对文件的访问权限，包括读、写、执行等权限。而文件所有权则是用于指定文件的拥有者和所属组，以及相应的权限。</p>
-</li>
-<li><p>问题：解释一下Linux中的终端和图形界面的使用方法及其优缺点。<br>答案：Linux提供了终端和图形界面两种用户界面，用户可以通过终端进行命令行操作，也可以通过图形界面进行直观的操作。终端的优点是快速、灵活，适用于脚本编写和系统管理。而图形界面的优点是直观、易用，适用于普通用户和日常操作。</p>
-</li>
-<li><p>问题：解释一下什么是Linux中的shell，它的作用是什么？<br>答案：Shell是Linux系统中的命令行解释器，它允许用户与系统进行交互，执行各种命令和操作。Shell的作用是解释和执行用户输入的命令，管理进程和作业，提供编程接口等。</p>
-</li>
-<li><p>问题：解释一下Linux中的用户环境和系统环境的区别是什么？<br>答案：用户环境是指每个用户登录后所拥有的工作环境，包括用户目录、配置文件、环境变量等。而系统环境则是指整个系统运行时的环境，包括系统目录、核心配置文件、全局环境变量等。</p>
-</li>
-<li><p>问题：解释一下Linux中的内核和操作系统的关系是什么？<br>答案：Linux内核是Linux操作系统的核心组件，负责管理系统硬件和软件资源，提供基本的系统调用和服务。而Linux操作系统则包括内核、系统库、工具和应用程序等多个组件，它们共同协作，提供完整的系统功能。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件和目录的权限设置方法及其含义。<br>答案：在Linux中，可以使用chmod命令设置文件和目录的权限，权限包括读、写、执行等。每个文件或目录的权限都有三组，分别对应拥有者、所属组和其他用户的权限。权限设置可以精确控制用户对文件或目录的访问和操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包管理器和其作用是什么？<br>答案：Linux中的软件包管理器是用于安装、升级、删除和管理软件包的工具，如apt、yum等。它们可以从软件仓库中下载和安装软件包，自动处理依赖关系，提供软件包信息和管理界面等功能。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程调度和优先级的概念。<br>答案：进程调度是指操作系统根据一定的算法和策略，对进程进行分配和调度，以实现多进程并发执行。而优先级则是用于指定进程的优先级别，优先级高的进程会获得更多的CPU时间和资源，以保证其及时响应和执行。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件描述符和文件句柄的区别是什么？<br>答案：文件描述符是一个用于访问文件的整数标识符，由操作系统分配给打开的文件。而文件句柄则是一个用于标识和管理文件的抽象概念，它可以包含文件描述符以及其他相关信息。</p>
-</li>
-<li><p>问题：解释一下Linux中的符号链接和硬链接的区别是什么？<br>答案：符号链接（也称为软链接）是一个指向另一个文件或目录的文本链接，类似于Windows中的快捷方式。而硬链接则是两个文件名指向同一个inode的链接，它们共享相同的文件内容和属性。</p>
-</li>
-<li><p>问题：解释一下Linux中的inode和block的概念及其作用。<br>答案：inode是Linux文件系统中的索引节点，用于存储文件的元数据（如文件大小、修改时间等），而block则是用于存储文件内容的数据块。每个文件都有一个唯一的inode号和数据块集合，它们共同组成了文件的完整信息。</p>
-</li>
-<li><p>问题：解释一下Linux中的crontab和at命令的使用方法及其区别。<br>答案：crontab是用于定时执行任务的工具，用户可以通过编辑crontab文件来设置定时任务。而at命令则用于在指定时间执行一次性任务，用户可以使用at命令来安排任务并指定执行时间。</p>
-</li>
-<li><p>问题：解释一下Linux中的sudo命令的作用及其使用方法。<br>答案：sudo命令是用于以其他用户（通常为root用户）的身份执行命令的工具，它允许普通用户执行需要特权的命令。使用sudo命令时，需要输入当前用户的密码进行验证，然后可以执行相应的命令。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络配置和网络诊断工具的使用方法。<br>答案：Linux中有多种网络配置和网络诊断工具，如ifconfig、netstat、ping等。这些工具可以用于配置网络接口、查看网络状态、诊断网络故障等。用户可以通过命令行或图形界面使用这些工具进行网络管理和维护。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统挂载和自动挂载的概念及其配置方法。<br>答案：文件系统挂载是将文件系统关联到目录的过程，使得在该目录下可以访问文件系统中的内容。而自动挂载是指系统在启动时自动将特定的文件系统挂载到指定的目录。可以通过修改&#x2F;etc&#x2F;fstab文件来配置自动挂载。</p>
-</li>
-<li><p>问题：解释一下Linux中的tar命令的使用方法和常见选项。<br>答案：tar命令用于将多个文件和目录打包成一个归档文件，它可以在打包时进行压缩或解压缩。常见的选项包括-c用于创建归档文件，-x用于解压缩归档文件，-z或–gzip用于使用gzip压缩，-j或–bzip2用于使用bzip2压缩等。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘分区和LVM的概念及其优点。<br>答案：磁盘分区是将一个物理磁盘分成多个逻辑分区的操作，每个分区可以独立地格式化和管理。而LVM（Logical Volume Manager）是一种逻辑卷管理工具，它可以将多个物理分区组合成一个逻辑卷组，并提供更加灵活的存储管理方式。</p>
-</li>
-<li><p>问题：解释一下Linux中的日志系统和日志轮转的概念及其配置方法。<br>答案：Linux中的日志系统用于记录系统和应用程序的运行信息，包括错误、警告、调试等。而日志轮转是指定期将旧的日志文件进行归档和备份，并创建新的日志文件。可以通过修改配置文件和使用logrotate工具等方式进行配置和管理。</p>
-</li>
-<li><p>问题：解释一下Linux中的防火墙和网络安全的概念及其重要性。<br>答案：防火墙是用于控制网络访问和数据流量的安全设备，它可以保护内部网络免受外部攻击和入侵。网络安全则是通过各种技术和措施来保护网络系统的机密性、完整性、可用性和可控性。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包更新和升级的机制及其方法。<br>答案：Linux中提供了各种软件包更新和升级的机制，如apt-get、yum、zypper等工具，可以用于安装、升级和删除软件包。用户可以通过这些工具定期更新系统和应用程序，以获得最新的功能和安全补丁。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程间通信的方式及其使用场景。<br>答案：Linux中提供了多种进程间通信的方式，如管道、命名管道、消息队列、共享内存等。它们可以用于不同进程之间的数据交换和协作，以及实现多线程程序中的线程同步等。</p>
-</li>
-<li><p>问题：解释一下Linux中的系统备份和还原的方法及其工具。<br>答案：Linux中提供了多种备份和还原的工具，如dd、cpio、dump等。用户可以使用这些工具将关键数据备份到磁盘或磁带中，并在需要时进行还原。此外，还可以使用类似于Clonezilla等更加专业的备份和还原工具进行系统级别的备份和还原操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件权限和所有权的概念及其设置方法。<br>答案：文件权限是指对文件进行读、写、执行等操作的权限，而所有权是指文件的拥有者和所属组。在Linux中，可以通过chmod命令设置文件权限，使用chown命令设置文件所有权。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程状态及其查看方法。<br>答案：Linux中的进程状态包括运行、中断、停止、僵尸等。可以使用ps命令查看进程状态，也可以使用top、htop等工具实时查看系统状态。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统类型和特点。<br>答案：Linux支持多种文件系统类型，如ext4、xfs、ntfs等。每种文件系统都有自己的特点和优势，如ext4具有高性能和可靠性，而ntfs则支持Windows和Linux之间的文件共享。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络配置文件及其作用。<br>答案：Linux中的网络配置文件包括&#x2F;etc&#x2F;network&#x2F;interfaces、&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-等，用于配置网络接口、IP地址、网关、DNS等网络参数。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘分区和磁盘配额的概念及其应用场景。<br>答案：磁盘分区是将物理磁盘分成多个逻辑分区的操作，每个分区可以独立地进行格式化和管理。磁盘配额则是一种限制用户或用户组在特定文件系统上使用的存储空间量的机制，常用于共享文件系统。</p>
-</li>
-<li><p>问题：解释一下Linux中的shell脚本编写和调试技巧。<br>答案：Shell脚本是Linux中常用的自动化工具，可以用于自动化任务和流程控制。编写Shell脚本时需要注意语法规则、变量引用、循环控制、条件判断等技巧，调试时可以使用echo、set等命令输出信息进行排错。</p>
-</li>
-<li><p>问题：解释一下Linux中的系统监控和性能调优的方法。<br>答案：Linux提供了多种系统监控工具，如top、htop、iostat等，可以用于实时查看系统状态和性能指标。性能调优则可以通过调整内核参数、优化系统配置等方式提高系统性能。</p>
-</li>
-<li><p>问题：解释一下Linux中的远程访问和远程管理的工具及其使用方法。<br>答案：Linux提供了多种远程访问和远程管理的工具，如ssh、scp、rsync等，可以用于在本地计算机上访问和管理远程服务器。使用这些工具时需要注意安全性问题，如使用密钥对进行身份验证等。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包依赖关系和解决依赖关系的方法。<br>答案：Linux中的软件包依赖关系是指一个软件包需要其他软件包的支持才能正常运行。解决依赖关系的方法包括使用apt-get、yum等包管理器自动解决依赖关系，或者手动安装缺失的依赖包。</p>
-</li>
-<li><p>问题：解释一下Linux中的日志系统和日志轮转的配置方法及其重要性。<br>答案：Linux中的日志系统用于记录系统和应用程序的运行信息，包括错误、警告、调试等。日志轮转是指定期将旧的日志文件进行归档和备份，并创建新的日志文件。配置日志系统和日志轮转可以确保系统稳定性和安全性，同时方便故障排查和问题解决。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程间通信方式，如管道、消息队列、共享内存等，并比较它们的优缺点。<br>答案：Linux中的进程间通信方式包括管道、消息队列、共享内存、信号等。管道是最早的进程间通信方式，但只能用于父子进程之间的通信。消息队列可以实现任意进程间的通信，但需要使用特定的系统调用。共享内存可以实现高效的多进程通信，但需要同步和互斥机制。信号是一种异步的进程间通信方式，可以实现简单的通知和同步。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统挂载点和挂载命令的使用方法。<br>答案：Linux中的文件系统挂载点是指目录，将文件系统挂载到该目录后，在该目录下可以访问该文件系统中的内容。挂载命令包括mount和umount，其中mount用于挂载文件系统，umount用于卸载文件系统。</p>
-</li>
-<li><p>问题：解释一下Linux中的软链接和硬链接的区别和使用场景。<br>答案：软链接是指一个特殊的文件，它包含的是另一个文件的路径，可以跨文件系统。而硬链接是指两个文件名指向同一个inode的链接，它们共享相同的文件内容和属性，不能跨文件系统。软链接通常用于创建文件的快捷方式，而硬链接则通常用于备份和恢复文件。</p>
-</li>
-<li><p>问题：解释一下Linux中的权限位和特殊位（如setuid、setgid、sticky bit等）的作用和使用方法。<br>答案：Linux中的权限位包括读、写、执行权限，分别用r、w、x表示。特殊位包括setuid、setgid和sticky bit等，分别用于设置执行程序的用户ID、组ID和文件权限。setuid位可以让程序以文件拥有者的身份运行，setgid位可以让程序以文件组的身份运行，sticky bit位可以让只有文件拥有者才能删除或重命名文件。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件链接类型和目录链接类型的区别和使用场景。<br>答案：Linux中的文件链接类型包括硬链接和软链接，而目录链接类型只有硬链接。硬链接可以用于创建文件的备份副本，而软链接可以用于创建文件的快捷方式或跨文件系统访问文件。目录硬链接可以用于创建目录的备份副本或合并目录结构。</p>
-</li>
-<li><p>问题：解释一下Linux中的用户账户和用户组的概念及其管理方法。<br>答案：Linux中的用户账户是用户登录系统的身份验证凭据，而用户组则是将一组用户组织在一起进行权限管理的单位。用户账户可以通过passwd命令进行管理，而用户组可以通过groupadd、groupmod和groupdel命令进行管理。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘分区类型和格式化方法及其特点。<br>答案：Linux中的磁盘分区类型包括主分区、扩展分区和逻辑分区。主分区最多可以有四个，扩展分区最多只能有一个，逻辑分区则是在扩展分区内部划分的。磁盘格式化可以使用mkfs命令进行，不同的文件系统类型有不同的选项和参数。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程优先级和nice值的概念及其调整方法。<br>答案：Linux中的进程优先级是指进程在执行时的优先级顺序，而nice值是用于调整进程优先级的参数。可以使用nice和renice命令来调整进程的nice值，从而改变进程的优先级。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络配置文件和网络接口管理命令及其使用方法。<br>答案：Linux中的网络配置文件包括&#x2F;etc&#x2F;network&#x2F;interfaces、&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-等，用于配置网络接口、IP地址、网关、DNS等网络参数。网络接口管理命令包括ifconfig、ip等，可以用于查看和管理网络接口的状态和配置信息。</p>
-</li>
-<li><p>问题：解释一下Linux中的防火墙配置方法和常见的防火墙工具及其特点。<br>答案：Linux中常见的防火墙工具包括iptables和firewalld等。iptables是一种基于规则的防火墙，可以精确地控制网络流量；而firewalld则是一种基于区域的防火墙，可以更加方便地管理网络区域的安全性。防火墙配置方法包括添加规则、删除规则、修改规则等操作，可以用于保护系统的网络安全性和稳定性。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程状态码及其含义。<br>答案：Linux中的进程状态码表示进程的退出状态，其中0表示正常退出，非零表示异常退出。可以使用$?命令查看进程状态码。</p>
-</li>
-<li><p>问题：解释一下Linux中的管道线和管道命令的使用方法。<br>答案：管道线可以将一个命令的输出作为另一个命令的输入，实现数据流的重定向。常见的管道命令包括|、||、&amp;&amp;等，可以用于组合多个命令进行条件判断和循环控制等操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件权限位和特殊位（如setuid、setgid、sticky bit等）的含义及其设置方法。<br>答案：文件权限位表示文件所有者、所属组和其他用户的读、写、执行权限。特殊位包括setuid、setgid和sticky bit等，分别用于设置执行程序的用户ID、组ID和文件权限。可以使用chmod命令设置文件权限位，使用chown命令设置文件所有者和所属组ID。</p>
-</li>
-<li><p>问题：解释一下Linux中的硬链接和软链接的区别及其使用场景。<br>答案：硬链接是指两个或多个文件名指向同一个inode的链接，它们共享相同的文件内容和属性。软链接是一个特殊文件，它包含的是另一个文件的路径，可以跨文件系统。硬链接通常用于备份和恢复文件，而软链接可以用于创建文件的快捷方式或跨文件系统访问文件。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统类型和特点及其使用场景。<br>答案：Linux支持多种文件系统类型，如ext4、xfs、ntfs等。ext4具有高性能和可靠性，是常用的文件系统类型；xfs适用于大规模文件存储和高性能计算环境；ntfs则具有较好的安全性和可靠性，常用于Windows系统。根据不同的应用场景选择合适的文件系统类型可以提高系统的性能和稳定性。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程管理工具及其使用方法。<br>答案：Linux中常用的进程管理工具包括ps、top、htop等。ps命令可以查看当前运行的进程信息，包括进程ID、CPU使用率、内存占用等；top可以实时查看系统的进程信息，包括CPU使用率、内存占用等；htop则可以以交互式界面显示系统的进程信息。这些工具可以帮助管理员进行进程监控和管理。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包管理工具及其使用方法。<br>答案：Linux中常用的软件包管理工具包括apt-get、yum、zypper等。apt-get是Debian系的软件包管理工具，可以用于安装、升级和删除软件包；yum是Red Hat系的软件包管理工具，可以用于安装、更新和卸载软件包；zypper是SUSE系的软件包管理工具，可以用于安装、更新和卸载软件包。这些工具可以帮助管理员方便地进行软件包的批量管理和升级。</p>
-</li>
-<li><p>问题：解释一下Linux中的日志系统和日志轮转机制及其应用场景。<br>答案：Linux中的日志系统用于记录系统和应用程序的运行信息，包括错误、警告、调试等。日志轮转机制则是一种定期对旧日志文件进行归档和备份，并创建新日志文件的机制。这些机制可以确保系统稳定性和安全性，同时方便故障排查和问题解决。常见的日志系统包括rsyslog、logrotate等。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络配置文件和网络接口管理命令及其使用方法。<br>答案：Linux中的网络配置文件包括&#x2F;etc&#x2F;network&#x2F;interfaces、&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-等，用于配置网络接口、IP地址、网关、DNS等网络参数。网络接口管理命令包括ifconfig、ip等，可以用于查看和管理网络接口的状态和配置信息。这些工具可以帮助管理员进行网络配置和维护。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘分区类型和格式化方法及其特点。</p>
-<p>答案：</p>
-<ol>
-<li><p>磁盘分区类型：</p>
-<ul>
-<li>主分区（Primary Partition）：在传统的分区中，磁盘分区包括主分区、扩展分区和逻辑分区三种类型。主分区是硬盘上的主要分区类型，可以在其中存储操作系统和应用程序的数据。在一块磁盘上，主分区的数目最多只有4个，因此主分区和扩展分区的序号就限制为1-4之间。</li>
-<li>扩展分区（Extended Partition）：扩展分区也是主分区，但它不能直接使用，相当于是一个容器，可以在扩展分区中再创建新的分区，这些分区被称为逻辑分区。扩展分区的数目不受限制。</li>
-<li>逻辑分区（Logical Partition）：逻辑分区是在扩展分区中创建的新分区，这些分区的空间不再受到主引导扇区的限制。在Linux中，逻辑分区的数目可以根据需求而增加。</li>
-</ul>
-</li>
-<li><p>格式化方法：</p>
-<ul>
-<li>使用分区编辑器（Partition Editor）进行格式化。在Linux中，可以使用命令行工具如fdisk或parted对磁盘进行分区和格式化。通过这些工具，可以划分磁盘为不同的分区，并选择合适的文件系统进行格式化，如ext4、XFS等。</li>
-<li>对于已经存在的分区，也可以使用命令行工具如mkfs或mkfs.ext4等对文件系统进行格式化。格式化后的分区可以用来存储数据和文件。</li>
-</ul>
-</li>
-<li><p>特点：</p>
-<ul>
-<li>Linux中的所有磁盘以及磁盘中的每个分区都是用文件的形式来表示的。所有的设备文件都统一存放在&#x2F;dev目录中。</li>
-<li>不同类型的硬盘和分区的设备文件都有统一的命名规则。例如，对于SATA和SCSI接口的硬盘设备，采用”sdX”的形式命名，其中”X”为”a,b,c,d”等字母，例如，磁盘的第一款硬盘表示为”sda”，第二款硬盘表示为”sdb”。对于分区，以硬盘设备的文件名作为基础，在后面加上该分区对应的数字序号。例如，第一块硬盘中的第一个分区表示为”sda1”，第二个分区表示为”sda2”。</li>
-<li>在Linux中，逻辑分区的数目可以根据需求而增加，不再受到主引导扇区的限制。这使得磁盘的分区和数据存储更加灵活和可定制。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>问题：解释一下Linux中的文件同步命令及其使用方法。<br>答案：Linux中的文件同步命令包括sync和rsync。sync命令用于将内存中的数据写入磁盘，确保数据一致性；rsync命令则用于在本地或远程系统之间同步文件。rsync可以实现在不同系统之间镜像数据、备份和恢复等操作，同时支持增量同步和远程同步。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程间通信方式，如管道、消息队列、共享内存等，并比较它们的优劣。<br>答案：管道是最早的进程间通信方式，但只能用于父子进程之间的通信，且管道缓冲区是有限的。消息队列可以实现任意进程间的通信，但需要使用特定的系统调用，且在进程间传递消息时需要复制消息内容。共享内存可以实现高效的多进程通信，但需要同步和互斥机制，可能会导致竞争条件和死锁等问题。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统挂载和卸载命令及其使用方法。<br>答案：Linux中的文件系统挂载命令包括mount和umount。mount命令用于将文件系统挂载到指定目录，需要指定文件系统设备名和挂载点目录。umount命令用于卸载已挂载的文件系统，可以用于手动卸载或自动卸载。这些命令可以帮助管理员进行文件系统的管理和维护。</p>
-</li>
-<li><p>问题：解释一下Linux中的权限管理命令及其使用方法。<br>答案：Linux中的权限管理命令包括chmod、chown和setuid等。chmod可以用于设置文件或目录的权限，可以指定读、写、执行权限以及用户和组权限。chown可以用于设置文件或目录的所有者和所属组，可以指定用户名和组名。setuid可以将程序的执行权限设置为文件拥有者的权限，从而使得程序可以以更高的权限运行。这些命令可以帮助管理员进行权限管理和控制。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络服务配置文件和网络服务管理命令及其使用方法。<br>答案：Linux中的网络服务配置文件包括&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-、&#x2F;etc&#x2F;resolv.conf等，用于配置网络接口、IP地址、网关、DNS等网络参数。网络服务管理命令包括service、systemctl等，可以用于启动、停止、重启网络服务等操作。这些命令可以帮助管理员进行网络服务的配置和管理。</p>
-</li>
-<li><p>问题：解释一下Linux中的定时任务管理工具及其使用方法。<br>答案：Linux中的定时任务管理工具包括cron和anacron等。cron可以定期执行指定的命令或脚本，可以用于实现定期备份、更新、监控等任务。anacron则可以用于执行在计划时间未能执行的定时任务，可以用于确保定时任务的可靠性和稳定性。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件压缩和解压缩命令及其使用方法。<br>答案：Linux中的文件压缩命令包括gzip、bzip2等，可以用于压缩文件以节省存储空间和网络带宽。解压缩命令包括gunzip、bunzip2等，可以用于解压已压缩的文件。这些命令可以帮助管理员进行文件压缩和解压缩操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包编译和安装方法及其应用场景。<br>答案：Linux中的软件包编译和安装方法包括源码编译和包管理器安装等。源码编译可以从源代码编译生成可执行文件或库文件，可以定制软件功能和性能。包管理器安装则可以从软件仓库下载和安装软件包，可以方便地进行软件包的安装、升级和卸载。这些方法可以帮助管理员进行软件包的定制和管理。</p>
-</li>
-<li><p>问题：解释一下Linux中的系统性能监控工具及其使用方法。<br>答案：Linux中的系统性能监控工具包括top、htop、iostat等，可以用于实时查看系统的CPU使用率、内存占用、磁盘I&#x2F;O等性能指标。这些工具可以帮助管理员进行系统性能监控和优化。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘阵列和LVM的概念及其应用场景。<br>答案：磁盘阵列是一种将多个磁盘组合成一个逻辑磁盘的技术，可以提高磁盘的读写性能和可靠性。LVM是一种逻辑卷管理技术，可以将多个磁盘或分区组合成一个逻辑卷，可以方便地进行磁盘空间的扩展和管理。这些技术可以帮助管理员进行磁盘存储的管理和优化。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程状态和信号及其关系。<br>答案：Linux中的进程状态包括运行态、阻塞态、就绪态等，信号是一种用于进程间通信和控制的机制。进程可以接收到不同类型的信号，并可以根据需要处理或忽略这些信号。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件权限位和特殊位（如setuid、setgid、sticky bit等）的含义及其设置方法（续）。<br>答案：除了之前提到的setuid、setgid和sticky bit外，还有几种特殊的文件权限位，如SUID、SGID和SGID），可以用于在执行程序时临时改变进程的属主或属组。</p>
-</li>
-<li><p>问题：解释一下Linux中的网络连接和网络配置命令及其应用场景。<br>答案：Linux中的网络连接可以通过有线或无线方式实现，需要配置网络接口、IP地址、网关、DNS等参数。网络配置命令包括ifconfig、route、ping等，可以用于查看和管理网络连接的状态和配置信息。</p>
-</li>
-<li><p>问题：解释一下Linux中的日志系统和日志分析工具及其应用场景。<br>答案：Linux中的日志系统用于记录系统和应用程序的运行信息，包括错误、警告、调试等。日志分析工具可以帮助管理员进行日志的查询、统计和分析，以便及时发现和解决问题。常见的日志系统包括rsyslog、logrotate等，分析工具包括grep、awk、sed等。</p>
-</li>
-<li><p>问题：解释一下Linux中的文件系统和磁盘分区类型及其特点。<br>答案：Linux支持多种文件系统类型，如ext4、XFS、NTFS等，它们具有不同的特点和优劣。磁盘分区类型包括主分区、扩展分区和逻辑分区，主分区数量有限制（最多3个），扩展分区可以包含逻辑分区。</p>
-</li>
-<li><p>问题：解释一下Linux中的shell脚本和管道命令的使用方法及其应用场景。<br>答案：Shell脚本是一种用文本方式编写的脚本程序，可以实现各种任务自动化。管道命令可以将一个命令的输出作为另一个命令的输入，实现数据流的重定向。这些技术可以结合使用，实现复杂的功能和操作。</p>
-</li>
-<li><p>问题：解释一下Linux中的软件包管理器和源码编译安装方法及其应用场景。<br>答案：Linux中有许多软件包管理器，如yum、apt-get、zypper等，它们可以用于安装、更新和卸载软件包，可以方便地进行批量管理和升级。源码编译安装方法则需要手动下载源代码并编译生成可执行文件或库文件，可以用于安装非标准或定制化的软件包。</p>
-</li>
-<li><p>问题：解释一下Linux中的进程间通信方式及其应用场景（续）。<br>答案：除了之前提到的管道、消息队列、共享内存外，还有几种其他的进程间通信方式，如信号量（semaphore）、共享内存（shared memory）、套接字（socket）等。它们具有不同的特点和适用场景，可以根据需要进行选择和使用。</p>
-</li>
-<li><p>问题：解释一下Linux中的磁盘管理和分区命令及其使用方法。<br>答案：Linux中的磁盘管理和分区命令包括fdisk、parted等，可以用于查看和管理磁盘的分区表信息。通过这些命令可以创建、删除和调整分区的数量和大小，以满足不同的需求和应用场景。</p>
-</li>
-<li><p>问题：解释一下Linux中的备份和还原命令及其使用方法。<br>答案：Linux中的备份和还原命令包括tar、cpio等，可以用于将文件或目录打包成归档文件进行备份，也可以用于还原备份文件到指定位置。这些命令可以帮助管理员进行数据备份和还原操作，以保护数据的安全性和完整性。</p>
-</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/02/24/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/24/Mysql%202/" target="_blank">Mysql基础2</a>
+  
+    </h1>
+  
 
 
   
-    <article id="post-Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+<a href="/2025/02/24/Mysql%202/" class="archive-article-date">
+        <time datetime="2025-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-24</time>
+</a>
+
+  
+  
     
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>整理了20道经典Redis面试题，希望对大家有帮助。</p>
-<h3 id="1-什么是Redis？它主要用来什么的？"><a href="#1-什么是Redis？它主要用来什么的？" class="headerlink" title="1. 什么是Redis？它主要用来什么的？"></a>1. 什么是Redis？它主要用来什么的？</h3><p>Redis，英文全称是Remote Dictionary Server（远程字典服务），是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
-<p>与MySQL数据库不同的是，Redis的数据是存在内存中的。它的读写速度非常快，每秒可以处理超过10万次读写操作。因此redis被广泛应用于缓存，另外，Redis也经常用来做分布式锁。除此之外，Redis支持事务、持久化、LUA 脚本、LRU 驱动事件、多种集群方案。</p>
-<h3 id="2-说说Redis的基本数据结构类型"><a href="#2-说说Redis的基本数据结构类型" class="headerlink" title="2.说说Redis的基本数据结构类型"></a>2.说说Redis的基本数据结构类型</h3><p>大多数小伙伴都知道，Redis有以下这五种基本类型：</p>
-<ul>
-<li>String（字符串）</li>
-<li>Hash（哈希）</li>
-<li>List（列表）</li>
-<li>Set（集合）</li>
-<li>zset（有序集合）</li>
-</ul>
-<p>它还有三种特殊的数据结构类型</p>
-<ul>
-<li>Geospatial</li>
-<li>Hyperloglog</li>
-<li>Bitmap</li>
-</ul>
-<h4 id="2-1-Redis-的五种基本数据类型"><a href="#2-1-Redis-的五种基本数据类型" class="headerlink" title="2.1 Redis 的五种基本数据类型"></a>2.1 Redis 的五种基本数据类型</h4><p><img src="https://mark.cuckooing.cn/pics/pic_1d21c766.png" alt="pic_1d21c766.png"></p>
-<p>String（字符串）</p>
-<ul>
-<li>简介:String是Redis最基础的数据结构类型，它是二进制安全的，可以存储图片或者序列化的对象，值最大存储为512M</li>
-<li>简单使用举例: <code>set key value</code>、<code>get key</code>等</li>
-<li>应用场景：共享session、分布式锁，计数器、限流。</li>
-<li>内部编码有3种，<code>int（8字节长整型）/embstr（小于等于39字节字符串）/raw（大于39个字节字符串）</code></li>
-</ul>
-<p>C语言的字符串是<code>char[]</code>实现的，而Redis使用SDS（simple dynamic string） 封装，sds源码如下：</p>
-<p><code>struct sdshdr&#123; unsigned int len; // 标记buf的长度 unsigned int free; //标记buf中未使用的元素个数 char buf[]; // 存放元素的坑 &#125;</code></p>
-<p>SDS 结构图如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_41e2be8c.png" alt="pic_41e2be8c.png"></p>
-<p>Redis为什么选择SDS结构，而C语言原生的<code>char[]</code>不香吗？</p>
-<blockquote>
-<p>举例其中一点，SDS中，O(1)时间复杂度，就可以获取字符串长度；而C 字符串，需要遍历整个字符串，时间复杂度为O(n)</p>
+    <blockquote>
+<p>author:魏静崎<br>2025年2月24日<br>Mysql基础知识</p>
 </blockquote>
-<p>Hash（哈希）</p>
-<ul>
-<li>简介：在Redis中，哈希类型是指v（值）本身又是一个键值对（k-v）结构</li>
-<li>简单使用举例：<code>hset key field value</code> 、<code>hget key field</code></li>
-<li>内部编码：<code>ziplist（压缩列表）</code> 、<code>hashtable（哈希表）</code></li>
-<li>应用场景：缓存用户信息等。</li>
-<li>注意点：如果开发使用hgetall，哈希元素比较多的话，可能导致Redis阻塞，可以使用hscan。而如果只是获取部分field，建议使用hmget。</li>
-</ul>
-<p>字符串和哈希类型对比如下图：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_6ec24e98.png" alt="pic_6ec24e98.png"></p>
-<p>List（列表）</p>
-<ul>
-<li>简介：列表（list）类型是用来存储多个有序的字符串，一个列表最多可以存储2^32-1个元素。</li>
-<li>简单实用举例：<code>lpush key value [value ...]</code> 、<code>lrange key start end</code></li>
-<li>内部编码：ziplist（压缩列表）、linkedlist（链表）</li>
-<li>应用场景：消息队列，文章列表,</li>
-</ul>
-<p>一图看懂list类型的插入与弹出：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_41abce4e.png" alt="pic_41abce4e.png"></p>
-<p>list应用场景参考以下：</p>
-<blockquote>
-<ul>
-<li>lpush+lpop&#x3D;Stack（栈）</li>
-<li>lpush+rpop&#x3D;Queue（队列）</li>
-<li>lpsh+ltrim&#x3D;Capped Collection（有限集合）</li>
-<li>lpush+brpop&#x3D;Message Queue（消息队列）</li>
-</ul>
-</blockquote>
-<p>Set（集合）</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_25a86d35.png" alt="pic_25a86d35.png"></p>
-<ul>
-<li>简介：集合（set）类型也是用来保存多个的字符串元素，但是不允许重复元素</li>
-<li>简单使用举例：<code>sadd key element [element ...]</code>、<code>smembers key</code></li>
-<li>内部编码：<code>intset（整数集合）</code>、<code>hashtable（哈希表）</code></li>
-<li>注意点：smembers和lrange、hgetall都属于比较重的命令，如果元素过多存在阻塞Redis的可能性，可以使用sscan来完成。</li>
-<li>应用场景：用户标签,生成随机数抽奖、社交需求。</li>
-</ul>
-<p>有序集合（zset）</p>
-<ul>
-<li>简介：已排序的字符串集合，同时元素不能重复</li>
-<li>简单格式举例：<code>zadd key score member [score member ...]</code>，<code>zrank key member</code></li>
-<li>底层内部编码：<code>ziplist（压缩列表）</code>、<code>skiplist（跳跃表）</code></li>
-<li>应用场景：排行榜，社交需求（如用户点赞）。</li>
-</ul>
-<h4 id="2-2-Redis-的三种特殊数据类型"><a href="#2-2-Redis-的三种特殊数据类型" class="headerlink" title="2.2 Redis 的三种特殊数据类型"></a>2.2 Redis 的三种特殊数据类型</h4><ul>
-<li>Geo：Redis3.2推出的，地理位置定位，用于存储地理位置信息，并对存储的信息进行操作。</li>
-<li>HyperLogLog：用来做基数统计算法的数据结构，如统计网站的UV。</li>
-<li>Bitmaps ：用一个比特位来映射某个元素的状态，在Redis中，它的底层是基于字符串类型实现的，可以把bitmaps成作一个以比特位为单位的数组</li>
-</ul>
-<h3 id="3-Redis为什么这么快？"><a href="#3-Redis为什么这么快？" class="headerlink" title="3. Redis为什么这么快？"></a>3. Redis为什么这么快？</h3><p><img src="https://mark.cuckooing.cn/pics/pic_92cb55bf.png" alt="pic_92cb55bf.png"></p>
-<p>Redis为什么这么快</p>
-<h4 id="3-1-基于内存存储实现"><a href="#3-1-基于内存存储实现" class="headerlink" title="3.1 基于内存存储实现"></a>3.1 基于内存存储实现</h4><p>我们都知道内存读写是比在磁盘快很多的，Redis基于内存存储实现的数据库，相对于数据存在磁盘的MySQL数据库，省去磁盘I&#x2F;O的消耗。</p>
-<h4 id="3-2-高效的数据结构"><a href="#3-2-高效的数据结构" class="headerlink" title="3.2 高效的数据结构"></a>3.2 高效的数据结构</h4><p>我们知道，Mysql索引为了提高效率，选择了B+树的数据结构。其实合理的数据结构，就是可以让你的应用&#x2F;程序更快。先看下Redis的数据结构&amp;内部编码图：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_6a2b197e.png" alt="pic_6a2b197e.png"></p>
-<p>SDS简单动态字符串</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_9c10ecea.png" alt="pic_9c10ecea.png"></p>
-<blockquote>
-<ul>
-<li>字符串长度处理：Redis获取字符串长度，时间复杂度为O(1)，而C语言中，需要从头开始遍历，复杂度为O（n）;</li>
-<li>空间预分配：字符串修改越频繁的话，内存分配越频繁，就会消耗性能，而SDS修改和空间扩充，会额外分配未使用的空间，减少性能损耗。</li>
-<li>惰性空间释放：SDS 缩短时，不是回收多余的内存空间，而是free记录下多余的空间，后续有变更，直接使用free中记录的空间，减少分配。</li>
-<li>二进制安全：Redis可以存储一些二进制数据，在C语言中字符串遇到’\0’会结束，而 SDS中标志字符串结束的是len属性。</li>
-</ul>
-</blockquote>
-<p>字典</p>
-<p>Redis 作为 K-V 型内存数据库，所有的键值就是用字典来存储。字典就是哈希表，比如HashMap，通过key就可以直接获取到对应的value。而哈希表的特性，在O（1）时间复杂度就可以获得对应的值。</p>
-<p>跳跃表</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_d9819d32.png" alt="pic_d9819d32.png"></p>
-<blockquote>
-<ul>
-<li>跳跃表是Redis特有的数据结构，就是在链表的基础上，增加多级索引提升查找效率。</li>
-<li>跳跃表支持平均 O（logN）,最坏 O（N）复杂度的节点查找，还可以通过顺序性操作批量处理节点。</li>
-</ul>
-</blockquote>
-<h4 id="3-3-合理的数据编码"><a href="#3-3-合理的数据编码" class="headerlink" title="3.3 合理的数据编码"></a>3.3 合理的数据编码</h4><p>Redis 支持多种数据数据类型，每种基本类型，可能对多种数据结构。什么时候,使用什么样数据结构，使用什么样编码，是redis设计者总结优化的结果。</p>
-<blockquote>
-<ul>
-<li>String：如果存储数字的话，是用int类型的编码;如果存储非数字，小于等于39字节的字符串，是embstr；大于39个字节，则是raw编码。</li>
-<li>List：如果列表的元素个数小于512个，列表每个元素的值都小于64字节（默认），使用ziplist编码，否则使用linkedlist编码</li>
-<li>Hash：哈希类型元素个数小于512个，所有值小于64字节的话，使用ziplist编码,否则使用hashtable编码。</li>
-<li>Set：如果集合中的元素都是整数且元素个数小于512个，使用intset编码，否则使用hashtable编码。</li>
-<li>Zset：当有序集合的元素个数小于128个，每个元素的值小于64字节时，使用ziplist编码，否则使用skiplist（跳跃表）编码</li>
-</ul>
-</blockquote>
-<h4 id="3-4-合理的线程模型"><a href="#3-4-合理的线程模型" class="headerlink" title="3.4 合理的线程模型"></a>3.4 合理的线程模型</h4><p>I&#x2F;O 多路复用</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_01d6044d.png" alt="pic_01d6044d.png"></p>
-<p>I&#x2F;O 多路复用</p>
-<blockquote>
-<p>多路I&#x2F;O复用技术可以让单个线程高效的处理多个连接请求，而Redis使用用epoll作为I&#x2F;O多路复用技术的实现。并且，Redis自身的事件处理模型将epoll中的连接、读写、关闭都转换为事件，不在网络I&#x2F;O上浪费过多的时间。</p>
-</blockquote>
-<p>什么是I&#x2F;O多路复用？</p>
-<blockquote>
-<ul>
-<li>I&#x2F;O ：网络 I&#x2F;O</li>
-<li>多路 ：多个网络连接</li>
-<li>复用：复用同一个线程。</li>
-<li>IO多路复用其实就是一种同步IO模型，它实现了一个线程可以监视多个文件句柄；一旦某个文件句柄就绪，就能够通知应用程序进行相应的读写操作；而没有文件句柄就绪时,就会阻塞应用程序，交出cpu。</li>
-</ul>
-</blockquote>
-<p>单线程模型</p>
-<ul>
-<li>Redis是单线程模型的，而单线程避免了CPU不必要的上下文切换和竞争锁的消耗。也正因为是单线程，如果某个命令执行过长（如hgetall命令），会造成阻塞。Redis是面向快速执行场景的数据库。，所以要慎用如smembers和lrange、hgetall等命令。</li>
-<li>Redis 6.0 引入了多线程提速，它的执行命令操作内存的仍然是个单线程。</li>
-</ul>
-<h4 id="3-5-虚拟内存机制"><a href="#3-5-虚拟内存机制" class="headerlink" title="3.5 虚拟内存机制"></a>3.5 虚拟内存机制</h4><p>Redis直接自己构建了VM机制 ，不会像一般的系统会调用系统函数处理，会浪费一定的时间去移动和请求。</p>
-<p>Redis的虚拟内存机制是啥呢？</p>
-<blockquote>
-<p>虚拟内存机制就是暂时把不经常访问的数据(冷数据)从内存交换到磁盘中，从而腾出宝贵的内存空间用于其它需要访问的数据(热数据)。通过VM功能可以实现冷热数据分离，使热数据仍在内存中、冷数据保存到磁盘。这样就可以避免因为内存不足而造成访问速度下降的问题。</p>
-</blockquote>
-<h3 id="4-什么是缓存击穿、缓存穿透、缓存雪崩？"><a href="#4-什么是缓存击穿、缓存穿透、缓存雪崩？" class="headerlink" title="4. 什么是缓存击穿、缓存穿透、缓存雪崩？"></a>4. 什么是缓存击穿、缓存穿透、缓存雪崩？</h3><h4 id="4-1-缓存穿透问题"><a href="#4-1-缓存穿透问题" class="headerlink" title="4.1 缓存穿透问题"></a>4.1 缓存穿透问题</h4><p>先来看一个常见的缓存使用方式：读请求来了，先查下缓存，缓存有值命中，就直接返回；缓存没命中，就去查数据库，然后把数据库的值更新到缓存，再返回。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_10955b06.png" alt="pic_10955b06.png"></p>
-<p>读取缓存</p>
-<p>缓存穿透：指查询一个一定不存在的数据，由于缓存是不命中时需要从数据库查询，查不到数据则不写入缓存，这将导致这个<strong>不存在的数据每次请求都要到数据库去查询</strong>，进而给数据库带来压力。</p>
-<blockquote>
-<p>通俗点说，读请求访问时，缓存和数据库都没有某个值，这样就会导致每次对这个值的查询请求都会穿透到数据库，这就是缓存穿透。</p>
-</blockquote>
-<p>缓存穿透一般都是这几种情况产生的：</p>
-<ul>
-<li>业务不合理的设计，比如大多数用户都没开守护，但是你的每个请求都去缓存，查询某个userid查询有没有守护。</li>
-<li>业务&#x2F;运维&#x2F;开发失误的操作，比如缓存和数据库的数据都被误删除了。</li>
-<li>黑客非法请求攻击，比如黑客故意捏造大量非法请求，以读取不存在的业务数据。</li>
-</ul>
-<p>如何避免缓存穿透呢？ 一般有三种方法。</p>
-<ul>
-<li>1.如果是非法请求，我们在API入口，对参数进行校验，过滤非法值。</li>
-<li>2.如果查询数据库为空，我们可以给缓存设置个空值，或者默认值。但是如有有写请求进来的话，需要更新缓存哈，以保证缓存一致性，同时，最后给缓存设置适当的过期时间。（业务上比较常用，简单有效）</li>
-<li>3.使用布隆过滤器快速判断数据是否存在。即一个查询请求过来时，先通过布隆过滤器判断值是否存在，存在才继续往下查。</li>
-</ul>
-<blockquote>
-<p>布隆过滤器原理：它由初始值为0的位图数组和N个哈希函数组成。一个对一个key进行N个hash算法获取N个值，在比特数组中将这N个值散列后设定为1，然后查的时候如果特定的这几个位置都为1，那么布隆过滤器判断该key存在。</p>
-</blockquote>
-<h4 id="4-2-缓存雪奔问题"><a href="#4-2-缓存雪奔问题" class="headerlink" title="4.2 缓存雪奔问题"></a>4.2 缓存雪奔问题</h4><p>缓存雪奔： 指缓存中数据大批量到过期时间，而查询数据量巨大，请求都直接访问数据库，引起数据库压力过大甚至down机。</p>
-<ul>
-<li>缓存雪奔一般是由于<strong>大量数据同时过期造成的</strong>，对于这个原因，可通过均匀设置过期时间解决，即让过期时间相对离散一点。如采用一个<strong>较大固定值+一个较小的随机值</strong>，5小时+0到1800秒酱紫。</li>
-<li>Redis 故障宕机也可能引起缓存雪奔。这就需要构造Redis高可用集群啦。</li>
-</ul>
-<h4 id="4-3-缓存击穿问题"><a href="#4-3-缓存击穿问题" class="headerlink" title="4.3 缓存击穿问题"></a>4.3 缓存击穿问题</h4><p>缓存击穿： 指热点key在某个时间点过期的时候，而恰好在这个时间点对这个Key有大量的并发请求过来，从而大量的请求打到db。</p>
-<p>缓存击穿看着有点像，其实它两区别是，缓存雪奔是指数据库压力过大甚至down机，缓存击穿只是大量并发请求到了DB数据库层面。可以认为击穿是缓存雪奔的一个子集吧。有些文章认为它俩区别，是区别在于击穿针对某一热点key缓存，雪奔则是很多key。</p>
-<p>解决方案就有两种：</p>
-<ul>
-<li>1.使用<strong>互斥锁方案</strong>。缓存失效时，不是立即去加载db数据，而是先使用某些带成功返回的原子操作命令，如(Redis的setnx）去操作，成功的时候，再去加载db数据库数据和设置缓存。否则就去重试获取缓存。</li>
-<li><ol start="2">
-<li>“永不过期”，是指没有设置过期时间，但是热点数据快要过期时，异步线程去更新和设置过期时间。</li>
-</ol>
-</li>
-</ul>
-<h3 id="5-什么是热Key问题，如何解决热key问题"><a href="#5-什么是热Key问题，如何解决热key问题" class="headerlink" title="5. 什么是热Key问题，如何解决热key问题"></a>5. 什么是热Key问题，如何解决热key问题</h3><p>什么是热Key呢？在Redis中，我们把访问频率高的key，称为热点key。</p>
-<p>如果某一热点key的请求到服务器主机时，由于请求量特别大，可能会导致主机资源不足，甚至宕机，从而影响正常的服务。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_ba035bc1.png" alt="pic_ba035bc1.png"></p>
-<p>而热点Key是怎么产生的呢？主要原因有两个：</p>
-<blockquote>
-<ul>
-<li>用户消费的数据远大于生产的数据，如秒杀、热点新闻等读多写少的场景。</li>
-<li>请求分片集中，超过单Redi服务器的性能，比如固定名称key，Hash落入同一台服务器，瞬间访问量极大，超过机器瓶颈，产生热点Key问题。</li>
-</ul>
-</blockquote>
-<p>那么在日常开发中，如何识别到热点key呢？</p>
-<blockquote>
-<ul>
-<li>凭经验判断哪些是热Key；</li>
-<li>客户端统计上报；</li>
-<li>服务代理层上报</li>
-</ul>
-</blockquote>
-<p>如何解决热key问题？</p>
-<blockquote>
-<ul>
-<li>Redis集群扩容：增加分片副本，均衡读流量；</li>
-<li>将热key分散到不同的服务器中；</li>
-<li>使用二级缓存，即JVM本地缓存,减少Redis的读请求。</li>
-</ul>
-</blockquote>
-<h3 id="6-Redis-过期策略和内存淘汰策略"><a href="#6-Redis-过期策略和内存淘汰策略" class="headerlink" title="6. Redis 过期策略和内存淘汰策略"></a>6. Redis 过期策略和内存淘汰策略</h3><p><img src="https://mark.cuckooing.cn/pics/pic_5738d610.png" alt="pic_5738d610.png"></p>
-<h4 id="6-1-Redis的过期策略"><a href="#6-1-Redis的过期策略" class="headerlink" title="6.1 Redis的过期策略"></a>6.1 Redis的过期策略</h4><p>我们在<code>set key</code>的时候，可以给它设置一个过期时间，比如<code>expire key 60</code>。指定这key60s后过期，60s后，redis是如何处理的嘛？我们先来介绍几种过期策略：</p>
-<p>定时过期</p>
-<blockquote>
-<p>每个设置过期时间的key都需要创建一个定时器，到过期时间就会立即对key进行清除。该策略可以立即清除过期的数据，对内存很友好；但是会占用大量的CPU资源去处理过期的数据，从而影响缓存的响应时间和吞吐量。</p>
-</blockquote>
-<p>惰性过期</p>
-<blockquote>
-<p>只有当访问一个key时，才会判断该key是否已过期，过期则清除。该策略可以最大化地节省CPU资源，却对内存非常不友好。极端情况可能出现大量的过期key没有再次被访问，从而不会被清除，占用大量内存。</p>
-</blockquote>
-<p>定期过期</p>
-<blockquote>
-<p>每隔一定的时间，会扫描一定数量的数据库的expires字典中一定数量的key，并清除其中已过期的key。该策略是前两者的一个折中方案。通过调整定时扫描的时间间隔和每次扫描的限定耗时，可以在不同情况下使得CPU和内存资源达到最优的平衡效果。</p>
-<p>expires字典会保存所有设置了过期时间的key的过期时间数据，其中，key是指向键空间中的某个键的指针，value是该键的毫秒精度的UNIX时间戳表示的过期时间。键空间是指该Redis集群中保存的所有键。</p>
-</blockquote>
-<p>Redis中同时使用了惰性过期和定期过期两种过期策略。</p>
-<ul>
-<li>假设Redis当前存放30万个key，并且都设置了过期时间，如果你每隔100ms就去检查这全部的key，CPU负载会特别高，最后可能会挂掉。</li>
-<li>因此，redis采取的是定期过期，每隔100ms就随机抽取一定数量的key来检查和删除的。</li>
-<li>但是呢，最后可能会有很多已经过期的key没被删除。这时候，redis采用惰性删除。在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间并且已经过期了，此时就会删除。</li>
-</ul>
-<p>但是呀，如果定期删除漏掉了很多过期的key，然后也没走惰性删除。就会有很多过期key积在内存内存，直接会导致内存爆的。或者有些时候，业务量大起来了，redis的key被大量使用，内存直接不够了，运维小哥哥也忘记加大内存了。难道redis直接这样挂掉？不会的！Redis用8种内存淘汰策略保护自己~</p>
-<h4 id="6-2-Redis-内存淘汰策略"><a href="#6-2-Redis-内存淘汰策略" class="headerlink" title="6.2 Redis 内存淘汰策略"></a>6.2 Redis 内存淘汰策略</h4><blockquote>
-<ul>
-<li>volatile-lru：当内存不足以容纳新写入数据时，从设置了过期时间的key中使用LRU（最近最少使用）算法进行淘汰；</li>
-<li>allkeys-lru：当内存不足以容纳新写入数据时，从所有key中使用LRU（最近最少使用）算法进行淘汰。</li>
-<li>volatile-lfu：4.0版本新增，当内存不足以容纳新写入数据时，在过期的key中，使用LFU算法进行删除key。</li>
-<li>allkeys-lfu：4.0版本新增，当内存不足以容纳新写入数据时，从所有key中使用LFU算法进行淘汰；</li>
-<li>volatile-random：当内存不足以容纳新写入数据时，从设置了过期时间的key中，随机淘汰数据；。</li>
-<li>allkeys-random：当内存不足以容纳新写入数据时，从所有key中随机淘汰数据。</li>
-<li>volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的key中，根据过期时间进行淘汰，越早过期的优先被淘汰；</li>
-<li>noeviction：默认策略，当内存不足以容纳新写入数据时，新写入操作会报错。</li>
-</ul>
-</blockquote>
-<h3 id="7-说说Redis的常用应用场景"><a href="#7-说说Redis的常用应用场景" class="headerlink" title="7.说说Redis的常用应用场景"></a>7.说说Redis的常用应用场景</h3><ul>
-<li>缓存</li>
-<li>排行榜</li>
-<li>计数器应用</li>
-<li>共享Session</li>
-<li>分布式锁</li>
-<li>社交网络</li>
-<li>消息队列</li>
-<li>位操作</li>
-</ul>
-<h4 id="7-1-缓存"><a href="#7-1-缓存" class="headerlink" title="7.1 缓存"></a>7.1 缓存</h4><p>我们一提到redis，自然而然就想到缓存，国内外中大型的网站都离不开缓存。合理的利用缓存，比如缓存热点数据，不仅可以提升网站的访问速度，还可以降低数据库DB的压力。并且，Redis相比于memcached，还提供了丰富的数据结构，并且提供RDB和AOF等持久化机制，强的一批。</p>
-<h4 id="7-2-排行榜"><a href="#7-2-排行榜" class="headerlink" title="7.2 排行榜"></a>7.2 排行榜</h4><p>当今互联网应用，有各种各样的排行榜，如电商网站的月度销量排行榜、社交APP的礼物排行榜、小程序的投票排行榜等等。Redis提供的<code>zset</code>数据类型能够实现这些复杂的排行榜。</p>
-<p>比如，用户每天上传视频，获得点赞的排行榜可以这样设计：</p>
-<ul>
-<li>1.用户Jay上传一个视频，获得6个赞，可以酱紫：</li>
-</ul>
-<p><code>zadd user:ranking:2021-03-03 Jay 3</code></p>
-<ul>
-<li>2.过了一段时间，再获得一个赞，可以这样：</li>
-</ul>
-<p><code>zincrby user:ranking:2021-03-03 Jay 1</code></p>
-<ul>
-<li>3.如果某个用户John作弊，需要删除该用户：</li>
-</ul>
-<p><code>zrem user:ranking:2021-03-03 John</code></p>
-<ul>
-<li>4.展示获取赞数最多的3个用户</li>
-</ul>
-<p><code>zrevrangebyrank user:ranking:2021-03-03 0 2</code></p>
-<h4 id="7-3-计数器应用"><a href="#7-3-计数器应用" class="headerlink" title="7.3 计数器应用"></a>7.3 计数器应用</h4><p>各大网站、APP应用经常需要计数器的功能，如短视频的播放数、电商网站的浏览数。这些播放数、浏览数一般要求实时的，每一次播放和浏览都要做加1的操作，如果并发量很大对于传统关系型数据的性能是一种挑战。Redis天然支持计数功能而且计数的性能也非常好，可以说是计数器系统的重要选择。</p>
-<h4 id="7-4-共享Session"><a href="#7-4-共享Session" class="headerlink" title="7.4 共享Session"></a>7.4 共享Session</h4><p>如果一个分布式Web服务将用户的Session信息保存在各自服务器，用户刷新一次可能就需要重新登录了，这样显然有问题。实际上，可以使用<strong>Redis将用户的Session进行集中管理</strong>，每次用户更新或者查询登录信息都直接从Redis中集中获取。</p>
-<h4 id="7-5-分布式锁"><a href="#7-5-分布式锁" class="headerlink" title="7.5 分布式锁"></a>7.5 分布式锁</h4><p>几乎每个互联网公司中都使用了分布式部署，分布式服务下，就会遇到对同一个资源的并发访问的技术难题，如秒杀、下单减库存等场景。</p>
-<ul>
-<li>用synchronize或者reentrantlock本地锁肯定是不行的。</li>
-<li>如果是并发量不大话，使用数据库的悲观锁、乐观锁来实现没啥问题。</li>
-<li>但是在并发量高的场合中，利用数据库锁来控制资源的并发访问，会影响数据库的性能。</li>
-<li>实际上，可以用<strong>Redis的setnx来实现分布式的锁</strong>。</li>
-</ul>
-<h4 id="7-6-社交网络"><a href="#7-6-社交网络" class="headerlink" title="7.6 社交网络"></a>7.6 社交网络</h4><p>赞&#x2F;踩、粉丝、共同好友&#x2F;喜好、推送、下拉刷新等是社交网站的必备功能，由于社交网站访问量通常比较大，而且传统的关系型数据不太适保存 这种类型的数据，Redis提供的数据结构可以相对比较容易地实现这些功能。</p>
-<h4 id="7-7-消息队列"><a href="#7-7-消息队列" class="headerlink" title="7.7 消息队列"></a>7.7 消息队列</h4><p>消息队列是大型网站必用中间件，如ActiveMQ、RabbitMQ、Kafka等流行的消息队列中间件，主要用于业务解耦、流量削峰及异步<strong>处理实时性低的业务</strong>。Redis提供了发布&#x2F;订阅及阻塞队列功能，能实现一个简单的消息队列系统。另外，这个不能和专业的消息中间件相比。</p>
-<h4 id="7-8-位操作"><a href="#7-8-位操作" class="headerlink" title="7.8 位操作"></a>7.8 位操作</h4><p>用于数据量上亿的场景下，例如几亿用户系统的签到，去重登录次数统计，某用户是否在线状态等等。腾讯10亿用户，要几个毫秒内查询到某个用户是否在线，能怎么做？千万别说给每个用户建立一个key，然后挨个记（你可以算一下需要的内存会很恐怖，而且这种类似的需求很多。这里要用到位操作——使用setbit、getbit、bitcount命令。原理是：redis内构建一个足够长的数组，每个数组元素只能是0和1两个值，然后这个数组的下标index用来表示用户id（必须是数字哈），那么很显然，这个几亿长的大数组就能通过下标和元素值（0和1）来构建一个记忆系统。</p>
-<h3 id="8-Redis-的持久化机制有哪些？优缺点说说"><a href="#8-Redis-的持久化机制有哪些？优缺点说说" class="headerlink" title="8. Redis 的持久化机制有哪些？优缺点说说"></a>8. Redis 的持久化机制有哪些？优缺点说说</h3><p>Redis是基于内存的非关系型K-V数据库，既然它是基于内存的，如果Redis服务器挂了，数据就会丢失。为了避免数据丢失了，Redis提供了持久化，即把数据保存到磁盘。</p>
-<p>Redis提供了<strong>RDB和AOF两种持久化机制</strong>，它持久化文件加载流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_c0c8ff92.png" alt="pic_c0c8ff92.png"></p>
-<h4 id="8-1-RDB"><a href="#8-1-RDB" class="headerlink" title="8.1 RDB"></a>8.1 RDB</h4><p>RDB，就是把<strong>内存数据以快照的形式保存到磁盘上</strong>。</p>
-<blockquote>
-<p>什么是快照?可以这样理解，给当前时刻的数据，拍一张照片，然后保存下来。</p>
-</blockquote>
-<p>RDB持久化，是指在指定的时间间隔内，执行指定次数的写操作，将内存中的数据集快照写入磁盘中，它是Redis默认的持久化方式。执行完操作后，在指定目录下会生成一个<code>dump.rdb</code>文件，Redis 重启的时候，通过加载<code>dump.rdb</code>文件来恢复数据。RDB触发机制主要有以下几种：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_38455f1a.png" alt="pic_38455f1a.png"></p>
-<p>RDB 的优点</p>
-<ul>
-<li><strong>适合大规模的数据恢复场景</strong>，如备份，全量复制等</li>
-</ul>
-<p>RDB缺点</p>
-<ul>
-<li>没办法做到实时持久化&#x2F;秒级持久化。</li>
-<li>新老版本存在RDB格式兼容问题</li>
-</ul>
-<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>AOF（append only file） 持久化，采用日志的形式来记录每个写操作，追加到文件中，重启时再重新执行AOF文件中的命令来恢复数据。它主要解决数据持久化的实时性问题。<strong>默认是不开启</strong>的。</p>
-<p>AOF的工作流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_bf63a33d.png" alt="pic_bf63a33d.png"></p>
-<p>AOF的优点</p>
-<ul>
-<li>数据的一致性和完整性更高</li>
-</ul>
-<p>AOF的缺点</p>
-<ul>
-<li>AOF记录的内容越多，文件越大，数据恢复变慢。</li>
-</ul>
-<h3 id="9-怎么实现Redis的高可用？"><a href="#9-怎么实现Redis的高可用？" class="headerlink" title="9.怎么实现Redis的高可用？"></a>9.怎么实现Redis的高可用？</h3><p>我们在项目中使用Redis，肯定不会是单点部署Redis服务的。因为，单点部署一旦宕机，就不可用了。为了实现高可用，通常的做法是，<strong>将数据库复制多个副本以部署在不同的服务器</strong>上，其中一台挂了也可以继续提供服务。Redis 实现高可用有三种部署模式：<strong>主从模式，哨兵模式，集群模式。</strong></p>
-<h4 id="9-1-主从模式"><a href="#9-1-主从模式" class="headerlink" title="9.1 主从模式"></a>9.1 主从模式</h4><p>主从模式中，Redis部署了多台机器，有<strong>主节点，负责读写操作，有从节点，只负责读操作</strong>。从节点的数据来自主节点，实现原理就是主从复制机制</p>
-<p>主从复制包括全量复制，增量复制两种。一般当slave第一次启动连接master，或者认为是第一次连接，就采用全量复制，全量复制流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_29b53af8.png" alt="pic_29b53af8.png"></p>
-<ul>
-<li>1.slave发送sync命令到master。</li>
-<li>2.master接收到SYNC命令后，执行bgsave命令，生成RDB全量文件。</li>
-<li>3.master使用缓冲区，记录RDB快照生成期间的所有写命令。</li>
-<li>4.master执行完bgsave后，向所有slave发送RDB快照文件。</li>
-<li>5.slave收到RDB快照文件后，载入、解析收到的快照。</li>
-<li>6.master使用缓冲区，记录RDB同步期间生成的所有写的命令。</li>
-<li>7.master快照发送完毕后，开始向slave发送缓冲区中的写命令;</li>
-<li>8.salve接受命令请求，并执行来自master缓冲区的写命令</li>
-</ul>
-<p>redis2.8版本之后，已经使用psync来替代sync，因为sync命令非常消耗系统资源，psync的效率更高。</p>
-<p>slave与master全量同步之后，master上的数据，如果再次发生更新，就会触发增量复制。</p>
-<p>当master节点发生数据增减时，就会触发<code>replicationFeedSalves()</code>函数，接下来在 Master节点上调用的每一个命令会使用<code>replicationFeedSlaves()</code>来同步到Slave节点。执行此函数之前呢，master节点会判断用户执行的命令是否有数据更新，如果有数据更新的话，并且slave节点不为空，就会执行此函数。这个函数作用就是：把用户执行的命令发送到所有的slave节点，让slave节点执行。流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_8befbe1c.png" alt="pic_8befbe1c.png"></p>
-<h4 id="9-2-哨兵模式"><a href="#9-2-哨兵模式" class="headerlink" title="9.2 哨兵模式"></a>9.2 哨兵模式</h4><p><strong>主从模式中，一旦主节点由于故障不能提供服务，需要人工将从节点晋升为主节点</strong>，同时还要通知应用方更新主节点地址。显然，多数业务场景都不能接受这种故障处理方式。Redis从2.8开始正式提供了Redis Sentinel（哨兵）架构来解决这个问题。</p>
-<p>哨兵模式，由一个或多个Sentinel实例组成的Sentinel系统，它可以监视所有的Redis主节点和从节点，并在被监视的主节点进入下线状态时，<strong>自动将下线主服务器属下的某个从节点升级为新的主节点</strong>。但是呢，一个哨兵进程对Redis节点进行监控，就可能会出现问题（单点问题），因此，可以使用<strong>多个哨兵来进行监控Redis节点，并且各个哨兵之间还会进行监控。</strong></p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_55619415.png" alt="pic_55619415.png"></p>
-<p>Sentinel哨兵模式</p>
-<p>简单来说，哨兵模式就三个作用：</p>
-<ul>
-<li>发送命令，等待Redis服务器（包括主服务器和从服务器）返回监控其运行状态；</li>
-<li>哨兵监测到主节点宕机，会自动将从节点切换成主节点，然后通过发布订阅模式通知其他的从节点，修改配置文件，让它们切换主机；</li>
-<li>哨兵之间还会相互监控，从而达到高可用。</li>
-</ul>
-<p>故障切换的过程是怎样的呢</p>
-<blockquote>
-<p>假设主服务器宕机，哨兵1先检测到这个结果，系统并不会马上进行 failover 过程，仅仅是哨兵1主观的认为主服务器不可用，这个现象成为主观下线。当后面的哨兵也检测到主服务器不可用，并且数量达到一定值时，那么哨兵之间就会进行一次投票，投票的结果由一个哨兵发起，进行 failover 操作。切换成功后，就会通过发布订阅模式，让各个哨兵把自己监控的从服务器实现切换主机，这个过程称为客观下线。这样对于客户端而言，一切都是透明的。</p>
-</blockquote>
-<p>哨兵的工作模式如下：</p>
-<ol>
-<li>每个Sentinel以每秒钟一次的频率向它所知的Master，Slave以及其他Sentinel实例发送一个 PING命令。</li>
-<li>如果一个实例（instance）距离最后一次有效回复 PING 命令的时间超过 down-after-milliseconds 选项所指定的值， 则这个实例会被 Sentinel标记为主观下线。</li>
-<li>如果一个Master被标记为主观下线，则正在监视这个Master的所有 Sentinel 要以每秒一次的频率确认Master的确进入了主观下线状态。</li>
-<li>当有足够数量的 Sentinel（大于等于配置文件指定的值）在指定的时间范围内确认Master的确进入了主观下线状态， 则Master会被标记为客观下线。</li>
-<li>在一般情况下， 每个 Sentinel 会以每10秒一次的频率向它已知的所有Master，Slave发送 INFO 命令。</li>
-<li>当Master被 Sentinel 标记为客观下线时，Sentinel 向下线的 Master 的所有 Slave 发送 INFO 命令的频率会从 10 秒一次改为每秒一次</li>
-<li>若没有足够数量的 Sentinel同意Master已经下线， Master的客观下线状态就会被移除；若Master 重新向 Sentinel 的 PING 命令返回有效回复， Master 的主观下线状态就会被移除。</li>
-</ol>
-<h4 id="9-3-Cluster集群模式"><a href="#9-3-Cluster集群模式" class="headerlink" title="9.3 Cluster集群模式"></a>9.3 Cluster集群模式</h4><p>哨兵模式基于主从模式，实现读写分离，它还可以自动切换，系统可用性更高。但是它每个节点存储的数据是一样的，浪费内存，并且不好在线扩容。因此，Cluster集群应运而生，它在Redis3.0加入的，实现了<strong>Redis的分布式存储</strong>。对数据进行分片，也就是说每台Redis节点上存储不同的内容，来解决在线扩容的问题。并且，它也提供复制和故障转移的功能。</p>
-<p>Cluster集群节点的通讯</p>
-<p>一个Redis集群由多个节点组成，<strong>各个节点之间是怎么通信</strong>的呢？通过<strong>Gossip协议</strong>！</p>
-<p>Redis Cluster集群通过Gossip协议进行通信，节点之前不断交换信息，交换的信息内容包括节点出现故障、新节点加入、主从节点变更信息、slot信息等等。常用的Gossip消息分为4种，分别是：ping、pong、meet、fail。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_60b2976c.png" alt="pic_60b2976c.png"></p>
-<blockquote>
-<ul>
-<li>meet消息：通知新节点加入。消息发送者通知接收者加入到当前集群，meet消息通信正常完成后，接收节点会加入到集群中并进行周期性的ping、pong消息交换。</li>
-<li>ping消息：集群内交换最频繁的消息，集群内每个节点每秒向多个其他节点发送ping消息，用于检测节点是否在线和交换彼此状态信息。</li>
-<li>pong消息：当接收到ping、meet消息时，作为响应消息回复给发送方确认消息正常通信。pong消息内部封装了自身状态数据。节点也可以向集群内广播自身的pong消息来通知整个集群对自身状态进行更新。</li>
-<li>fail消息：当节点判定集群内另一个节点下线时，会向集群内广播一个fail消息，其他节点接收到fail消息之后把对应节点更新为下线状态。</li>
-</ul>
-</blockquote>
-<p>特别的，每个节点是通过集群总线(cluster bus) 与其他的节点进行通信的。通讯时，使用特殊的端口号，即对外服务端口号加10000。例如如果某个node的端口号是6379，那么它与其它nodes通信的端口号是 16379。nodes 之间的通信采用特殊的二进制协议。</p>
-<p>Hash Slot插槽算法</p>
-<p>既然是分布式存储，Cluster集群使用的分布式算法是一致性Hash嘛？并不是，而是Hash Slot插槽算法。</p>
-<p>插槽算法把整个数据库被分为16384个slot（槽），每个进入Redis的键值对，根据key进行散列，分配到这16384插槽中的一个。使用的哈希映射也比较简单，用CRC16算法计算出一个16 位的值，再对16384取模。数据库中的每个键都属于这16384个槽的其中一个，集群中的每个节点都可以处理这16384个槽。</p>
-<p>集群中的每个节点负责一部分的hash槽，比如当前集群有A、B、C个节点，每个节点上的哈希槽数 &#x3D;16384&#x2F;3，那么就有：</p>
-<ul>
-<li>节点A负责0~5460号哈希槽</li>
-<li>节点B负责5461~10922号哈希槽</li>
-<li>节点C负责10923~16383号哈希槽</li>
-</ul>
-<p>Redis Cluster集群</p>
-<p>Redis Cluster集群中，需要确保16384个槽对应的node都正常工作，如果某个node出现故障，它负责的slot也会失效，整个集群将不能工作。</p>
-<p>因此为了保证高可用，Cluster集群引入了主从复制，一个主节点对应一个或者多个从节点。当其它主节点 ping 一个主节点 A 时，如果半数以上的主节点与 A 通信超时，那么认为主节点 A 宕机了。如果主节点宕机时，就会启用从节点。</p>
-<p>在Redis的每一个节点上，都有两个玩意，一个是插槽（slot），它的取值范围是0<del>16383。另外一个是cluster，可以理解为一个集群管理的插件。当我们存取的key到达时，Redis 会根据CRC16算法得出一个16 bit的值，然后把结果对16384取模。酱紫每个key都会对应一个编号在 0</del>16383 之间的哈希槽，通过这个值，去找到对应的插槽所对应的节点，然后直接自动跳转到这个对应的节点上进行存取操作。</p>
-<p>虽然数据是分开存储在不同节点上的，但是对客户端来说，整个集群Cluster，被看做一个整体。客户端端连接任意一个node，看起来跟操作单实例的Redis一样。当客户端操作的key没有被分配到正确的node节点时，Redis会返回转向指令，最后指向正确的node，这就有点像浏览器页面的302 重定向跳转。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_0c33ca83.png" alt="pic_0c33ca83.png"></p>
-<p>故障转移</p>
-<p>Redis集群实现了高可用，当集群内节点出现故障时，通过故障转移，以保证集群正常对外提供服务。</p>
-<p>redis集群通过ping&#x2F;pong消息，实现故障发现。这个环境包括主观下线和客观下线。</p>
-<p>主观下线： 某个节点认为另一个节点不可用，即下线状态，这个状态并不是最终的故障判定，只能代表一个节点的意见，可能存在误判情况。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_3c5be07a.png" alt="pic_3c5be07a.png"></p>
-<p>主观下线</p>
-<p>客观下线： 指标记一个节点真正的下线，集群内多个节点都认为该节点不可用，从而达成共识的结果。如果是持有槽的主节点故障，需要为该节点进行故障转移。</p>
-<ul>
-<li>假如节点A标记节点B为主观下线，一段时间后，节点A通过消息把节点B的状态发到其它节点，当节点C接受到消息并解析出消息体时，如果发现节点B的pfail状态时，会触发客观下线流程；</li>
-<li>当下线为主节点时，此时Redis Cluster集群为统计持有槽的主节点投票，看投票数是否达到一半，当下线报告统计数大于一半时，被标记为客观下线状态。</li>
-</ul>
-<p>流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_6f7d964d.png" alt="pic_6f7d964d.png"></p>
-<p>客观下线</p>
-<p>故障恢复：故障发现后，如果下线节点的是主节点，则需要在它的从节点中选一个替换它，以保证集群的高可用。流程如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_8827e8b7.png" alt="pic_8827e8b7.png"></p>
-<ul>
-<li>资格检查：检查从节点是否具备替换故障主节点的条件。</li>
-<li>准备选举时间：资格检查通过后，更新触发故障选举时间。</li>
-<li>发起选举：到了故障选举时间，进行选举。</li>
-<li>选举投票：只有持有槽的主节点才有票，从节点收集到足够的选票（大于一半），触发替换主节点操作</li>
-</ul>
-<h3 id="10-使用过Redis分布式锁嘛？有哪些注意点呢？"><a href="#10-使用过Redis分布式锁嘛？有哪些注意点呢？" class="headerlink" title="10. 使用过Redis分布式锁嘛？有哪些注意点呢？"></a>10. 使用过Redis分布式锁嘛？有哪些注意点呢？</h3><p><strong>分布式锁，是控制分布式系统不同进程共同访问共享资源的一种锁的实现</strong>。秒杀下单、抢红包等等业务场景，都需要用到分布式锁，我们项目中经常使用Redis作为分布式锁。</p>
-<p>选了Redis分布式锁的几种实现方法，大家来讨论下，看有没有啥问题哈。</p>
-<ul>
-<li>命令setnx + expire分开写</li>
-<li>setnx + value值是过期时间</li>
-<li>set的扩展命令（set ex px nx）</li>
-<li>set ex px nx + 校验唯一随机值,再删除</li>
-</ul>
-<h4 id="10-1-命令setnx-expire分开写"><a href="#10-1-命令setnx-expire分开写" class="headerlink" title="10.1 命令setnx + expire分开写"></a>10.1 命令setnx + expire分开写</h4><p><code>if（jedis.setnx(key,lock_value) == 1）&#123; //加锁 expire（key，100）; //设置过期时间 try &#123; do something //业务请求 &#125;catch()&#123; &#125; finally &#123; jedis.del(key); //释放锁 &#125; &#125;</code></p>
-<p>如果执行完<code>setnx</code>加锁，正要执行expire设置过期时间时，进程crash掉或者要重启维护了，那这个锁就“长生不老”了，别的线程永远获取不到锁啦，所以分布式锁不能这么实现。</p>
-<h4 id="10-2-setnx-value值是过期时间"><a href="#10-2-setnx-value值是过期时间" class="headerlink" title="10.2 setnx + value值是过期时间"></a>10.2 setnx + value值是过期时间</h4><p><code>long expires = System.currentTimeMillis() + expireTime; //系统时间+设置的过期时间 String expiresStr = String.valueOf(expires); // 如果当前锁不存在，返回加锁成功 if (jedis.setnx(key, expiresStr) == 1) &#123; return true; &#125; // 如果锁已经存在，获取锁的过期时间 String currentValueStr = jedis.get(key); // 如果获取到的过期时间，小于系统当前时间，表示已经过期 if (currentValueStr != null &amp;&amp; Long.parseLong(currentValueStr) &lt; System.currentTimeMillis()) &#123; // 锁已过期，获取上一个锁的过期时间，并设置现在锁的过期时间（不了解redis的getSet命令的小伙伴，可以去官网看下哈） String oldValueStr = jedis.getSet(key_resource_id, expiresStr); if (oldValueStr != null &amp;&amp; oldValueStr.equals(currentValueStr)) &#123; // 考虑多线程并发的情况，只有一个线程的设置值和当前值相同，它才可以加锁 return true; &#125; &#125; //其他情况，均返回加锁失败 return false; &#125;</code></p>
-<p>笔者看过有开发小伙伴是这么实现分布式锁的，但是这种方案也有这些缺点：</p>
-<ul>
-<li>过期时间是客户端自己生成的，分布式环境下，每个客户端的时间必须同步。</li>
-<li>没有保存持有者的唯一标识，可能被别的客户端释放&#x2F;解锁。</li>
-<li>锁过期的时候，并发多个客户端同时请求过来，都执行了<code>jedis.getSet()</code>，最终只能有一个客户端加锁成功，但是该客户端锁的过期时间，可能被别的客户端覆盖。</li>
-</ul>
-<p>10.3：set的扩展命令（set ex px nx）（注意可能存在的问题）</p>
-<p><code>if（jedis.set(key, lock_value, &quot;NX&quot;, &quot;EX&quot;, 100s) == 1）&#123; //加锁 try &#123; do something //业务处理 &#125;catch()&#123; &#125; finally &#123; jedis.del(key); //释放锁 &#125; &#125;</code></p>
-<p>这个方案可能存在这样的问题：</p>
-<ul>
-<li>锁过期释放了，业务还没执行完。</li>
-<li>锁被别的线程误删。</li>
-</ul>
-<h4 id="10-4-set-ex-px-nx-校验唯一随机值-再删除"><a href="#10-4-set-ex-px-nx-校验唯一随机值-再删除" class="headerlink" title="10.4 set ex px nx + 校验唯一随机值,再删除"></a>10.4 set ex px nx + 校验唯一随机值,再删除</h4><p><code>if（jedis.set(key, uni_request_id, &quot;NX&quot;, &quot;EX&quot;, 100s) == 1）&#123; //加锁 try &#123; do something //业务处理 &#125;catch()&#123; &#125; finally &#123; //判断是不是当前线程加的锁,是才释放 if (uni_request_id.equals(jedis.get(key))) &#123; jedis.del(key); //释放锁 &#125; &#125; &#125;</code></p>
-<p>在这里，判断当前线程加的锁和释放锁是不是一个原子操作。如果调用jedis.del()释放锁的时候，可能这把锁已经不属于当前客户端，会解除他人加的锁。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_485f6a41.png" alt="pic_485f6a41.png"></p>
-<p>一般也是用lua脚本代替。lua脚本如下：</p>
-<p><code>if redis.call(&#39;get&#39;,KEYS[1]) == ARGV[1] then return redis.call(&#39;del&#39;,KEYS[1]) else return 0 end;</code></p>
-<p>这种方式比较不错了，一般情况下，已经可以使用这种实现方式。但是存在锁过期释放了，业务还没执行完的问题（实际上，估算个业务处理的时间，一般没啥问题了）。</p>
-<h3 id="11-使用过Redisson嘛？说说它的原理"><a href="#11-使用过Redisson嘛？说说它的原理" class="headerlink" title="11. 使用过Redisson嘛？说说它的原理"></a>11. 使用过Redisson嘛？说说它的原理</h3><p>分布式锁可能存在锁过期释放，业务没执行完的问题。有些小伙伴认为，稍微把锁过期时间设置长一些就可以啦。其实我们设想一下，是否可以给获得锁的线程，开启一个定时守护线程，每隔一段时间检查锁是否还存在，存在则对锁的过期时间延长，防止锁过期提前释放。</p>
-<p>当前开源框架Redisson就解决了这个分布式锁问题。我们一起来看下Redisson底层原理是怎样的吧：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_3498b167.png" alt="pic_3498b167.png"></p>
-<p>只要线程一加锁成功，就会启动一个<code>watch dog</code>看门狗，它是一个后台线程，会每隔10秒检查一下，如果线程1还持有锁，那么就会不断的延长锁key的生存时间。因此，Redisson就是使用Redisson解决了锁过期释放，业务没执行完问题。</p>
-<h3 id="12-什么是Redlock算法"><a href="#12-什么是Redlock算法" class="headerlink" title="12. 什么是Redlock算法"></a>12. 什么是Redlock算法</h3><p>Redis一般都是集群部署的，假设数据在主从同步过程，主节点挂了，Redis分布式锁可能会有哪些问题呢？一起来看些这个流程图：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_29296e0d.png" alt="pic_29296e0d.png"></p>
-<p>如果线程一在Redis的master节点上拿到了锁，但是加锁的key还没同步到slave节点。恰好这时，master节点发生故障，一个slave节点就会升级为master节点。线程二就可以获取同个key的锁啦，但线程一也已经拿到锁了，锁的安全性就没了。</p>
-<p>为了解决这个问题，Redis作者 antirez提出一种高级的分布式锁算法：Redlock。Redlock核心思想是这样的：</p>
-<blockquote>
-<p>搞<strong>多个Redis master部署，以保证它们不会同时宕掉</strong>。并且这些master节点是完全相互独立的，<strong>相互之间不存在数据同步</strong>。同时，需要确保在这多个master实例上，是与在Redis单实例，使用相同方法来获取和释放锁。</p>
-</blockquote>
-<p>我们假设当前有5个Redis master节点，在5台服务器上面运行这些Redis实例。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_e6e379fe.png" alt="pic_e6e379fe.png"></p>
-<p>RedLock的实现步骤:如下</p>
-<blockquote>
-<ul>
-<li>1.获取当前时间，以毫秒为单位。</li>
-<li>2.按顺序向5个master节点请求加锁。客户端设置网络连接和响应超时时间，并且超时时间要小于锁的失效时间。（假设锁自动失效时间为10秒，则超时时间一般在5-50毫秒之间,我们就假设超时时间是50ms吧）。如果超时，跳过该master节点，尽快去尝试下一个master节点。</li>
-<li>3.客户端使用当前时间减去开始获取锁时间（即步骤1记录的时间），得到获取锁使用的时间。当且仅当超过一半（N&#x2F;2+1，这里是5&#x2F;2+1&#x3D;3个节点）的Redis master节点都获得锁，并且使用的时间小于锁失效时间时，锁才算获取成功。（如上图，10s&gt; 30ms+40ms+50ms+4m0s+50ms）</li>
-<li>如果取到了锁，key的真正有效时间就变啦，需要减去获取锁所使用的时间。</li>
-<li>如果获取锁失败（没有在至少N&#x2F;2+1个master实例取到锁，有或者获取锁时间已经超过了有效时间），客户端要在所有的master节点上解锁（即便有些master节点根本就没有加锁成功，也需要解锁，以防止有些漏网之鱼）。</li>
-</ul>
-</blockquote>
-<p>简化下步骤就是：</p>
-<ul>
-<li>按顺序向5个master节点请求加锁</li>
-<li>根据设置的超时时间来判断，是不是要跳过该master节点。</li>
-<li>如果大于等于三个节点加锁成功，并且使用的时间小于锁的有效期，即可认定加锁成功啦。</li>
-<li>如果获取锁失败，解锁！</li>
-</ul>
-<h3 id="13-Redis的跳跃表"><a href="#13-Redis的跳跃表" class="headerlink" title="13. Redis的跳跃表"></a>13. Redis的跳跃表</h3><p><img src="https://mark.cuckooing.cn/pics/pic_69be6bb6.png" alt="pic_69be6bb6.png"></p>
-<p>跳跃表</p>
-<ul>
-<li>跳跃表是有序集合zset的底层实现之一</li>
-<li>跳跃表支持平均O（logN）,最坏 O（N）复杂度的节点查找，还可以通过顺序性操作批量处理节点。</li>
-<li>跳跃表实现由zskiplist和zskiplistNode两个结构组成，其中zskiplist用于保存跳跃表信息（如表头节点、表尾节点、长度），而zskiplistNode则用于表示跳跃表节点。</li>
-<li>跳跃表就是在链表的基础上，增加多级索引提升查找效率。</li>
-</ul>
-<h3 id="14-MySQL与Redis-如何保证双写一致性"><a href="#14-MySQL与Redis-如何保证双写一致性" class="headerlink" title="14. MySQL与Redis 如何保证双写一致性"></a>14. MySQL与Redis 如何保证双写一致性</h3><ul>
-<li>缓存延时双删</li>
-<li>删除缓存重试机制</li>
-<li>读取biglog异步删除缓存</li>
-</ul>
-<h4 id="14-1-延时双删？"><a href="#14-1-延时双删？" class="headerlink" title="14.1 延时双删？"></a>14.1 延时双删？</h4><p>什么是延时双删呢？流程图如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_8e90c349.png" alt="pic_8e90c349.png"></p>
-<p>延时双删流程</p>
-<ol>
-<li>先删除缓存</li>
-<li>再更新数据库</li>
-<li>休眠一会（比如1秒），再次删除缓存。</li>
-</ol>
-<p>这个休眠一会，一般多久呢？都是1秒？</p>
-<blockquote>
-<p>这个休眠时间 &#x3D; 读业务逻辑数据的耗时 + 几百毫秒。为了确保读请求结束，写请求可以删除读请求可能带来的缓存脏数据。</p>
-</blockquote>
-<p>这种方案还算可以，只有休眠那一会（比如就那1秒），可能有脏数据，一般业务也会接受的。但是如果第二次删除缓存失败呢？缓存和数据库的数据还是可能不一致，对吧？给Key设置一个自然的expire过期时间，让它自动过期怎样？那业务要接受过期时间内，数据的不一致咯？还是有其他更佳方案呢？</p>
-<h4 id="14-2-删除缓存重试机制"><a href="#14-2-删除缓存重试机制" class="headerlink" title="14.2 删除缓存重试机制"></a>14.2 删除缓存重试机制</h4><p>因为延时双删可能会存在第二步的删除缓存失败，导致的数据不一致问题。可以使用这个方案优化：删除失败就多删除几次呀,保证删除缓存成功就可以了呀~ 所以可以引入删除缓存重试机制</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_127f8443.png" alt="pic_127f8443.png"></p>
-<p>删除缓存重试流程</p>
-<ol>
-<li>写请求更新数据库</li>
-<li>缓存因为某些原因，删除失败</li>
-<li>把删除失败的key放到消息队列</li>
-<li>消费消息队列的消息，获取要删除的key</li>
-<li>重试删除缓存操作</li>
-</ol>
-<h4 id="14-3-读取biglog异步删除缓存"><a href="#14-3-读取biglog异步删除缓存" class="headerlink" title="14.3 读取biglog异步删除缓存"></a>14.3 读取biglog异步删除缓存</h4><p>重试删除缓存机制还可以吧，就是会造成好多业务代码入侵。其实，还可以这样优化：通过数据库的binlog来异步淘汰key。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_1b681974.png" alt="pic_1b681974.png"></p>
-<p>以mysql为例吧</p>
-<ul>
-<li>可以使用阿里的canal将binlog日志采集发送到MQ队列里面</li>
-<li>然后通过ACK机制确认处理这条更新消息，删除缓存，保证数据缓存一致性</li>
-</ul>
-<h3 id="15-为什么Redis-6-0-之后改多线程呢？"><a href="#15-为什么Redis-6-0-之后改多线程呢？" class="headerlink" title="15. 为什么Redis 6.0 之后改多线程呢？"></a>15. 为什么Redis 6.0 之后改多线程呢？</h3><ul>
-<li>Redis6.0之前，Redis在处理客户端的请求时，包括读socket、解析、执行、写socket等都由一个顺序串行的主线程处理，这就是所谓的“单线程”。</li>
-<li>Redis6.0之前为什么一直不使用多线程？使用Redis时，几乎不存在CPU成为瓶颈的情况， Redis主要受限于内存和网络。例如在一个普通的Linux系统上，Redis通过使用pipelining每秒可以处理100万个请求，所以如果应用程序主要使用O(N)或O(log(N))的命令，它几乎不会占用太多CPU。</li>
-</ul>
-<p>redis使用多线程并非是完全摒弃单线程，redis还是使用单线程模型来处理客户端的请求，只是使用多线程来处理数据的读写和协议解析，执行命令还是使用单线程。</p>
-<p>这样做的目的是因为redis的性能瓶颈在于网络IO而非CPU，使用多线程能提升IO读写的效率，从而整体提高redis的性能。</p>
-<h3 id="16-聊聊Redis-事务机制"><a href="#16-聊聊Redis-事务机制" class="headerlink" title="16. 聊聊Redis 事务机制"></a>16. 聊聊Redis 事务机制</h3><p>Redis通过MULTI、EXEC、WATCH等一组命令集合，来实现事务机制。事务支持一次执行多个命令，一个事务中所有命令都会被序列化。在事务执行过程，会按照顺序串行化执行队列中的命令，其他客户端提交的命令请求不会插入到事务执行命令序列中。</p>
-<p>简言之，Redis事务就是顺序性、一次性、排他性的执行一个队列中的一系列命令。</p>
-<p>Redis执行事务的流程如下：</p>
-<ul>
-<li>开始事务（MULTI）</li>
-<li>命令入队</li>
-<li>执行事务（EXEC）、撤销事务（DISCARD ）</li>
-</ul>
-<h3 id="17-Redis的Hash-冲突怎么办"><a href="#17-Redis的Hash-冲突怎么办" class="headerlink" title="17. Redis的Hash 冲突怎么办"></a>17. Redis的Hash 冲突怎么办</h3><p>Redis 作为一个K-V的内存数据库，它使用用一张全局的哈希来保存所有的键值对。这张哈希表，有多个哈希桶组成，哈希桶中的entry元素保存了key和value指针，其中*key指向了实际的键，*value指向了实际的值。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_8c5976a5.png" alt="pic_8c5976a5.png"></p>
-<p>哈希表查找速率很快的，有点类似于Java中的HashMap，它让我们在O(1) 的时间复杂度快速找到键值对。首先通过key计算哈希值，找到对应的哈希桶位置，然后定位到entry，在entry找到对应的数据。</p>
-<p>什么是哈希冲突？</p>
-<blockquote>
-<p>哈希冲突：通过不同的key，计算出一样的哈希值，导致落在同一个哈希桶中。</p>
-</blockquote>
-<p><strong>Redis为了解决哈希冲突，采用了链式哈希</strong>。链式哈希是指同一个哈希桶中，多个元素用一个链表来保存，它们之间依次用指针连接。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_24799339.png" alt="pic_24799339.png"></p>
-<p>有些读者可能还会有疑问：哈希冲突链上的元素只能通过指针逐一查找再操作。当往哈希表插入数据很多，冲突也会越多，冲突链表就会越长，那查询效率就会降低了。</p>
-<p>为了保持高效，Redis 会对哈希表做rehash操作，也就是增加哈希桶，减少冲突。为了rehash更高效，Redis还默认使用了两个全局哈希表，一个用于当前使用，称为主哈希表，一个用于扩容，称为备用哈希表。</p>
-<h3 id="18-在生成-RDB期间，Redis-可以同时处理写请求么？"><a href="#18-在生成-RDB期间，Redis-可以同时处理写请求么？" class="headerlink" title="18. 在生成 RDB期间，Redis 可以同时处理写请求么？"></a>18. 在生成 RDB期间，Redis 可以同时处理写请求么？</h3><p>可以的，Redis提供两个指令生成RDB，分别是save和bgsave。</p>
-<ul>
-<li>如果是save指令，会阻塞，因为是主线程执行的。</li>
-<li>如果是bgsave指令，是fork一个子进程来写入RDB文件的，快照持久化完全交给子进程来处理，父进程则可以继续处理客户端的请求。</li>
-</ul>
-<h3 id="19-Redis底层，使用的什么协议"><a href="#19-Redis底层，使用的什么协议" class="headerlink" title="19. Redis底层，使用的什么协议?"></a>19. Redis底层，使用的什么协议?</h3><p>RESP，英文全称是Redis Serialization Protocol,它是专门为redis设计的一套序列化协议. 这个协议其实在redis的1.2版本时就已经出现了,但是到了redis2.0才最终成为redis通讯协议的标准。</p>
-<p>RESP主要有实现简单、解析速度快、可读性好等优点。</p>
-<h3 id="20-布隆过滤器"><a href="#20-布隆过滤器" class="headerlink" title="20. 布隆过滤器"></a>20. 布隆过滤器</h3><p>应对缓存穿透问题，我们可以使用布隆过滤器。布隆过滤器是什么呢？</p>
-<p>布隆过滤器是一种占用空间很小的数据结构，它由一个很长的二进制向量和一组Hash映射函数组成，它用于检索一个元素是否在一个集合中，空间效率和查询时间都比一般的算法要好的多，缺点是有一定的误识别率和删除困难。</p>
-<p>布隆过滤器原理是？假设我们有个集合A，A中有n个元素。利用k个哈希散列函数，将A中的每个元素映射到一个长度为a位的数组B中的不同位置上，这些位置上的二进制数均设置为1。如果待检查的元素，经过这k个哈希散列函数的映射后，发现其k个位置上的二进制数全部为1，这个元素很可能属于集合A，反之，一定不属于集合A。</p>
-<p>来看个简单例子吧，假设集合A有3个元素，分别为{ d1,d2,d3}。有1个哈希函数，为Hash1。现在将A的每个元素映射到长度为16位数组B。</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_a491eedb.png" alt="pic_a491eedb.png"></p>
-<p>我们现在把d1映射过来，假设Hash1（d1）&#x3D; 2，我们就把数组B中，下标为2的格子改成1，如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_449a4219.png" alt="pic_449a4219.png"></p>
-<p>我们现在把d2也映射过来，假设Hash1（d2）&#x3D; 5，我们把数组B中，下标为5的格子也改成1，如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_3966a458.png" alt="pic_3966a458.png"></p>
-<p>接着我们把d3也映射过来，假设Hash1（d3）也等于 2，它也是把下标为2的格子标1：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_a5d47110.png" alt="pic_a5d47110.png"></p>
-<p>因此，我们要确认一个元素dn是否在集合A里，我们只要算出Hash1（dn）得到的索引下标，只要是0，那就表示这个元素不在集合A，如果索引下标是1呢？那该元素可能是A中的某一个元素。因为你看，d1和d3得到的下标值，都可能是1，还可能是其他别的数映射的，布隆过滤器是存在这个缺点的：会存在hash碰撞导致的假阳性，判断存在误差。</p>
-<p>如何减少这种误差呢？</p>
-<ul>
-<li>搞多几个哈希函数映射，降低哈希碰撞的概率</li>
-<li>同时增加B数组的bit长度，可以增大hash函数生成的数据的范围，也可以降低哈希碰撞的概率</li>
-</ul>
-<p>我们又增加一个Hash2哈希映射函数，假设Hash2（d1）&#x3D;6,Hash2（d3）&#x3D;8,它俩不就不冲突了嘛，如下：</p>
-<p><img src="https://mark.cuckooing.cn/pics/pic_49cf695c.png" alt="pic_49cf695c.png"></p>
-<p>即使存在误差，我们可以发现，布隆过滤器并没有存放完整的数据，它只是运用一系列哈希映射函数计算出位置，然后填充二进制向量。如果数量很大的话，布隆过滤器通过极少的错误率，换取了存储空间的极大节省，还是挺划算的。</p>
-<p>目前布隆过滤器已经有相应实现的开源类库啦，如Google的Guava类库，Twitter的 Algebird 类库，信手拈来即可，或者基于Redis自带的Bitmaps自行实现设计也是可以的。</p>
-<h3 id="21-乐观锁、悲观锁"><a href="#21-乐观锁、悲观锁" class="headerlink" title="21. 乐观锁、悲观锁"></a>21. 乐观锁、悲观锁</h3><h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制。<br>    它指的是对数据被外界(包括本系统当前的其他事务，以及来自外部系统的事务处理)修改持保守态度。因此，在整个数据处理过程中，将数据处于锁定状态。<br>        悲观锁的实现，往往<strong>依靠数据库提供的锁机制</strong>(也只有数据库层提供的锁机制才能真正保证数据访问的排他性。<br>悲观锁主要分为共享锁和排他锁：<br>    共享锁又称为读锁，多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。<br>    排他锁又称为写锁。如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁。</p>
-<h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><p>乐观锁假设数据一般情况不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果冲突，则返回给用户异常信息，让用户决定如何去做。乐观锁适用于读多写少的场景，这样可以提高程序的吞吐量。<br>主要就是两个步骤：冲突检测和数据更新。比较典型的就是 CAS，实现方式：<br>    CAS 操作包含三个操作数——内存位置(V)、预期原值(A)和新值(B)。如果内存位置的值(V)与预期原值(A)相匹配，那么处理器会自动将该位置值更新为新值(B)。否则，处理器不做任何操作。<br>但是这会存在问题，因为无法保证预期原值匹配即便成功，期间未发生其他事件，因此可以采用版本号控制的方式：<br>    一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会 +1。当线程 A 要更新数据时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</p>
-
+    
+    <a class="article-more-a" href="/2025/02/24/Mysql%202/#more">more >></a>
+    
     
 
     
@@ -1059,11 +253,22 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2025/02/24/Redis/">展开全文 >></a>
+      <a class="article-more-a" href="/2025/02/24/Mysql%202/">展开全文 >></a>
     </p>
     
 
@@ -1096,82 +301,38 @@
     <article id="post-Mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/24/Mysql/" target="_blank">Mysql基础</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/02/24/Mysql/" class="archive-article-date">
+        <time datetime="2025-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><ul>
-<li><a href="#_1">前言</a></li>
-<li><a href="#1charvarchar_3">1.char和varchar的区别</a></li>
-<li><a href="#2_8">2.数据库的三大范式</a></li>
-<li><a href="#3sql_13">3.你了解sql的执行顺序吗？</a></li>
-<li><a href="#4_33">4.索引是什么</a></li>
-<li><a href="#5_36">5.索引的优点和缺点</a></li>
-<li><a href="#6_45">6.索引的类型</a></li>
-<li><a href="#7_51">7.索引怎么设计(优化)</a></li>
-<li><a href="#8sql_62">8.怎么避免索引失效(也属于sql优化的一种)</a></li>
-<li><a href="#9_69">9.索引的数据类型</a></li>
-<li><a href="#10_73">10.索引为什么使用树结构</a></li>
-<li><a href="#11BB_76">11.二叉查找树、B树、B+树</a></li>
-<li><a href="#12BB_81">12.为什么使用B+树不用B树</a></li>
-<li><a href="#13_92">13.最左匹配原则</a></li>
-<li><a href="#14Mysqlsql_109">14.Mysql怎么查看是否使用到索引或怎么查看sql执行计划</a></li>
-<li><a href="#15sql_116">15.一条sql查询非常慢，我们怎么去排查和优化？</a></li>
-<li><a href="#16MylSAMInnoDBMemory_124">16.MylSAM和InnoDB、Memory的区别</a></li>
-<li><a href="#17_129">17.什么是事务</a></li>
-<li><a href="#18ACID_135">18.事务的四大特性(ACID)</a></li>
-<li><a href="#19_141">19.脏读、不可重复读、幻读</a></li>
-<li><a href="#20_147">20.事务的隔离级别？</a></li>
-<li><a href="#21_153">21.怎么优化数据库</a></li>
-<li><a href="#22SQL_159">22.SQL优化</a></li>
-<li><a href="#23_169">23.常用的聚合函数</a></li>
-<li><a href="#24_178">24.几种关联查询</a></li>
-<li><a href="#25inexists_183">25.in和exists的区别</a></li>
-<li><a href="#26droptruncatedelete_187">26.drop、truncate、delete的区别</a></li>
-</ul>
-<h2 id="1-char和varchar的区别"><a href="#1-char和varchar的区别" class="headerlink" title="1.char和varchar的区别"></a>1.char和varchar的区别</h2><p>①char设置多少长度就是多少长度，varchar可以改变长度，所以char的空间利用率不如varchar的空间利用率高。<br>②因为长度固定，所以存取速度要比varchar快。<br>③char适用于固定长度的字符串，比如身份证号、手机号等，varchar适用于不固定的字符串。</p>
-<h2 id="2-数据库的三大范式"><a href="#2-数据库的三大范式" class="headerlink" title="2.数据库的三大范式"></a>2.数据库的三大范式</h2><p>第一范式(1NF)： 保证字段不可再分，保证原子性。<br>第二范式(2NF)： 满足1NF前提下，表的每一列都必须和主键有关系。消除部分依赖关系。<br>第三范式(3NF)： 满足2NF前提下，表的每一列比必须和主键有直接关系，不能是间接关系。消除传递依赖</p>
-<h2 id="3-你了解sql的执行顺序吗？"><a href="#3-你了解sql的执行顺序吗？" class="headerlink" title="3.你了解sql的执行顺序吗？"></a>3.你了解sql的执行顺序吗？</h2><p>⑧<code>select</code> ⑨<code>distinct(去重)</code> ⑥<code>聚合函数</code></p>
-<p>①<code>from</code> 表1</p>
-<p>③<code>[inner join | left join | right join](连接)</code> 表2</p>
-<p>②<code>on(连接条件)</code> 表1.字段 &#x3D; 表2.字段</p>
-<p>④<code>where</code> 查询条件</p>
-<p>⑤<code>group by(分组)</code> 字段</p>
-<p>⑦<code>having</code> 分组过滤条件</p>
-<p>⑩<code>order by(排序)</code> 字段</p>
-<p>⑪<code>limit(分页)</code> 0,10</p>
-<h2 id="4-索引是什么"><a href="#4-索引是什么" class="headerlink" title="4.索引是什么"></a>4.索引是什么</h2><p>是一种高效获取数据的数据结构，相当于目录，更快的找到数据，是一个文件，占用物理空间。</p>
-<h2 id="5-索引的优点和缺点"><a href="#5-索引的优点和缺点" class="headerlink" title="5.索引的优点和缺点"></a>5.索引的优点和缺点</h2><p>优点：<br>①提高检索的速度。<br>②索引列对数据排序，降低排序成本。<br>③mysql 8之后引入了，隐藏索引，当一个索引被隐藏就不会被优化器所使用，就可以看出来索引对数据库的影响，有利于调优。<br>缺点：<br>①索引也是一个文件，所以会占用空间。<br>②降低更新的速度，因为不光要更新数据，还要更新索引。</p>
-<h2 id="6-索引的类型"><a href="#6-索引的类型" class="headerlink" title="6.索引的类型"></a>6.索引的类型</h2><p>①普通索引： 基本索引类型，允许定义索引的字段为空值和重复值。<br>②唯一索引： 索引的值必须唯一，允许定义索引的字段为空值。<br>③主键索引： 索引的值必须唯一，不可以为空。<br>④复合索引： 多个字段加索引，遵守最左匹配规则。<br>⑤全局索引： 只有在 MyISAM 引擎上才能使用。</p>
-<h2 id="7-索引怎么设计-优化"><a href="#7-索引怎么设计-优化" class="headerlink" title="7.索引怎么设计(优化)"></a>7.索引怎么设计(优化)</h2><p>①选择唯一性索引：值是唯一的，查询的更快。<br>②经常作为查询条件的字段加索引。<br>③为经常需要排序、分组和联合操作的字段建立索引：order by、group by、union(联合)、distinct(去重)等。<br>④限制索引个数：索引数量多，需要的磁盘空间就越多，更新表时，对索引的重构和更新就很费劲。<br>⑤表数据少的不建议使用索引(百万级以内)：数据过少，有可能查询的速度，比遍历索引的速度都快。<br>⑥删除不常用和不再使用的索引。<br>⑦用类型小的类型做索引：比如：int和BIGINT能用int就使用int。因为类型小，查询速度快和索引占用的空间更少。<br>⑧使用前缀索引，要是字符串越长，那么索引占的空间越大，并且比较起来就时间就越长。</p>
-<h2 id="8-怎么避免索引失效-也属于sql优化的一种"><a href="#8-怎么避免索引失效-也属于sql优化的一种" class="headerlink" title="8.怎么避免索引失效(也属于sql优化的一种)"></a>8.怎么避免索引失效(也属于sql优化的一种)</h2><p>①某列使用范围查询(&gt;、&lt;、like、between and)时, 右边的所有列索引也会失效。<br>②不要对索引字段进行运算。<br>③在where子句中不要使用 OR、!&#x3D;、&lt;&gt;和对值null的判断。<br>④避免使用’%’开头的like的模糊查询。<br>⑤字符串不加单引号，造成索引失效。</p>
-<h2 id="9-索引的数据类型"><a href="#9-索引的数据类型" class="headerlink" title="9.索引的数据类型"></a>9.索引的数据类型</h2><p>Hash： 查询时调用Hash函数获得地址，回表查询实际数据。(InnoDB和MylSAM不支持，Memory支持)。<br>B+树： 每次从根节点出发去查询，然后得到地址，回表查询实际数据。</p>
-<h2 id="10-索引为什么使用树结构"><a href="#10-索引为什么使用树结构" class="headerlink" title="10.索引为什么使用树结构"></a>10.索引为什么使用树结构</h2><p>因为可以加快查询效率，而且可以保持有序。</p>
-<h2 id="11-二叉查找树、B树、B-树"><a href="#11-二叉查找树、B树、B-树" class="headerlink" title="11.二叉查找树、B树、B+树"></a>11.二叉查找树、B树、B+树</h2><p>二叉查找树(二叉排序树、二叉搜索树)： 一个节点最多两个子节点(左小右大)，查询次数和比较次数都是最小的，但是索引是存在磁盘的，当数据量过大的时候，不能直接把整个索引文件加载到内存，需要分多次IO，最坏的情况IO的次数就是树的高度，为了减少IO，需要把树从竖向变成横向。<br>B树( B- )： 是一种多路查询树，每个节点包含K个子节点，节点都存储索引值和数据，K是B树的阶(树高被称为树的阶)。虽然比较的次数比较多，但是是在内存的比较，可以忽略不计，但是B树IO的次数要比二叉查找树要少，因为B树的高度可以更低。<br>B+树： B树的升级版，只有叶子节点储存的是索引值指向的数据库的数据。</p>
-<h2 id="12-为什么使用B-树不用B树"><a href="#12-为什么使用B-树不用B树" class="headerlink" title="12.为什么使用B+树不用B树"></a>12.为什么使用B+树不用B树</h2><p>①B树只适合随机检索，而B+树同时支持随机检索和顺序检索(因为叶子节点相当于链表，保存索引值都是有序的)。<br>顺序检索： 按照序列顺序遍历比较找到给定值。<br>随机检索： 不断从序列中随机抽取数据进行比较，最终找到结果。</p>
-<p>②减少了磁盘IO，提高空间利用率： 因为B+树非叶子节点不会存放数据，只有索引值，所以非叶子节点可以保存更多的索引值，这样B+树就可以更矮，减少IO次数。</p>
-<p>③B+树适合范围查找： 这才是关键，因为数据库大部分都是范围查找，B+树的叶子节点是有序链表，直接遍历就行，而B树的范围查找可能两个节点距离很远，只能通过中序遍历去查找，所以使用B+树更合适。<br>中序遍历： (根在中，从左往右，一棵树的左子树永远在根前面，根永远在右子树前面）</p>
-<h2 id="13-最左匹配原则"><a href="#13-最左匹配原则" class="headerlink" title="13.最左匹配原则"></a>13.最左匹配原则</h2><p>最左优先，以最左边为起点任何连续的索引都能匹配上。同时遇到范围查询（&gt;、&lt;、between and、like）就会停止匹配。</p>
-<p>例如：Z表建立联合索引 (a,b,c)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样索引abc列都起效，因为符合最左匹配原则，where子句几个搜索条件顺序调换不影响查询结果，因为Mysql中有查询优化器，会自动优化查询顺序</span></span><br><span class="line">select  *  from Z <span class="type">where</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span> <span class="type">and</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">2</span> <span class="type">and</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">3</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//因为a列是起点，没有a列匹配不上，所以索引失效</span></span><br><span class="line">select * from table_name <span class="type">where</span>  <span class="variable">b</span> <span class="operator">=</span> <span class="number">2</span> <span class="type">and</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">3</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//因为连续不到b，所以只有a列索引生效</span></span><br><span class="line">select * from table_name <span class="type">where</span>  <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span> <span class="type">and</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="14-Mysql怎么查看是否使用到索引或怎么查看sql执行计划"><a href="#14-Mysql怎么查看是否使用到索引或怎么查看sql执行计划" class="headerlink" title="14.Mysql怎么查看是否使用到索引或怎么查看sql执行计划"></a>14.Mysql怎么查看是否使用到索引或怎么查看sql执行计划</h2><p>使用explain</p>
-<blockquote>
-<p>例如：explain select * from 表名 where 条件<br>结果：会查出key，key就是你使用的索引。还有type这个字段，可以看到索引是全表扫描还是索引扫描等等。<br>type字段内容性能对比：ALL &lt; index &lt; range ~ index_merge &lt; ref &lt; eq_ref &lt; const &lt; system</p>
+    <blockquote>
+<p>author:魏静崎<br>2025年2月24日<br>Golang基础知识</p>
 </blockquote>
-<h2 id="15-一条sql查询非常慢，我们怎么去排查和优化？"><a href="#15-一条sql查询非常慢，我们怎么去排查和优化？" class="headerlink" title="15.一条sql查询非常慢，我们怎么去排查和优化？"></a>15.一条sql查询非常慢，我们怎么去排查和优化？</h2><p>排查：<br>(1) 开启慢查询。<br>(2) 查看慢查询日志(定位低效率sql，命令：show processlist)。<br>(3) 使用explain查看sql的执行计划(看看索引是否失效或者性能低)</p>
-<p>优化：<br>sql优化 + 索引 + 数据库结构优化 + 优化器优化</p>
-<h2 id="16-MylSAM和InnoDB、Memory的区别"><a href="#16-MylSAM和InnoDB、Memory的区别" class="headerlink" title="16.MylSAM和InnoDB、Memory的区别"></a>16.MylSAM和InnoDB、Memory的区别</h2><p>MylSAM： mysql5.5之前的存储引擎，是表锁（悲观锁）级别的，不支持事务和外键。<br>InnoDB： mysql5.5之后的存储引擎，是行锁（乐观锁）级别的，支持事务和外键。<br>Memory： 内存数据库引擎，因为在内存操作，所以读写很快，但是Mysql服务重启，会丢失数据，不支持事务和外键。</p>
-<h2 id="17-什么是事务"><a href="#17-什么是事务" class="headerlink" title="17.什么是事务"></a>17.什么是事务</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/twotwo22222/article/details/127731715?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22127731715%22,%22source%22:%22twotwo22222%22%7D">事务和隔离级别详解及实际应用</a></p>
-<p>事务是对数据库中一系列操作进行统一的回滚或者提交的操作，主要用来保证数据的完整性和一致性。</p>
-<h2 id="18-事务的四大特性-ACID"><a href="#18-事务的四大特性-ACID" class="headerlink" title="18.事务的四大特性(ACID)"></a>18.事务的四大特性(ACID)</h2><p>原子性(Atomicity)： 要么全部成功要么全部失败。<br>一致性(Consistency)： 事务执行前和事务执行后，原本和数据库一致的数据仍然一致。<br>隔离性(Isolation)： 事务与事务之间互不干扰。<br>持久性(Durability)： 事务一旦被提交了，那么对数据库中的数据的改变就是永久的。</p>
-<h2 id="19-脏读、不可重复读、幻读"><a href="#19-脏读、不可重复读、幻读" class="headerlink" title="19.脏读、不可重复读、幻读"></a>19.脏读、不可重复读、幻读</h2><p>脏读： 也叫”读未提交”，顾名思义，就是某一事务A读取到了事务B未提交的数据。<br>不可重复读： 在一个事务内，多次读取同一个数据，却返回了不同的结果。实际上，这是因为在该事务间隔读取数据的期间，有其他事务对这段数据进行了修改，并且已经提交，就会发生不可重复读事故。<br>幻读： 在同一个事务中，第一次读取到结果集和第二次读取到的结果集不同。像幻觉一样所以叫幻读。<br>从上面可以看出脏读和不可重复读是基于数据值的错误，幻读是基于条数增加或者减少的错误</p>
-<h2 id="20-事务的隔离级别？"><a href="#20-事务的隔离级别？" class="headerlink" title="20.事务的隔离级别？"></a>20.事务的隔离级别？</h2><p>① read uncommited(读取未提交内容)： 在该隔离级别，所有事务都可以看到其他未提交事务的执行结果。读取未提交的数据，也被称之为脏读（Dirty Read）<br>② read committed(读取提交内容)： 这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）。一个事务只能看见已经提交事务所做的改变。可解决脏读<br>③ repeatable read(可重读)： 这是MySQL的默认事务隔离级别，同一事务的多个实例在并发读取数据时，会看到同样的数据。不过理论上，这会导致另一个棘手的问题：幻读（Phantom Read）。可解决脏读、不可重复读<br>④ serializable(可串行化) ： 这是最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁。在这个级别，可能导致大量的超时现象和锁竞争。可解决脏读、不可重复读、幻读。</p>
-<h2 id="21-怎么优化数据库"><a href="#21-怎么优化数据库" class="headerlink" title="21.怎么优化数据库"></a>21.怎么优化数据库</h2><p>①SQL优化<br>②加缓存<br>③分表<br>④读写分离</p>
-<h2 id="22-SQL优化"><a href="#22-SQL优化" class="headerlink" title="22.SQL优化"></a>22.SQL优化</h2><p>①不要用select *，要使用具体字段。<br>②使用数值代替字符串，比如：0&#x3D;唱，1&#x3D;跳，2&#x3D;rap。<br>③避免返回大量数据，采用分页最好。<br>④使用索引，提升查询速度，不宜建太多索引，不能建在重复数据比较多的字段上。<br>⑤批量插入比单条插入要快，因为事务只需要开启一次，数据量太小体现不了。<br>⑥避免子查询，优化为多表连接查询。<br>⑦尽量使用union all替代union，因为union会自动去重。</p>
-<h2 id="23-常用的聚合函数"><a href="#23-常用的聚合函数" class="headerlink" title="23.常用的聚合函数"></a>23.常用的聚合函数</h2><p>①sum(列名) 求和 　　　　<br>②max(列名) 最大值 　　　　<br>③min(列名) 最小值 　　　　<br>④avg(列名) 平均值 　　　　<br>⑤first(列名) 第一条记录<br>⑥last(列名) 最后一条记录<br>⑦count(列名) 统计记录数不包含null值 count(*)包含null值。</p>
-<h2 id="24-几种关联查询"><a href="#24-几种关联查询" class="headerlink" title="24.几种关联查询"></a>24.几种关联查询</h2><p>内连接(inner join)： 查询两个表匹配数据。<br>左连接(left join)： 查询左表全部行以及右表匹配的行。<br>右连接(right join)： 查询右表全部行以及左表匹配的行。</p>
-<h2 id="25-in和exists的区别"><a href="#25-in和exists的区别" class="headerlink" title="25.in和exists的区别"></a>25.in和exists的区别</h2><p>in()： 适合子表(子查询)比主表数据小的情况。<br>exists()： 适合子表(子查询)比主表数据大的情况。</p>
-<h2 id="26-drop、truncate、delete的区别"><a href="#26-drop、truncate、delete的区别" class="headerlink" title="26.drop、truncate、delete的区别"></a>26.drop、truncate、delete的区别</h2><p>速度： drop &gt; truncate &gt; delete。<br>回滚： delete支持，truncate和drop不支持。<br>删除内容： delete表结构还在，删除部分或全部数据，不释放空间。truncate表结构还在，删除全部数据，释放空间。drop表结构和数据不在，包括索引和权限，释放空间。</p>
-
+    
+    <a class="article-more-a" href="/2025/02/24/Mysql/#more">more >></a>
+    
     
 
     
@@ -1182,6 +343,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -1216,193 +388,41 @@
 
 
   
-    <article id="post-Mysql 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux基础操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/24/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" target="_blank">Linux基础操作</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/02/24/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+        <time datetime="2025-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="MySQL面试篇"><a href="#MySQL面试篇" class="headerlink" title="MySQL面试篇"></a>MySQL面试篇</h4><ul>
-<li><a href="#_1">优化</a></li>
-<li><ul>
-<li><a href="#1__2">1. 如何定位慢查询？</a></li>
-<li><a href="#2_SQLSQL_4">2. SQL执行计划(分析SQL语句的执行快慢)</a></li>
-<li><a href="#3_31__7">3. 索引（3.1 了解过索引吗？）</a></li>
-<li><ul>
-<li><a href="#32___9">3.2 存储索引及数据结构 (索引底层数据结构了解过吗？)</a></li>
-<li><a href="#33_BB_11">3.3 B树与B+树的区别</a></li>
-<li><a href="#34__14">3.4 聚簇和非聚簇索引</a></li>
-<li><ul>
-<li><a href="#_15">聚簇索引</a></li>
-<li><a href="#_17">非聚簇索引（二级索引）</a></li>
-<li><a href="#_19">回表查询</a></li>
-</ul>
-</li>
-<li><a href="#35__23">3.5 覆盖索引和超大分页优化问题</a></li>
-<li><ul>
-<li><a href="#_24">覆盖索引</a></li>
-<li><a href="#_29">利用覆盖索引解决超大分页查询问题</a></li>
-<li><ul>
-<li><a href="#_30">原因</a></li>
-<li><a href="#_32">思路</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#36__34">3.6 索引创建原则</a></li>
-<li><a href="#37__42">3.7 索引失效场景</a></li>
-</ul>
-</li>
-<li><a href="#4_SQLjava_64">4. SQL优化经验（参考java开发手册（黄山版））</a></li>
-<li><ul>
-<li><a href="#41__65">4.1 表的设计优化，数据类型的选择</a></li>
-<li><a href="#42__69">4.2 索引优化</a></li>
-<li><a href="#43_SQL_71">4.3 SQL语句优化</a></li>
-<li><a href="#44_80">4.4主从复制，读写分离</a></li>
-<li><a href="#45_82">4.5分库分表</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_84">其他面试题</a></li>
-<li><ul>
-<li><a href="#5__85">5. 事务相关（什么是事务？）</a></li>
-<li><ul>
-<li><a href="#51__87">5.1 事务特性（介绍一下事务的特性。）</a></li>
-<li><a href="#52__96">5.2 隔离级别（并发事务带来哪些问题以及如何处理？）</a></li>
-<li><ul>
-<li><a href="#_97">事务带来的问题：</a></li>
-<li><ul>
-<li><a href="#_98">第一是脏读:</a></li>
-<li><a href="#_100">第二是不可重复读：</a></li>
-<li><a href="#Phantom_read_102">第三是幻读（Phantom read）：</a></li>
-</ul>
-</li>
-<li><a href="#MySQL_104">怎么解决这些问题呢？MySQL的默认隔离级别是？</a></li>
-</ul>
-</li>
-<li><a href="#53_undo_logredo_log_111">5.3 undo log与redo log的区别？</a></li>
-<li><a href="#54_MVCC12MVCC_127">5.4 MVCC（1.事务的隔离性如何保证呢？2.什么是MVCC？）</a></li>
-<li><ul>
-<li><ul>
-<li><a href="#mvcc_128">事务的隔离性是由锁和mvcc实现的。</a></li>
-<li><a href="#_131">隐藏字段是指：</a></li>
-<li><a href="#undo_log_133">undo log：</a></li>
-<li><a href="#readView_135">readView：</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#6__137">6. 主从同步原理</a></li>
-<li><a href="#7__142">7. 分库分表（根据自己的具体项目来答）</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="1-如何定位慢查询？"><a href="#1-如何定位慢查询？" class="headerlink" title="1. 如何定位慢查询？"></a>1. 如何定位慢查询？</h3><blockquote>
-<p>在MySQL中也提供了慢日志查询的功能，可以在MySQL的系统配置文件中开启这个慢日志的功能（默认是关闭），并且也可以设置SQL执行超过多少时间来记录到一个日志文件中，我记得上一个项目配置的是2秒，只要SQL执行的时间超过了2秒就会记录到日志文件中，我们就可以在日志文件找到执行比较慢的SQL了。</p>
+    <blockquote>
+<p>author:魏静崎<br>2025年2月24日<br>Linux基础操作</p>
 </blockquote>
-<h3 id="2-SQL执行计划-分析SQL语句的执行快慢"><a href="#2-SQL执行计划-分析SQL语句的执行快慢" class="headerlink" title="2. SQL执行计划(分析SQL语句的执行快慢)"></a>2. SQL执行计划(分析SQL语句的执行快慢)</h3><blockquote>
-<p>如果一条sql执行很慢的话，我们通常会使用mysql自动的执行计划explain或者describe来去查看这条sql的执行情况，首先在这里面可以通过key和key_len检查是否命中了索引，如果本身已经添加了索引，也可以判断索引是否有失效的情况，第二个，可以通过type字段查看sql是否有进一步的优化空间是否存在全索引扫描或全盘扫描，第三个可以通过extra建议来判断，是否出现了回表的情况（参考索引的聚集索引和非聚集索引），如果出现了，可以尝试添加索引或修改返回字段来修复。</p>
-</blockquote>
-<h3 id="3-索引（3-1-了解过索引吗？）"><a href="#3-索引（3-1-了解过索引吗？）" class="headerlink" title="3. 索引（3.1 了解过索引吗？）"></a>3. 索引（3.1 了解过索引吗？）</h3><blockquote>
-<p>索引在项目中还是比较常见的，它是帮助MySQL高效获取数据的数据结构，主要是用来提高数据检索的效率，降低数据库的IO成本，同时通过索引列对数据进行排序，降低数据排序的成本，也能降低了CPU的消耗。</p>
-</blockquote>
-<h4 id="3-2-存储索引及数据结构-索引底层数据结构了解过吗？"><a href="#3-2-存储索引及数据结构-索引底层数据结构了解过吗？" class="headerlink" title="3.2 存储索引及数据结构 (索引底层数据结构了解过吗？)"></a>3.2 存储索引及数据结构 (索引底层数据结构了解过吗？)</h4><blockquote>
-<p>MySQL的默认的存储引擎InnoDB采用的B+树的数据结构来存储索引，选择B+树的主要的原因是：第一阶数更多，路径更短，第二个磁盘读写代价 B+树更低，非叶子节点只存储指针，叶子阶段存储数据，第三是B+树便于扫库和区间查询，叶子节点是一个双向链表。</p>
-</blockquote>
-<h4 id="3-3-B树与B-树的区别"><a href="#3-3-B树与B-树的区别" class="headerlink" title="3.3 B树与B+树的区别"></a>3.3 B树与B+树的区别</h4><blockquote>
-<p>第一：在B树中，非叶子节点和叶子节点都会存放数据，而B+树的所有的数据都会出现在叶子节点，在查询的时候，B+树查找效率更加稳定。<br>第二：在进行范围查询的时候，B+树效率更高，因为B+树都在叶子节点存储，并且叶子节点是一个双向链表。</p>
-</blockquote>
-<h4 id="3-4-聚簇和非聚簇索引"><a href="#3-4-聚簇和非聚簇索引" class="headerlink" title="3.4 聚簇和非聚簇索引"></a>3.4 聚簇和非聚簇索引</h4><blockquote>
-<h5 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h5><blockquote>
-<p>聚集索引就是聚簇索引，主要是指数据与索引放到一块，B+树的叶子节点保存了整行数据，有且只有一个，一般情况下主键在作为聚簇索引，如果没有主键则是唯一键（unique），没有唯一键，InnoDB自动生成一个隐式rowid作为聚集索引。</p>
-</blockquote>
-<h5 id="非聚簇索引（二级索引）"><a href="#非聚簇索引（二级索引）" class="headerlink" title="非聚簇索引（二级索引）"></a>非聚簇索引（二级索引）</h5><blockquote>
-<p>二级索引也是非聚簇索引，主要是数据与索引分开存储，B+树的叶子节点保存对应的主键，可以有多个，一般我们自己定义的索引都是非聚簇引。</p>
-</blockquote>
-<h5 id="回表查询"><a href="#回表查询" class="headerlink" title="回表查询"></a>回表查询</h5><blockquote>
-<p>其实跟刚才介绍的聚簇索引和非聚簇索引是有关系的，回表的意思就是通过二级索引找到对应的主键值，然后再通过主键值找到聚集索引中所对应的整行数据，这个过程就是回表。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>注意：如果面试官直接问回表，则需要先介绍聚簇索引和非聚簇索引。</p>
-</blockquote>
-<h4 id="3-5-覆盖索引和超大分页优化问题"><a href="#3-5-覆盖索引和超大分页优化问题" class="headerlink" title="3.5 覆盖索引和超大分页优化问题"></a>3.5 覆盖索引和超大分页优化问题</h4><blockquote>
-<h5 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h5><p>覆盖索引是指select查询语句使用了索引，返回的列，必须在索引中全部能够找到，如果我们使用id查询，它会直接走聚集索引查询，一次索引扫描，直接返回数据，性能高。（这个想想B+树查询的原理更容易理解）。</p>
-<blockquote>
-<p>如果按照二级索引查询数据的时候，返回的列中没有创建索引，有可能会触发回表查询，尽量避免使用select *，尽量在返回的列中都包含添加索引的字段。</p>
-</blockquote>
-</blockquote>
-<p><img src="https://mark.cuckooing.cn/pics/pic_22d043f0.png" alt="pic_22d043f0.png"></p>
-<blockquote>
-<h5 id="利用覆盖索引解决超大分页查询问题"><a href="#利用覆盖索引解决超大分页查询问题" class="headerlink" title="利用覆盖索引解决超大分页查询问题"></a>利用覆盖索引解决超大分页查询问题</h5><h6 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h6><p>超大分页一般都是在数据量比较大时，我们使用了limit分页查询，并且需要对数据进行排序，这个时候效率就很低，我们可以采用覆盖索引和子查询来解决。</p>
-<h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><p>先分页查询数据的id字段，确定了id之后，再用子查询来过滤，只查询这个id列表中的数据就可以了。因为查询id的时候，走的覆盖索引，所以效率可以提升很多。</p>
-</blockquote>
-<h4 id="3-6-索引创建原则"><a href="#3-6-索引创建原则" class="headerlink" title="3.6 索引创建原则"></a>3.6 索引创建原则</h4><ul>
-<li>数据量大，且查询比较频繁的表（基本）。<br>比如十万条数据，经常查询。</li>
-<li>常常作为查询条件，排序，分组的字段。</li>
-<li>尽量使用联合索引。<br>我们通常创建索引的时候都是使用复合索引来创建，一条sql的返回值，尽量使用覆盖索引，如果字段的区分度不高的话，我们也会把它放在组合索引后面的字段。</li>
-<li>要控制索引数量，字段内容长则使用前缀。<br>如果某一个字段的内容较长，我们会考虑使用前缀索引来使用，当然并不是所有的字段都要添加索引，这个索引的数量也要控制，因为添加索引也会导致新增改的速度变慢。</li>
-</ul>
-<h4 id="3-7-索引失效场景"><a href="#3-7-索引失效场景" class="headerlink" title="3.7 索引失效场景"></a>3.7 索引失效场景</h4><ul>
-<li>违反最左前缀法则。<br>假设说有字段ID name status address ID为聚集索引，后三者为联合索引，在查询的时候（都是select *），条件必须是 name 开头，以及不允许跳过name或者status，直接用address，可以只是name或者name status。</li>
-<li>范围查询右边的列，不能使用索引。<br>前提同上，如果status是范围查询那么SQL语句：<br><code>select * from table_name where name=&#39;小米科技&#39; and status&gt;&#39;1&#39; and address=&#39;北京&#39;</code><br>address索引字段是无效的。</li>
-<li>不要在索引列上进行运算操作，索引将失败。<br>前提同上，如果name使用函数substring：<br><code>select * from table_name where substring（name,3,2）=&#39;科技&#39;</code><br>索引字段name也失效。</li>
-<li>字符串不加单引号，造成索引失效。（类型转换）<br>如SQL语句（status是String类型）<br><code>select * from table_name where name=&#39;小米科技&#39; and status=&#39;1&#39;</code>和<br><code>select * from table_name where name=&#39;小米科技&#39; and status=1</code><br>前者status的1加了单引号，后者没加，造成类型转换，导致后者status索引失效。</li>
-<li>以%开头的Like模糊查询，索引失效。<br><code>select * from table_name where name like &#39;%小米%&#39;</code>与<br><code>select * from table_name where name like &#39;%小米&#39;</code>与<br><code>select * from table_name where name like &#39;小米%&#39;</code><br>其中前两个都是%在前，造成name字段索引无效，只有第三个有效。</li>
-</ul>
-<h3 id="4-SQL优化经验（参考java开发手册（黄山版））"><a href="#4-SQL优化经验（参考java开发手册（黄山版））" class="headerlink" title="4. SQL优化经验（参考java开发手册（黄山版））"></a>4. SQL优化经验（参考java开发手册（黄山版））</h3><h4 id="4-1-表的设计优化，数据类型的选择"><a href="#4-1-表的设计优化，数据类型的选择" class="headerlink" title="4.1 表的设计优化，数据类型的选择"></a>4.1 表的设计优化，数据类型的选择</h4><ol>
-<li>表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）。</li>
-<li>如果存储的字符串长度几乎相等，使用 char 定长字符串类型（学号，手机号）。</li>
-<li>在数据库中不能使用物理删除操作，要使用逻辑删除。</li>
-</ol>
-<h4 id="4-2-索引优化"><a href="#4-2-索引优化" class="headerlink" title="4.2 索引优化"></a>4.2 索引优化</h4><p>索引优化，参考索引创建原则（3.6）。</p>
-<h4 id="4-3-SQL语句优化"><a href="#4-3-SQL语句优化" class="headerlink" title="4.3 SQL语句优化"></a>4.3 SQL语句优化</h4><ol>
-<li>避免索引失效（参考索引失效场景3.7）</li>
-<li>避免使用select *</li>
-<li>不要使用 count(列名) 或 count(常量) 来替代 count( * )，count( * ) 是SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。</li>
-<li>使用 ISNULL() 来判断是否为 NULL 值。<br>说明：NULL 与任何值的直接比较都为 NULL。</li>
-<li>禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。</li>
-<li>不得使用外键与级联，一切外键概念必须在应用层解决。</li>
-<li>join的优化，能用innerjoin就不用left join和right join，本质都是要以小表作为驱动，内连接会对两个表进行优化，优先把小表放外面，大表放里面。</li>
-</ol>
-<h4 id="4-4主从复制，读写分离"><a href="#4-4主从复制，读写分离" class="headerlink" title="4.4主从复制，读写分离"></a>4.4主从复制，读写分离</h4><p>数据库的使用场景读的操作比较多，为了避免写的操作影响性能，可以使用读写分离的架构。</p>
-<h4 id="4-5分库分表"><a href="#4-5分库分表" class="headerlink" title="4.5分库分表"></a>4.5分库分表</h4><p>单表数据量达到1000w或者内存超过20G的时候可以考虑(详细可见第7点)。</p>
-<h2 id="其他面试题"><a href="#其他面试题" class="headerlink" title="其他面试题"></a>其他面试题</h2><h3 id="5-事务相关（什么是事务？）"><a href="#5-事务相关（什么是事务？）" class="headerlink" title="5. 事务相关（什么是事务？）"></a>5. 事务相关（什么是事务？）</h3><p>事务是一组操作的集合，它是一个不可分割的工作单位，事务会把所有的操作作为一个整体一起向系统提交或者撤销操作请求，即这些操作要么同时成功要么同时失败。</p>
-<h4 id="5-1-事务特性（介绍一下事务的特性。）"><a href="#5-1-事务特性（介绍一下事务的特性。）" class="headerlink" title="5.1 事务特性（介绍一下事务的特性。）"></a>5.1 事务特性（介绍一下事务的特性。）</h4><p>ACID，分别指的是：原子性、一致性、隔离性、持久性；<br>我举个例子（一一对应）：<br>A向B转账500，转账成功，A扣除500元，B增加500元，原子操作体现在要<br>么都成功，要么都失败。<br>在转账的过程中，数据要一致，A扣除了500，B必须增加500。<br>在转账的过程中，隔离性体现在A像B转账，不能受其他事务干扰。<br>在转账的过程中，持久性体现在事务提交后，要把数据持久化（可以说是落<br>盘操作）。</p>
-<h4 id="5-2-隔离级别（并发事务带来哪些问题以及如何处理？）"><a href="#5-2-隔离级别（并发事务带来哪些问题以及如何处理？）" class="headerlink" title="5.2 隔离级别（并发事务带来哪些问题以及如何处理？）"></a>5.2 隔离级别（并发事务带来哪些问题以及如何处理？）</h4><blockquote>
-<h5 id="事务带来的问题："><a href="#事务带来的问题：" class="headerlink" title="事务带来的问题："></a>事务带来的问题：</h5><h6 id="第一是脏读"><a href="#第一是脏读" class="headerlink" title="第一是脏读:"></a>第一是脏读:</h6><p>当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，因为这个数据是还没有提交的数据，那么另外一个事务读到的这个数据是“脏数据”，依据“脏数据”所做的操作可能是不正确的。</p>
-<h6 id="第二是不可重复读："><a href="#第二是不可重复读：" class="headerlink" title="第二是不可重复读："></a>第二是不可重复读：</h6><p>比如在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</p>
-<h6 id="第三是幻读（Phantom-read）："><a href="#第三是幻读（Phantom-read）：" class="headerlink" title="第三是幻读（Phantom read）："></a>第三是幻读（Phantom read）：</h6><p>幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</p>
-<h5 id="怎么解决这些问题呢？MySQL的默认隔离级别是？"><a href="#怎么解决这些问题呢？MySQL的默认隔离级别是？" class="headerlink" title="怎么解决这些问题呢？MySQL的默认隔离级别是？"></a>怎么解决这些问题呢？MySQL的默认隔离级别是？</h5><p>MySQL支持四种隔离级别，分别有：<br>第一个是未提交读（read uncommitted）它解决不了刚才提出的所有问题，一般项目中也不用这个。<br>第二个是读已提交（read committed）它能解决脏读的问题的，但是解决不了不可重复读和幻读。<br>第三个是可重复读（repeatable read）它能解决脏读和不可重复读，但是解决不了幻读，这个也是mysql默认的隔离级别。<br>第四个是串行化（serializable）它可以解决刚才提出来的所有问题，但是由于让是事务串行执行的，性能比较低。<br>所以，我们一般使用的都是mysql默认的隔离级别:可重复读</p>
-</blockquote>
-<h4 id="5-3-undo-log与redo-log的区别？"><a href="#5-3-undo-log与redo-log的区别？" class="headerlink" title="5.3 undo log与redo log的区别？"></a>5.3 undo log与redo log的区别？</h4><p>首先二者都是日志文件，接下来我们先引入两个概念：缓冲池和数据页</p>
-<blockquote>
-<p>缓冲池（buffer pool）：主内存中的一个区域，里面可以缓存磁盘上经常操作的真实数据，在crud时，先操作缓冲池中的数据（缓冲池没有数据，则从磁盘中加载并且缓存），以一定的频率刷新到磁盘，从而减少磁盘IO，加快处理速度。<br>数据页（page）：是InnoDB存储引擎磁盘管理的最小单元，每个页默认大小为16KB。存储的是行数据。</p>
-</blockquote>
-<blockquote>
-<p>redo log（重做日志）：记录的是事务提交时数据页的物理修改，是用来实现事务的持久性。<br>由两部分组成：重做日志缓存（redo log buffer）以及重做日志文件（redo log file），前者在内存中，后者在磁盘中。<br>使用场景：假设数据库提交update和delete操作到缓冲池时，缓冲池同步数据到磁盘时，数据库宕机，导致缓冲池丢失数据（update已同步，delete没来得及同步）。<br><img src="https://mark.cuckooing.cn/pics/pic_ffffda7b.png" alt="pic_ffffda7b.png"><br>重做日志如何工作呢？<br>当事务提交后会把所有修改信息存到redo log buffer中，并且同步到redo log file，当发生故障时，根据文件进行数据恢复。</p>
-</blockquote>
-<blockquote>
-<p>undo log<br>回滚日志：用于记录数据被修改前的信息，作用有两个：提供回滚和MVCC（多版本并发控制）。与redo log 不一样的是它是逻辑日志。主要用来实现事务的原子性和一致性。<br>比如：当delete操作一条记录后，undo log 会记录一条对应的insert记录，反之亦然。用于回滚。<br>MVCC参考下一个面试题。</p>
-</blockquote>
-<h4 id="5-4-MVCC（1-事务的隔离性如何保证呢？2-什么是MVCC？）"><a href="#5-4-MVCC（1-事务的隔离性如何保证呢？2-什么是MVCC？）" class="headerlink" title="5.4 MVCC（1.事务的隔离性如何保证呢？2.什么是MVCC？）"></a>5.4 MVCC（1.事务的隔离性如何保证呢？2.什么是MVCC？）</h4><blockquote>
-<h6 id="事务的隔离性是由锁和mvcc实现的。"><a href="#事务的隔离性是由锁和mvcc实现的。" class="headerlink" title="事务的隔离性是由锁和mvcc实现的。"></a>事务的隔离性是由锁和mvcc实现的。</h6><p>锁（排他锁）：当一个事务获取了一个数据行的排他锁，其他事务就无法获取该数据行的其他所锁。<br>MVCC（Multi-Version Concurrency Control）：是多版本并发控制。指维护一个数据的多个版本，使得读写操作没有冲突，它的底层实现主要是分为了三个部分，第一个是隐藏字段，第二个是undo log日志，第三个是readView读视图。</p>
-<h6 id="隐藏字段是指："><a href="#隐藏字段是指：" class="headerlink" title="隐藏字段是指："></a>隐藏字段是指：</h6><p>在mysql中给每个表都设置了隐藏字段，有一个是trx_id(事务id)，记录每一次操作的事务id，是自增的；另一个字段是roll_pointer(回滚指针)，指向上一个版本的事务版本记录地址。</p>
-<h6 id="undo-log："><a href="#undo-log：" class="headerlink" title="undo log："></a>undo log：</h6><p>主要的作用是记录回滚日志，存储老版本数据，在内部会形成一个版本链，在多个事务并行操作某一行记录，记录不同事务修改数据的版本，通过roll_pointer指针形成一个链表。</p>
-<h6 id="readView："><a href="#readView：" class="headerlink" title="readView："></a>readView：</h6><p>解决的是一个事务查询选择版本的问题，在内部定义了一些匹配规则和当前的一些事务id判断该访问那个版本的数据，不同的隔离级别快照读是不一样的，最终的访问的结果不一样。如果是rc(read committed)隔离级别，每一次执行快照读时生成ReadView，如果是rr(repeatable read)隔离级别仅在事务中第一次执行快照读时生成ReadView，后续复用。</p>
-</blockquote>
-<h3 id="6-主从同步原理"><a href="#6-主从同步原理" class="headerlink" title="6. 主从同步原理"></a>6. 主从同步原理</h3><blockquote>
-<p>MySQL主从复制的核心就是二进制日志(DDL（数据定义语言）语句和 DML（数据操纵语言）语句)，它的步骤是这样的：<br>第一：主库在事务提交时，会把数据变更记录在二进制日志文件 Binlog 中。<br>第二：从库读取主库的二进制日志文件 Binlog ，写入到从库的中继日志Relay Log 。<br>第三：从库根据中继日志中的事件，同步自己的数据。</p>
-</blockquote>
-<h3 id="7-分库分表（根据自己的具体项目来答）"><a href="#7-分库分表（根据自己的具体项目来答）" class="headerlink" title="7. 分库分表（根据自己的具体项目来答）"></a>7. 分库分表（根据自己的具体项目来答）</h3><ul>
-<li>水平分库，将一个库的数据拆分到多个库中，解决海量数据存储和高并发问题。</li>
-<li>水平分表，解决单表存储和性能问题。</li>
-<li>垂直分库，根据业务进行拆分，高并发下提高磁盘IO和网络连接数。（用户，订单，商品）</li>
-<li>垂直分表，冷热数据分离，多表互不影响。（比如商品基本信息与详细描述分离）<br>注意：水平分表分库需要使用数据库中间件，比如MyCat 来解决跨界点等相关问题。</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2025/02/24/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/#more">more >></a>
+    
     
 
     
@@ -1413,11 +433,112 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2025/02/24/Mysql%202/">展开全文 >></a>
+      <a class="article-more-a" href="/2025/02/24/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Redis知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/24/Redis%E7%9F%A5%E8%AF%86/" target="_blank">Redis基础知识</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/02/24/Redis%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2025-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote>
+<p>author:魏静崎<br>2025年2月24日<br>Redis基础知识</p>
+</blockquote>
+    
+    <a class="article-more-a" href="/2025/02/24/Redis%E7%9F%A5%E8%AF%86/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/02/24/Redis%E7%9F%A5%E8%AF%86/">展开全文 >></a>
     </p>
     
 
