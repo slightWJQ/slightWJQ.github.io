@@ -208,6 +208,159 @@
             
 
   
+    <article id="post-面试题-else" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2055/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98-else/" target="_blank">面试题-else</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2055/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98-else/" class="archive-article-date">
+        <time datetime="2055-04-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2055-04-02</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote>
+<p>author:魏静崎<br>2025年04月02日<br>面试题else</p>
+</blockquote>
+    
+    <a class="article-more-a" href="/2055/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98-else/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2055/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98-else/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-GO项目八股" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Gorm"><a href="#Gorm" class="headerlink" title="Gorm"></a>Gorm</h1><h1 id="Gin框架"><a href="#Gin框架" class="headerlink" title="Gin框架"></a>Gin框架</h1><h3 id="Gin的底层原理"><a href="#Gin的底层原理" class="headerlink" title="Gin的底层原理"></a>Gin的底层原理</h3><h3 id="Gin框架中间件"><a href="#Gin框架中间件" class="headerlink" title="Gin框架中间件"></a>Gin框架中间件</h3><p>Gin框架允许开发者在处理请求的过程中，加入用户自己的钩子（Hook）函数。这个钩子函数就叫中间件，中间件适合处理一些公共的业务逻辑，比如登录认证、权限校验、数据分页、记录日志、耗时统计等 即比如，如果访问一个网页的话，不管访问什么路径都需要进行登录，此时就需要为所有路径的处理函数进行统一一个中间件</p>
+<p>Gin中的中间件必须是一个gin.HandlerFunc类型<br>    router.GET，后面可以跟很多HandlerFunc方法，这些方法其实都可以叫中间件<br>    c.Abort()拦截，后续的HandlerFunc就不会执行了</p>
+<h5 id="路由分组"><a href="#路由分组" class="headerlink" title="路由分组"></a>路由分组</h5><p>路由分组就是将一系列的路由放到一个组下，统一管理。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router := gin.Default()</span><br><span class="line">r := router.Group(<span class="string">&quot;/api&quot;</span>)</span><br><span class="line">r.GET(<span class="string">&quot;/index&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	c.String(<span class="number">200</span>, <span class="string">&quot;index&quot;</span>) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以为路由分组注册中间件</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r := router.Group(<span class="string">&quot;/api&quot;</span>).Use(middle) <span class="comment">// 可以链式，也可以直接r.Use(middle)</span></span><br></pre></td></tr></table></figure>
+<h1 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h1><h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><h3 id="ES"><a href="#ES" class="headerlink" title="ES"></a>ES</h3><h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><h1 id="微服务相关"><a href="#微服务相关" class="headerlink" title="微服务相关"></a>微服务相关</h1><pre><code>微服务的理解  
+怎么保证微服务高可用  
+具体怎么拆分微服务
+</code></pre>
+<h3 id="微服务架构的优点"><a href="#微服务架构的优点" class="headerlink" title="微服务架构的优点"></a>微服务架构的优点</h3><p>单体项目启动慢，拆分微服务后提高开发效率和敏捷性；容错性高；单体应用容易造成系统资源浪费，微服务并发能力高；可维护性强；单体应用难以技术升级，微服务可扩展性强；</p>
+<h3 id="微服务架构的缺点"><a href="#微服务架构的缺点" class="headerlink" title="微服务架构的缺点"></a>微服务架构的缺点</h3><p>对开发人员要求高；难以保证最终一致性；运维复杂度提高；可能存在重复劳动；</p>
+<h3 id="微服务常用组件"><a href="#微服务常用组件" class="headerlink" title="微服务常用组件"></a>微服务常用组件</h3><p>服务注册中心：管理所有的服务<br>    Nacos、Zookeeper<br>    服务注册：当服务启动，通过rest请求的方式向Nacos Server注册自己的服务<br>    服务心跳：Nacosse Client会维护一个定时心跳持续通知Nacos Server，默认5s以此，如果超过15s没有接收到心跳，健康状态设置为false（拉取时忽略），如果超过30s没有接收到心跳 剔除服务。<br>    服务发现：Nacose Client会有一个定时任务，实时去Nacos Server拉取健康服务<br>    服务停止：Nacose CLient会 主动通过Rest请求Nacos Server发送注销的请求<br>负载均衡：客户端的负载均衡器<br>    LoadBalancer<br>服务调用：使远程服务调用更加优雅<br>    OpenFeign<br>服务配置中心：管理服务的配置<br>    Nacos Config<br>    集中管理服务的配置、提高维护下、时效性、安全性<br>    那些可以作为配置：<br>        数据库Url、缓存链接url字符串、数据库用户名、密码、还有一些可以动态调整的参数<br>服务熔断：保证应用的高可用，防止出现服务的雪崩，防止激增流量打垮冷系统<br>    sentinel<br>分布式事务：<br>    Seata<br>服务网关：为客户端提供统一的服务，一些和业务功能无关的公共逻辑都可以放在网关实现，如：鉴权、日志、限流、跨域、路由转发、服务降级与熔断、多级缓存策略<br>    Spring Cloud Gateway<br>链路追踪：实时的追踪服务的健康状况<br>    Skywalking</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/02/GO%E9%A1%B9%E7%9B%AE%E5%85%AB%E8%82%A1/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-新片场面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -940,189 +1093,9 @@
 
 
   
-    <article id="post-基础文献" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/10/%E5%9F%BA%E7%A1%80%E6%96%87%E7%8C%AE/" target="_blank">基础文献</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/10/10/%E5%9F%BA%E7%A1%80%E6%96%87%E7%8C%AE/" class="archive-article-date">
-        <time datetime="2024-10-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<p>author:魏静崎<br>   2024年10月7日<br>文献考试-基础文献部分</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2024/10/10/%E5%9F%BA%E7%A1%80%E6%96%87%E7%8C%AE/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">research</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/10/%E5%9F%BA%E7%A1%80%E6%96%87%E7%8C%AE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-免疫算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/" target="_blank">免疫算法</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/" class="archive-article-date">
-        <time datetime="2024-10-06T14:24:24.650Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-06</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<p>author:魏静崎<br>2023年10月21日<br>免疫算法求函数最优解的实际应用</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">research</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/06/%E5%85%8D%E7%96%AB%E7%AE%97%E6%B3%95/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
